@@ -1,0 +1,22 @@
+{
+  "short_name": "Reserva",
+  "gcm_sender_id": "865603333137",
+  "name": "Reserva App",
+  "icons": [
+    {
+      "src": "/assets/fcm/testimonial-quote-left.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "/assets/fcm/icon-2x.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/assets/fcm/icon-4x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

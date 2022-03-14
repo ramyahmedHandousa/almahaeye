@@ -1,0 +1,89 @@
+body,
+html {
+  direction: ltr
+}
+#top > .container > ul > li {
+  margin-left: 0;
+  margin-right: 0
+}
+#top ul > li .icon {
+  margin-left: 0;
+  margin-right: 10px
+}
+#header .search .icon {
+  left: auto;
+  right: 10px
+}
+.subscription .form-control {
+  background-color: #fff;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
+}
+.subscription .btn {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
+}
+.form-check-input {
+  margin-left: 0;
+  margin-right: 5px
+}
+.form-select {
+  padding: .375rem 2.25rem .375rem .75rem;
+  background-position: right .75rem center
+}
+.input-icon .icon {
+  left: auto;
+  right: 30px
+}
+.form-check .form-check-input {
+  float: left;
+  margin-left: 0;
+  margin-right: 10px
+}
+.filter .dropdown {
+  margin-left: 0;
+  margin-right: 10px
+}
+.the-range-slider {
+  display: flex
+}
+.slider.slider-horizontal {
+  margin-right: 0;
+  margin-left: 10px
+}
+.more > i.fa-angle-double-left,.btn .icon {
+  transform: rotateY(145deg)
+}
+.product .wishlist,
+.product-basket {
+  left: auto;
+  right: 15px
+}
+.product-color > span {
+  margin-left: 0;
+  margin-right: 5px
+}
+.product-color > span:last-of-type {
+  margin-left: 0;
+  margin-right: 0
+}
+.discount-percent {
+  right: auto;
+  left: 0
+}
+footer ul li i {
+  margin-left: 0;
+  margin-right: 10px
+}
+@media only screen and (max-width:767px) {
+  #top ul:last-of-type {
+    justify-content: space-between
+  }
+  #top > .container > ul {
+    justify-content: space-between
+  }
+}

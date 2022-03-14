@@ -1,0 +1,88 @@
+/* start font */
+@font-face {
+  font-family: 'Hacen Maghreb';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../fonts/ArbFONTS-Hacen-Maghreb-Bd.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Hacen Maghreb';
+  font-style: normal;
+  font-weight: bold;
+  src: url('../fonts/ArbFONTS-Hacen-Maghreb.ttf') format('truetype');
+}
+
+*,body{
+    font-family: 'Hacen Maghreb', sans-serif
+}
+/* end font */
+.mr-5{margin-right: initial;margin-left: 5px}
+.f-right{float: left;}
+.web-list li{margin-left: 7px;margin-right: initial;}
+.navbar-right{float: left !important}
+.navbar-brand{padding: 15px 0 0 15px}
+.container-fluid > .navbar-header{margin-left: 35px;margin-right: initial;}
+.badge-1{margin-right: -10px;margin-left: initial;}
+.cart-layout a{padding: 5px 10px 5px 3px !important}
+.box-details{float: right}
+.box-img{float: right;margin-left: 1%;margin-right: initial;}
+.title-float{float: right;}
+.the-title a{float: left;}
+.the-title a img{margin-left: initial;margin-right: 5px}
+.the-product-fav{text-align: left;}
+.the-product-details p{float: right;}
+.add-btn{float: left;}
+.the-title .nav-pills{text-align: left;}
+.the-product-2 .box-details{padding-left: initial;padding-right: 10px}
+.the-filter > div{float: left;margin-right: 10px;margin-left: 0}
+.nav-pills2{float: right;}
+.old,.the-product-3 .the-product-price span.old{float: right;margin-left: 4px}
+.add-btn2{float: right;}
+.offer-2 {
+    right: 0;
+    left:initial;
+    border-radius: 7px 0 0 7px;
+}
+.login-logo {
+    margin-right: 170px;margin-left: initial;
+}
+.nav-tabs > li.step-2{float: left;}
+.tab-step {
+    margin-right: initial;
+    margin-left: 4px;
+}
+.form-div a{float: left;}
+.order-float{float: left;}
+.checkbox-span{margin-right: 10px;margin-left:initial}
+.profile-btn{float: left;}
+.profile-name,.profile-img{float: right;}
+.the-color-4 span{margin-right: initial;margin-left: 15px}
+/* start responsive */
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+	.the-social ul{text-align: right;}
+	.title-float2{float: none;}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	.login-logo{margin-right: 30%;margin-left: initial;}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px) { 
+
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+	.login-logo{margin-right: 0;margin-left: initial;}
+}
+
+/* Custom, iPhone Retina */ 
+@media only screen and (max-width : 320px) {
+}
+
+@media only screen and (max-width : 250px){
+}
+/* end responsive */

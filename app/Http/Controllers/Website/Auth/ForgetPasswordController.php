@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers\Website\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\VerifyUser;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+class ForgetPasswordController extends Controller
+{
+
+    public function __invoke()
+    {
+        return view('website.auth.forget-password');
+    }
+
+
+    public function forgetPassword(Request $request)
+    {
+        $this->validate($request,[
+            'phone'         => 'required|numeric|exists:users,phone|digits:10|regex:/(05)[0-9]{8}/',
+        ],[
+            'phone.exists' => 'هذا الهاتف غير موجود لدينا'
+        ]);
+
+        $user = User::wherePhone($request->phone)->first();
+
+        VerifyUser::updateOrCreate(['user_id' => $user->id],[
+            'phone' => $request->phone,
+            'email' => $user->email,
+            'action_code' => 1111
+        ]);
+
+        return  redirect()->route('check-user-code',['token' => $user->api_token]);
+    }
+
+
+}
