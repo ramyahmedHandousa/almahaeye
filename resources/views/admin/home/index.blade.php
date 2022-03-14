@@ -13,7 +13,7 @@
         <div class="row statistics">
 
         <div class="col-lg-3 col-md-6">
-            <a href="javascript:;">
+            <a href="{{ route('users.index') }}">
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30">عدد المستخدمين</h4>
                     <div class="widget-box-2">
@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-            <a href="javascript:;">
+            <a href="{{ route('vendors.index') }}">
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30">عدد التجار </h4>
                     <div class="widget-box-2">
@@ -42,7 +42,7 @@
 
 
         <div class="col-lg-3 col-md-6">
-            <a href="javascript:;">
+            <a href="{{ route('countries.index') }}">
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30">عدد الدول </h4>
                     <div class="widget-box-2">
@@ -56,7 +56,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-            <a href="javascript:;">
+            <a href="{{ route('categories.index') }}">
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30">عدد الأقسام </h4>
                     <div class="widget-box-2">
@@ -70,7 +70,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-            <a href="javascript:;">
+            <a href="{{ route('products.index') }}">
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30">عدد المنتجات </h4>
                     <div class="widget-box-2">
@@ -84,7 +84,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-            <a href="javascript:;">
+            <a href="{{ route('shipping.index') }}">
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30">عدد  شركات الشحن</h4>
                     <div class="widget-box-2">

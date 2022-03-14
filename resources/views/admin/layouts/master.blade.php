@@ -614,6 +614,7 @@
         autoClose: true,
         progressBar: true,
         enableSounds: true,
+        // transition: "scale",
         sounds: {
             info: "https://res.cloudinary.com/dxfq3iotg/video/upload/v1557233294/info.mp3",
             success: "https://res.cloudinary.com/dxfq3iotg/video/upload/v1557233524/success.mp3",

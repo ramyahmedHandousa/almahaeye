@@ -18,7 +18,9 @@
                         <i class="fas fa-heart favorite-product-{{$product->id}}" ></i>
                     </a>
                     <div class="product-img">
+                        <a href="{{route('products',$product->id)}}">
                         <img loading="lazy"  src="{{$product->getFirstMediaUrl('master_image')}}" alt="{{$product->name}}">
+                        </a>
                     </div>
                     <div class="product-content">
                         <h4 class="product-title">
@@ -26,6 +28,9 @@
                         </h4>
                         <div class="product-price">
                             <span>{{$product->price}}</span> ر.س
+                        </div>
+                        <div class="product-title">
+                            <span>{{$product->brand?->name}}</span>
                         </div>
 
                         <div class="stars">

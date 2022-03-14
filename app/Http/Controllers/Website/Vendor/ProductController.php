@@ -98,6 +98,7 @@ class ProductController extends Controller
 
     public function store(ProductStoreValid $request)
     {
+
         DB::beginTransaction();
 
         try {

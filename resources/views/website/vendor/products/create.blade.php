@@ -50,20 +50,20 @@
                         <?php $i++; ?>
                     @endforeach
                     <div class="col-lg-3 form-group">
-                        <select class="form-select" id="mainCategory" name="main_category_id">
+                        <select class="form-select" id="mainCategory" name="category_id">
                             <option value="">القسم الرئيسى</option>
                             @foreach($categories  as $category)
-                                <option {{ old('main_category_id') == $category->id ? 'selected="selected"' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option {{ old('category_id') == $category->id ? 'selected="selected"' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                         @error('main_category_id') <span class="error">{{ $message }}</span> @enderror
                     </div>
-                    <div class="col-lg-3 form-group">
-                        <select name="category_id" id="subCategory" class="form-select">
-                            <option value="">اختر القسم الفرعى</option>
-                        </select>
-                        @error('category_id') <span class="error">{{ $message }}</span> @enderror
-                    </div>
+{{--                    <div class="col-lg-3 form-group">--}}
+{{--                        <select name="category_id" id="subCategory" class="form-select">--}}
+{{--                            <option value="">اختر القسم الفرعى</option>--}}
+{{--                        </select>--}}
+{{--                        @error('category_id') <span class="error">{{ $message }}</span> @enderror--}}
+{{--                    </div>--}}
 
                     <div class="col-lg-3 form-group">
                         <select name="product_type_id" id="product_type_id" class="form-control">
@@ -83,29 +83,9 @@
                         </select>
                     </div>
 
-                    <div class="col-lg-6 form-group">
-                        <label for="frame_color_id">لون الإطار</label>
-                        <select class="frame-color form-select form-control select2" style="width:100% !important; direction: rtl !important;" multiple="multiple" name="frame_color_id[]">
 
-                            @foreach ($framesColors as $frame)
-                                <option value="{{ $frame->id}}" {{ is_array(old('frame_color_id')) && in_array($frame->id, old('frame_color_id')) ? 'selected' : ''}}>
-                                    {{$frame->name}}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-lg-6 form-group">
-                        <label for="frame_color_id">لون العدسة</label>
-                        <select class="frame-color form-select form-control select2" style="width:100% !important; direction: rtl !important;" multiple="multiple" name="lens_color_id[]">
-                            @foreach ($lensColors as $value)
-                                <option value="{{ $value->id}}" {{ is_array(old('lens_color_id')) && in_array($value->id, old('lens_color_id')) ? 'selected' : ''}}>
-                                    {{$value->name}}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
 
-                    <div class="col-lg-2 form-group">
+                    <div class="col-lg-3 form-group">
                         <select class="form-select" name="frame_material_id">
                             <option value="">خامة الإطار</option>
                             @foreach($frame_materials as $frame)
@@ -142,23 +122,52 @@
                                value="{{old('quantity')}}" min="0" max="1000">
                     </div>
 
+                        <div class="col-lg-6 form-group">
+                            <label for="frame_color_id">لون الإطار</label>
+                            <select class="frame-color form-select form-control select2" style="width:100% !important; direction: rtl !important;" multiple="multiple" name="frame_color_id[]">
 
-                    <div class="col-lg-3 form-group">
+                                @foreach ($framesColors as $frame)
+                                    <option value="{{ $frame->id}}" {{ is_array(old('frame_color_id')) && in_array($frame->id, old('frame_color_id')) ? 'selected' : ''}}>
+                                        {{$frame->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-lg-6 form-group">
+                            <label for="frame_color_id">لون العدسة</label>
+                            <select class="frame-color form-select form-control select2" style="width:100% !important; direction: rtl !important;" multiple="multiple" name="lens_color_id[]">
+                                @foreach ($lensColors as $value)
+                                    <option value="{{ $value->id}}" {{ is_array(old('lens_color_id')) && in_array($value->id, old('lens_color_id')) ? 'selected' : ''}}>
+                                        {{$value->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                    <div class="col-lg-2 form-group">
                         <input required type="number" class="form-control" name="additional_data[frame_height]" placeholder="طول الاطار"
                                value="{{old('additional_data.frame_height') }}" min="0" max="100">
                     </div>
 
-                    <div class="col-lg-3 form-group">
+                    <div class="col-lg-2 form-group">
                         <input required type="number" class="form-control" name="additional_data[temple_length]" placeholder="طول الزراع"
                               value="{{old('additional_data.temple_length') }}" min="0" max="100">
                     </div>
-                    <div class="col-lg-3 form-group">
+                    <div class="col-lg-2 form-group">
                         <input required type="number" class="form-control" name="additional_data[lens_width]" placeholder="قطر العدسه"
                                value="{{old('additional_data.lens_width') }}" min="0" max="1000">
                     </div>
+{{--                    <div class="col-lg-3 form-group">--}}
+{{--                        <input required type="number" class="form-control" name="additional_data[nose_bridge]" placeholder="مقصوره العدسه"--}}
+{{--                               value="{{old('additional_data.nose_bridge') }}" min="0" max="100">--}}
+{{--                    </div>--}}
                     <div class="col-lg-3 form-group">
-                        <input required type="number" class="form-control" name="additional_data[nose_bridge]" placeholder="مقصوره العدسه"
-                               value="{{old('additional_data.nose_bridge') }}" min="0" max="100">
+                        <input required type="number" class="form-control" name="additional_data[delivery_price]" placeholder="سعر التوصيل"
+                               value="{{old('additional_data.delivery_price') }}" min="0" max="100">
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <input required type="number" class="form-control" name="additional_data[delivery_days]" placeholder="عدد أيام التوصيل"
+                               value="{{old('additional_data.delivery_days') }}" min="0" max="100">
                     </div>
 
 

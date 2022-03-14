@@ -13,7 +13,9 @@
 
                 @include('website.cart.sections.list-products')
 
-                @include('website.cart.sections.list-address')
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    @include('website.cart.sections.list-address')
+                @endif
 
                 @include('website.cart.sections.list-shipping')
 

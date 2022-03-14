@@ -31,11 +31,14 @@
                         <i class="fas fa-heart favorite-product-{{$product->id}}"></i>
                     </a>
                     <div class="product-img">
-                        <img loading="lazy"  src="{{$product->getFirstMediaUrl('master_image')}}" alt="{{$product->name}}">
+                        <a href="{{route('products',$product->id)}}">
+                            <img loading="lazy"  src="{{$product->getFirstMediaUrl('master_image')}}" alt="{{$product->name}}">
+                        </a>
                     </div>
                     <div class="product-content">
                         <h4 class="product-title"><a href="{{route('products',$product->id)}}">{{$product->name}}</a></h4>
                         <div class="product-price"><span>{{$product->price}}</span> ر.س</div>
+                        <h4 class="product-title">{{$product->brand?->name}}</h4>
 
                         <div class="stars">
                             <i class="fas fa-star yellow"></i>

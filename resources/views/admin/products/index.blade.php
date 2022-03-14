@@ -173,7 +173,7 @@
 
         $(document).ready(function () {
             $('#datatable-responsive').DataTable( {
-                "order": [[ 3, "desc" ]]
+                "order": [[ 4, "desc" ]]
             } );
 
         });

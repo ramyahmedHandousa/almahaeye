@@ -66,10 +66,10 @@
 
                     <div class="col-xs-3">
                         <div class="form-group">
-                            <label for="parent_id">  القسم الرئيسي*</label>
-                            <select name="parent_id" id="" class="form-control category requiredFieldWithMaxLenght" required>
+                            <label for="parent_id">التاجر</label>
+                            <select name="user_id" id="" class="form-control   requiredFieldWithMaxLenght" required>
                                 <option value="" selected disabled=""> إختر  </option>
-                                @foreach($categories as $value)
+                                @foreach($vendors as $value)
                                     <option value="{{ $value->id }}">{{ $value->name }}</option>
                                 @endforeach
                             </select>
@@ -77,12 +77,23 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="form-group">
-                            <label for="userName">  القسم الفرعي*</label>
-                            <select name="category_id" id="" class="form-control sub_category requiredFieldWithMaxLenght" required>
+                            <label for="parent_id">  القسم الرئيسي*</label>
+                            <select name="category_id" id="" class="form-control   requiredFieldWithMaxLenght" required>
                                 <option value="" selected disabled=""> إختر  </option>
+                                @foreach($categories as $value)
+                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
+{{--                    <div class="col-xs-3">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label for="userName">  القسم الفرعي*</label>--}}
+{{--                            <select name="category_id" id="" class="form-control sub_category requiredFieldWithMaxLenght" required>--}}
+{{--                                <option value="" selected disabled=""> إختر  </option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="col-xs-2">
                         <div class="form-group">
@@ -111,7 +122,7 @@
                     <div class="col-xs-2">
                         <div class="form-group">
                             <label for="age_id">السن  </label>
-                            <select name="age_id" id="" class="form-control requiredFieldWithMaxLenght" required>
+                            <select name="age_id" id="" class="form-control " >
                                 <option value="" selected disabled=""> إختر  </option>
                                 @foreach($ages as $value)
                                     <option value="{{ $value->id }}" @if (old('age_id') == $value->id) selected @endif>{{ $value->name }}</option>
@@ -122,7 +133,7 @@
 
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <label for="frame_shap_id">أشكال الإطار</label>
+                            <label for="frame_shap_id">شكل العدسة</label>
                             <select name="frame_shap_id" id="" class="form-control requiredFieldWithMaxLenght" required>
                                 <option value="" selected disabled=""> إختر  </option>
                                 @foreach($frame_shaps as $value)
@@ -234,32 +245,66 @@
                             @endif
                         </div>
                     </div>
-
                     <div class="col-sm-3">
                         <div class="form-group">
-                            <label for="userName">  مقصوره العدسات*</label>
-                            <input type="number" name="additional_data[nose_bridge]" value="{{ old('additional_data.nose_bridge') }}" class="form-control"
-
-                                   {{--min="1"--}}
-                                   placeholder=" مقصوره العدسات .."
+                            <label for="delivery_price">سعر التوصيل</label>
+                            <input type="number" name="additional_data[delivery_price]" value="{{ old('additional_data.delivery_price') }}" class="form-control"
+                                   {{--min="1"--}} placeholder="سعر التوصيل"
                                    {{--data-parsley-max="99"--}}
-                                   data-parsley-min="0"
-                                   data-parsley-min-message=" اقل رقم مسموح به 0"
-                                   data-parsley-type="digits"
-                                   data-parsley-type-message=" مقصوره العدسات لا تقبل الحروف ارقام فقط"
-                                   data-parsley-trigger="keyup"
-                                   data-parsley-required-message="مقصوره العدسات للمنتج إلزامي"
+                                   data-parsley-min="0" data-parsley-min-message=" اقل رقم مسموح به 0"
+                                   data-parsley-type="digits" data-parsley-type-message="سعر التوصيل لا تقبل الحروف ارقام فقط"
+                                   data-parsley-trigger="keyup" data-parsley-required-message="سعر التوصيل  المنتج إلزامي"
                             />
-                            <p class="help-block" id="error_userName"></p>
-                            @if($errors->has('nose_bridge'))
-                                <p class="help-block validationStyle">
-                                    {{ $errors->first('nose_bridge') }}
-                                </p>
+                            <p class="help-block" id="error_delivery_price"></p>
+                            @if($errors->has('delivery_price'))
+                                <p class="help-block validationStyle">{{ $errors->first('delivery_price') }}</p>
                             @endif
                         </div>
                     </div>
 
-                    <div class="col-xs-6">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="delivery_days">ايام التوصيل</label>
+                            <input type="number" name="additional_data[delivery_days]" value="{{ old('additional_data.delivery_days') }}"
+                                   class="form-control"
+                                   {{--min="1"--}} placeholder="ايام التوصيل"
+                                   {{--data-parsley-max="99"--}}
+                                   data-parsley-min="0" data-parsley-min-message=" اقل رقم مسموح به 0"
+                                   data-parsley-type="digits" data-parsley-type-message="ايام التوصيل لا تقبل الحروف ارقام فقط"
+                                   data-parsley-trigger="keyup" data-parsley-required-message="ايام التوصيل    المنتج إلزامي"
+                            />
+                            <p class="help-block" id="error_delivery_days"></p>
+                            @if($errors->has('delivery_days'))
+                                <p class="help-block validationStyle">{{ $errors->first('delivery_days') }}</p>
+                            @endif
+                        </div>
+                    </div>
+
+{{--                    <div class="col-sm-3">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label for="userName">  مقصوره العدسات*</label>--}}
+{{--                            <input type="number" name="additional_data[nose_bridge]" value="{{ old('additional_data.nose_bridge') }}" class="form-control"--}}
+
+{{--                                   --}}{{--min="1"--}}
+{{--                                   placeholder=" مقصوره العدسات .."--}}
+{{--                                   --}}{{--data-parsley-max="99"--}}
+{{--                                   data-parsley-min="0"--}}
+{{--                                   data-parsley-min-message=" اقل رقم مسموح به 0"--}}
+{{--                                   data-parsley-type="digits"--}}
+{{--                                   data-parsley-type-message=" مقصوره العدسات لا تقبل الحروف ارقام فقط"--}}
+{{--                                   data-parsley-trigger="keyup"--}}
+{{--                                   data-parsley-required-message="مقصوره العدسات للمنتج إلزامي"--}}
+{{--                            />--}}
+{{--                            <p class="help-block" id="error_userName"></p>--}}
+{{--                            @if($errors->has('nose_bridge'))--}}
+{{--                                <p class="help-block validationStyle">--}}
+{{--                                    {{ $errors->first('nose_bridge') }}--}}
+{{--                                </p>--}}
+{{--                            @endif--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
+                    <div class="col-xs-3">
                         <div class="form-group">
                             <label for="price">(price)  سعر المنتج  *</label>
                             <input type="number" name="price"  min=0 oninput="validity.valid||(value='');"
