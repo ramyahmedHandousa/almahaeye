@@ -82,6 +82,7 @@ Route::group(['namespace' => 'Api'], function () {
 
         Route::post('contact-us','SettingsController@contactUs');
 
+        Route::get('testNotification','SettingsController@testNotification');
     });
 
 

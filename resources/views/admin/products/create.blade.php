@@ -14,7 +14,7 @@
     </style>
 @endsection
 @section('content')
-    <form id="myForm" method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data" data-parsley-validate
+    <form id="myForm" method="POST" action="{{ route('products.store') }}@if(request('user_id'))?user_id={{request('user_id')}}@endif" enctype="multipart/form-data" data-parsley-validate
           novalidate>
     {{ csrf_field() }}
 
@@ -64,6 +64,7 @@
                     </div>
 
 
+                    @if(!request('user_id'))
                     <div class="col-xs-3">
                         <div class="form-group">
                             <label for="parent_id">التاجر</label>
@@ -75,7 +76,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                        <div class="col-xs-3">
+                    @else
+                        <div class="col-xs-6">
+                    @endif
+
                         <div class="form-group">
                             <label for="parent_id">  القسم الرئيسي*</label>
                             <select name="category_id" id="" class="form-control   requiredFieldWithMaxLenght" required>

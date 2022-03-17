@@ -9,7 +9,7 @@ class OrderNotificationModelResource extends JsonResource
 
     public function toArray($request)
     {
-        $isUser = auth()->user()->type == 'client' ;
+        $isUser = auth()->user()?->type == 'client' ;
 
         return [
             'id'            => $this->id,

@@ -7,6 +7,7 @@ use App\Support\FireBase\FireBaseChannel;
 use App\Support\FireBase\FireBaseModel;
 use App\Support\FireBase\HasFirebaseChannel;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
 
 class OrderNotification extends Notification implements HasFirebaseChannel
 {
@@ -15,9 +16,7 @@ class OrderNotification extends Notification implements HasFirebaseChannel
 
     public function via($notifiable)
     {
-        return [ 'database',
-//            FireBaseChannel::class
-        ];
+        return [ 'database', FireBaseChannel::class];
     }
 
     public function toArray($notifiable)
@@ -27,21 +26,20 @@ class OrderNotification extends Notification implements HasFirebaseChannel
 
     public function toFirebase($notifiable): FireBaseModel
     {
-
         return $this->arrayToFireBase($notifiable);
     }
 
     private function arrayToFireBase($notifiable)
     {
+        $title  = __('eye_lang.'.$this->dataPass->title);
+        $message  = __('eye_lang.'.$this->dataPass->message);
+        $orderModel  = [
+//            'title' => $title ,
+//            'body'  => $message ,
+            'order' => (new OrderNotificationModelResource($this->order))->resolve(request())
+        ] ;
 
-        $orderModel  = ['order' => (new OrderNotificationModelResource($this->order))->resolve(request())] ;
-
-        return new FireBaseModel(
-            'order',
-            $this->dataPass->title,
-            $this->dataPass->message,
-            $orderModel
-        );
+        return new FireBaseModel('order',$title,$message, $orderModel);
     }
 
 
@@ -55,7 +53,7 @@ class OrderNotification extends Notification implements HasFirebaseChannel
         $data = [];
         $data['type']           = 'order';
         $data['title']          = $this->dataPass->title;
-        $data['message']        = $this->dataPass->message;
+        $data['body']           = $this->dataPass->message;
         $data['related_data']   = ['order' => new OrderNotificationModelResource($this->order)];
         return $data;
     }

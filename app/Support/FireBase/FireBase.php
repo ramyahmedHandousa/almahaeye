@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class FireBase
 {
-    private const API_TOKEN = '';
+    private const API_TOKEN = 'AAAAO0pLnLU:APA91bF3BJ5g2oM05V69mTWS1wO3XYq4EsuZi99WU3e9-ZDEpZag4BNVMMSc962jgVP8iBrAij2250VcYqEyGa6OqbIj3ryrQj0VIAqnRwnY_xCLjn80kbxZyOZbHU1k31_epJJJtMlU';
 
     public static function send(FireBaseModel $model) : bool
     {

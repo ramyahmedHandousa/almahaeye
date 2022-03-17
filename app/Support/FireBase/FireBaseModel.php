@@ -2,6 +2,8 @@
 
 namespace App\Support\FireBase;
 
+use Illuminate\Support\Facades\Log;
+
 class FireBaseModel
 {
     public array $androidTokens = [];
@@ -19,8 +21,8 @@ class FireBaseModel
     public function setTokens(array $tokens) : void
     {
         $collection = collect($tokens);
-        $this->iosTokens = $collection->where('type', 'ios')->pluck('device')->all();
-        $this->androidTokens = $collection->where('type', 'android')->pluck('device')->all();
+        $this->iosTokens = $collection->where('device_type', '=','ios')->pluck('device')->all();
+        $this->androidTokens = $collection->where('device_type','=', 'android')->pluck('device')->all();
     }
 
     public function toData() : array
@@ -38,7 +40,7 @@ class FireBaseModel
     {
         return [
             'title'        => $this->title,
-            'body'         => $this->message,
+            'message'         => $this->message,
             'click_action' => $this->action,
             "sound"        => "default",
         ];

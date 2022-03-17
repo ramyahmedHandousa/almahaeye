@@ -80,6 +80,12 @@
                                    class="btn btn-icon btn-xs waves-effect  btn-info">
                                     <i class="fa fa-pencil"></i>
                                 </a>
+                                <a href="{{ route('products.create') }}?user_id={{$row->id}}"
+                                   data-toggle="tooltip" data-placement="top"
+                                   data-original-title="إضافة منتجات"
+                                   class="btn btn-icon btn-xs waves-effect  btn-info">
+                                    <i class="fa fa-plus"></i>
+                                </a>
 {{--                                <a href="javascript:;" data-url="{{ route('shipping.delete') }}"--}}
 {{--                                   id="elementRow{{ $row->id }}" data-id="{{ $row->id }}"--}}
 {{--                                   class="removeElement btn btn-icon btn-trans btn-xs waves-effect waves-light btn-danger m-b-5">--}}
