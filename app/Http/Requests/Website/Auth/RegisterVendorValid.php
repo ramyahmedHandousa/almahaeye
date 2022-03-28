@@ -36,7 +36,7 @@ class RegisterVendorValid extends FormRequest
             'commercial_registration' => 'required|string|max:30',
 
             'image_commercial'          => 'required|mimes:jpeg,png,jpg,pdf|max:20000',
-            'image_marketing_agreement' => 'required|mimes:jpeg,png,jpg,pdf|max:20000',
+//            'image_marketing_agreement' => 'required|mimes:jpeg,png,jpg,pdf|max:20000',
             'image_service_provider'    => 'required|mimes:jpeg,png,jpg,pdf|max:20000',
         ];
     }

@@ -38,14 +38,19 @@ class VendorsController extends Controller
           return view('admin.vendors.show',compact('user'));
     }
 
+    public function marketing_information(User $user)
+    {
+        return view('admin.vendors.marketing_agreement',compact('user'));
+    }
+
 
     public function accepted(Request $request,User $user)
     {
-          $user->update(['is_accepted' => 1]);
+          $user->update(['is_accepted' => 1,'marketing_agree' => 1]);
 
-        session()->flash('success','تم قبول التاجر بنجاح');
+            session()->flash('success','تم قبول التاجر بنجاح');
 
-        return redirect()->back() ;
+            return redirect()->back() ;
     }
 
     public function refuse(Request $request,User $user)

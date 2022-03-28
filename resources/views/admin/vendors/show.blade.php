@@ -148,7 +148,8 @@
                                                                 <label>اتفاقية التسويق : </label>
                                                                 <div class="form-group">
                                                                     <div class="col-sm-12">
-                                                                        <a target="_blank" href="{{ $user->getFirstMediaUrl('image_marketing_agreement')?:asset('/pdfFile.png')  }}">
+{{--                                                                        <a target="_blank" href="{{ $user->getFirstMediaUrl('image_marketing_agreement')?:asset('/pdfFile.png')  }}">--}}
+                                                                        <a target="_blank" href="{{ route('marketing_information',$user->id)  }}">
                                                                             <img class="img" style="width: 50px;height: 50px;object-fit: cover;border-radius: 10px;"
                                                                                  src="{{  asset('/pdfFile.png') }}"/>
                                                                         </a>

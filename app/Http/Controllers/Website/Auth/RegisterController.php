@@ -60,7 +60,7 @@ class RegisterController extends Controller
             $this->verifyUser($user,$request);
 
             $user->addMedia($request->image_commercial)->toMediaCollection('image_commercial');
-            $user->addMedia($request->image_marketing_agreement)->toMediaCollection('image_marketing_agreement');
+//            $user->addMedia($request->image_marketing_agreement)->toMediaCollection('image_marketing_agreement');
             $user->addMedia($request->image_service_provider)->toMediaCollection('image_service_provider');
 
             DB::commit();

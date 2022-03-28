@@ -141,26 +141,26 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 form-group">
-                        <div class="row">
-                            <label class="col-lg-8">اتفاقية التسويق</label>
-                            @error('image_marketing_agreement') <span class="error">{{ $message }}</span> @enderror
-                            <div class="col-lg-4">
-                                <div class="upload-file form-group">
-                                    <label >
-                                        <div class="upload-icon">
-                                            <img class="prev" id="image_marketing_agreement" loading="lazy"
-                                                 src="{{ asset('website/templates/images/upload-to-cloud.png') }}">
-                                        </div>
-                                        <input type="file" name="image_marketing_agreement" onChange="marketing_record(this);"  class="inputfile"
-                                                />
-                                    </label>
-                                </div>
-                            </div>
-                            <p>يجب تحميل الاتفاقية و توقيعها و ارفاقها مرة اخرى لإتمام التسجيل</p>
-                            <a href="{{asset('website/uploads/e-marketing.pdf')}}" target="_blank">تحميل اتفاقية التسويق الإلكتروني</a>
-                        </div>
-                    </div>
+{{--                    <div class="col-lg-4 form-group">--}}
+{{--                        <div class="row">--}}
+{{--                            <label class="col-lg-8">اتفاقية التسويق</label>--}}
+{{--                            @error('image_marketing_agreement') <span class="error">{{ $message }}</span> @enderror--}}
+{{--                            <div class="col-lg-4">--}}
+{{--                                <div class="upload-file form-group">--}}
+{{--                                    <label >--}}
+{{--                                        <div class="upload-icon">--}}
+{{--                                            <img class="prev" id="image_marketing_agreement" loading="lazy"--}}
+{{--                                                 src="{{ asset('website/templates/images/upload-to-cloud.png') }}">--}}
+{{--                                        </div>--}}
+{{--                                        <input type="file" name="image_marketing_agreement" onChange="marketing_record(this);"  class="inputfile"--}}
+{{--                                                />--}}
+{{--                                    </label>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <p>يجب تحميل الاتفاقية و توقيعها و ارفاقها مرة اخرى لإتمام التسجيل</p>--}}
+{{--                            <a href="{{asset('website/uploads/e-marketing.pdf')}}" target="_blank">تحميل اتفاقية التسويق الإلكتروني</a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="col-lg-4 form-group">
                         <div class="row">

@@ -61,6 +61,13 @@
                     </a>
                 </li>
             @endif
+            @if(auth()->user()?->marketing_agree != 1)
+                <li  style="background-color:@if(auth()->user()?->marketing_agree == 0 && auth()->user()?->marketing_agree_info != null)  #e0c057 @else #e78989 @endif">
+                    <a class="dropdown-item" href="{{route('complete-marking-agree')}}">
+                   إتفاقية التسويق
+                    </a>
+                </li>
+            @endif
             <li>
                 <a class="dropdown-item" href="{{route('contact-us')}}">
                     تواصل معنا

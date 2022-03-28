@@ -41,6 +41,7 @@ class User extends Authenticatable implements HasMedia
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'marketing_agree_info' => 'array'
     ];
 
     public static function boot()

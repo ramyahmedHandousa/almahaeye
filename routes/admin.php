@@ -31,6 +31,7 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' =
     Route::resource('vendors', 'VendorsController',[
         'parameters' => [  'vendors' => 'user' ]
     ]);
+    Route::get('vendors/{user}/marketing','VendorsController@marketing_information')->name('marketing_information');
     Route::post('vendors/update/percentage','VendorsController@percentage')->name('admin_update_percentage');
 
     Route::get('change_profile','ChangeProfileController')->name('change_profile');

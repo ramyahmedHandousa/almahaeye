@@ -31,6 +31,8 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
         Route::get('/countries/data','RegisterController@countriesData')->name('countries-data');
         Route::post('/register-user','RegisterController@register')->name('register-user');
         Route::post('/register-vendor','RegisterController@registerVendor')->name('register-vendor');
+        Route::get('/complete/marking_agree','MarkingAgreeController')->name('complete-marking-agree');
+        Route::post('/submit/complete/marking_agree','MarkingAgreeController@store')->name('submit-marking-agree');
 
         Route::get('/check/code','ActiveController')->name('check-user-code');
         Route::post('/active/account','ActiveController@active')->name('auth.activation.account');
