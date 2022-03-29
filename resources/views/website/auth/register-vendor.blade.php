@@ -241,7 +241,7 @@
 
     <script>
         function img_pathUrl(input) {
-            $('#image_commercial')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
+            $('#image_service_provider')[0].src = (window.URL ? URL : webkitURL).createObjectURL(input.files[0]);
         }
 
         function img_record(input) {
