@@ -1,6 +1,7 @@
 @extends('website.layouts.master')
 
 @section('styles')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
         .error{
@@ -89,7 +90,8 @@
                             <thead>
                             <tr>
                                 <th class="text-center">  رقم</th>
-                                <th class="text-center">  إسم المنتج</th>
+                                <th class="text-center">  صورة الماركة</th>
+                                <th class="text-center">  إسم الماركة</th>
                                 <th class="text-center">  نوع المنتج</th>
                                 <th class="text-center">  سعر المنتج</th>
                                 <th class="text-center">  مسح</th>
@@ -109,41 +111,82 @@
 
             </form>
 
-
         </div>
     </section>
 
 @endsection
 
 @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
     <script>
+
+        var selectBrands = document.createElement('select'),
+            selectProductTypes = document.createElement('select'),
+            brands = [],
+            brandOptions = "",
+            productTypes = [],
+            productTypesOptions = "";
+
+        @foreach($brands as $brand)
+            brands[{{$brand->id}}]  = '{{$brand->name}}';
+        @endforeach
+
+        @foreach($productTypes as $productType )
+            productTypes[{{$productType->id}}]  = '{{$productType->name}}';
+        @endforeach
+
+        brands.forEach( function(name,id) {
+            brandOptions += '<option value="' + id + '">' + name + '</option>';
+        });
+
+        productTypes.forEach( function(name,id) {
+            productTypesOptions += '<option value="' + id + '">' + name + '</option>';
+        });
+
+        selectBrands.innerHTML = brandOptions;
+        selectProductTypes.innerHTML = productTypesOptions;
+
+
+        function renderSelect() {
+            $(".js-example-tags").select2({ tags: true });
+        }
+
         $(document).ready(function () {
 
+            $(".js-example-tags").select2({ tags: true });
             // Denotes total number of rows
             var rowIdx = 0;
 
             // jQuery button click event to add a row
             $('#addBtn').on('click', function () {
 
-                // Adding a row inside the tbody.
                 $('#tbody').append(`<tr id="R${++rowIdx}">
-                     <td class="row-index text-center">
-                        <p>  ${rowIdx}</p>
-                     </td>
-                     <td class="row-index text-center">
-                        <p>  <input type="text"  placeholder="إسم المنتج "  name="products[${rowIdx}][product_name]"></p>
-                     </td>
-                     <td class="row-index text-center">
-                        <p>  <input type="text"  placeholder="نوع المنتج"  name="products[${rowIdx}][product_type]"></p>
-                      </td>
-                     <td class="row-index text-center">
-                        <p>  <input type="number" placeholder="السعر" step="0.01" min="0" max="1000" name="products[${rowIdx}][product_price]"></p>
-                     </td>
-                    <td class="text-center">
-                        <button class="btn btn-danger remove" type="button">مسح</button>
-                    </td>
-              </tr>`);
+                         <td class="row-index text-center">
+                            <p>  ${rowIdx}</p>
+                         </td>
+                         <td class="row-index text-center">
+                            <p>  <input type="file"  placeholder="صورة الماركة"  name="products[${rowIdx}][brand_image]"></p>
+                         </td>
+                         <td class="row-index text-center" style="width: 25%">
+                            <select required class="form-control select_brands-${rowIdx} js-example-tags" name="products[${rowIdx}][brand_name]"> </select>
+                         </td>
+                         <td class="row-index text-center" style="width: 20%">
+                            <select required class="form-control select_product_types-${rowIdx}  " name="products[${rowIdx}][product_type]"> </select>
+                          </td>
+                         <td class="row-index text-center">
+                            <p>  <input required type="number" placeholder="السعر" step="0.01" min="0" max="1000" name="products[${rowIdx}][product_price]"></p>
+                         </td>
+                        <td class="text-center">
+                            <button class="btn btn-danger remove" type="button">مسح</button>
+                        </td>
+                    </tr>`
+                );
+                $('.select_brands-' + rowIdx).append(brandOptions);
+                $('.select_product_types-' + rowIdx).append(productTypesOptions);
+                renderSelect();
+
             });
 
             // jQuery button click event to remove a row.

@@ -22,11 +22,20 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin\Auth'], functio
 
 Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' => ['adminDashboard']], function () {
 
+
+    Route::group(['prefix' => 'manager' ,'namespace' => 'Manager'],function() {
+
+        Route::resource('abilities', 'AbilitiesController');
+        Route::post('abilities_mass_destroy', 'AbilitiesController@massDestroy')->name('abilities.mass_destroy');
+
+    });
+
     Route::post('/logout', 'Auth\LoginController@logout')->name('administrator.logout');
 
     Route::get('/home', 'HomeController')->name('admin.home')->middleware('auth');
 
     Route::resource('users', 'UsersController');
+    Route::post('users/suspend','UsersController@suspend')->name('users.suspend');
 
     Route::resource('vendors', 'VendorsController',[
         'parameters' => [  'vendors' => 'user' ]
@@ -68,6 +77,7 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' =
 
     Route::post('/settings', 'SettingsController@store')->name('administrator.settings.store');
     Route::get('settings/global', 'SettingsController@global')->name('settings.global');
+    Route::get('settings/static', 'SettingsController@static')->name('settings.static');
     Route::get('settings/contactus', 'SettingsController@contactus')->name('settings.contactus');
 
     Route::resource('contact_us_inbox', 'ContactUsController');
@@ -94,7 +104,9 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' =
         Route::post('/product_types/delete', 'ProductTypeController@delete')->name('product_types.delete');
 
         Route::resource('products','ProductController');
+        Route::post('/products/new', 'ProductController@new')->name('products.new');
         Route::post('/products/delete', 'ProductController@delete')->name('products.delete');
+        Route::get('/price/product/brand', 'ProductController@priceBrandVendor')->name('products.priceBrandVendor');
 
         Route::resource('offers','OfferController');
     });

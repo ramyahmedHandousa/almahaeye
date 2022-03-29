@@ -3,11 +3,11 @@
 @foreach($categoriesHaveProducts as $category)
 
 <section>
-        <div class="container">
-            <a href="#">
-                <img src="{{asset('website/templates/images/adimg2.jpg')}}">
-            </a>
-        </div>
+{{--        <div class="container">--}}
+{{--            <a href="#">--}}
+{{--                <img src="{{asset('website/templates/images/adimg2.jpg')}}">--}}
+{{--            </a>--}}
+{{--        </div>--}}
 </section>
 
 <section>

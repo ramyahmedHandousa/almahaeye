@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->string('discount')->default(0);
             $table->dateTime('start_at')->nullable();
             $table->dateTime('end_at')->nullable();
+            $table->boolean('is_new')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

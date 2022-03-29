@@ -26,6 +26,11 @@ class SettingsController extends Controller
         return view('admin.settings.global');
     }
 
+    public function static()
+    {
+        return view('admin.settings.setting');
+    }
+
     public function contactus()
     {
 

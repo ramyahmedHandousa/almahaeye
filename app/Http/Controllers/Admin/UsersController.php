@@ -17,4 +17,24 @@ class UsersController extends Controller
 
         return view('admin.users.index',compact('users','pageName'));
     }
+
+    public function suspend(Request $request)
+    {
+        $model = User::findOrFail($request->id);
+        $model->is_suspend = $request->type;
+        if ($request->type == 1) {
+            $message = "لقد تم حظر  بنجاح";
+        } else {
+            $message = "لقد تم فك الحظر بنجاح";
+        }
+
+        if ($model->save()) {
+            return response()->json([
+                'status' => true,
+                'message' => $message,
+                'id' => $request->id,
+                'type' => $request->type
+            ]);
+        }
+    }
 }

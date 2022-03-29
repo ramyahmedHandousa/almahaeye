@@ -80,7 +80,7 @@
 
                 <div class="col-lg-4 form-group">
                     <select class="form-select"  id="region"  required>
-                        <option value=''>اختار المحافظة</option>
+                        <option value=''>اختار المنطقة</option>
                     </select>
                 </div>
 

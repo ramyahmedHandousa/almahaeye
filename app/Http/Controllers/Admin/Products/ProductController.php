@@ -12,6 +12,7 @@ use App\Models\FrameShap;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\User;
+use App\Models\VendorBrand;
 use App\traits\ImageUploadMedia;
 use Illuminate\Http\Request;
 use function view;
@@ -20,10 +21,14 @@ class ProductController extends Controller
 {
     use ImageUploadMedia;
 
-    public function index()
+    public function index(Request $request)
     {
+        $productQuest = Product::query()
+            ->when($request->type =='new',fn($pro) => $pro->where('is_new','=',0))
+            ->when($request->type !='new',fn($pro) => $pro->where('is_new','!=',0));
+
         return view('admin.products.index',[
-            'products' => Product::latest()->with('user','brand')->get(),
+            'products' => $productQuest->with(['user','brand'])->latest()->get(),
             'pageName' => 'المنتجات'
         ]);
     }
@@ -88,6 +93,31 @@ class ProductController extends Controller
         if ($model->delete()) {
             return response()->json(['status' => true, 'data' => $model->id]);
         }
+    }
+
+    public function priceBrandVendor(Request $request)
+    {
+        $data = VendorBrand::whereUserIdAndBrandId($request->user_id,$request->brand_id)->first();
+
+        return  response()->json(['price' => $data?->price]);
+    }
+
+    public function new(Request $request)
+    {
+        $model = Product::findOrFail($request->id);
+
+        if ($model){
+            $model->is_new = 1;
+
+            if ($model->save()) {
+                return response()->json([
+                    'status' => true,
+                    'id' => $request->id,
+                    'type' => $request->type
+                ]);
+            }
+        }
+
     }
 
     private function modelData($request,$product)

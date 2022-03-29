@@ -73,6 +73,19 @@
 
                             <td>{{ $row->created_at != ''? @$row->created_at->format('Y/m/d'): "--" }}</td>
                             <td>
+                                @if(!$row->is_new)
+
+                                    <a href="javascript:;" data-id="{{ $row->id }}" data-type="{{$row->is_new == 0 ? 1 : 0}}"
+                                       onclick="specialProduct({{$row->id}})"
+                                       data-url="{{ route('products.new') }}"
+                                       class="m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill special_product{{ $row->id }}"
+                                       id="elementRow{{ $row->id }}"
+                                       data-toggle="tooltip" data-placement="top"
+                                       title="" data-original-title="منتج حالي">
+                                        <i class="fa fa-check  text-success" aria-hidden="true"></i>
+                                    </a>
+
+                                @endif
 
                                 <a href="{{ route('products.edit', $row->id) }}"
                                    data-toggle="tooltip" data-placement="top"
@@ -109,6 +122,55 @@
 
 
     <script>
+
+        function specialProduct(productId) {
+
+            var dataProductSet = $('.special_product'+ productId)[0].dataset;
+            var $tr = $('.special_product' + dataProductSet.id).parent().parent();
+
+            let id = dataProductSet.id,
+                type = dataProductSet.type,
+                url = dataProductSet.url;
+
+            swal({
+                title: "{{ __('maincp.make_sure') }}",
+                text: 'سوف يتم نقله للمنتجات الحالية',
+                type: "success",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "{{ __('maincp.accepted') }}",
+                cancelButtonText: "{{ __('maincp.disable') }}",
+                confirmButtonClass: 'btn-warning waves-effect waves-light',
+                closeOnConfirm: true,
+                closeOnCancel: true,
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: {id: id, type: type},
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.status === true) {
+
+                                toastr.options = {
+                                    positionClass: 'toast-top-center',
+                                    onclick: null,
+                                    showMethod: 'slideDown',
+                                    hideMethod: "slideUp",
+                                };
+                                $toastlast = toastr['success']('تم نقله للمنتجات الحالية', 'نجاح');
+
+                                $tr.find('td').fadeOut(1000, function () {
+                                    $tr.remove();
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+
+        }
 
 
         $('body').on('click', '.removeElement', function () {

@@ -517,10 +517,6 @@
 
                             }
 
-                            setTimeout(function(){// wait for 5 secs(2)
-                                location.reload(); // then reload the page.(3)
-                            }, 1200);
-
                             // var shortCutFunction = 'success';
                             // var msg = 'لقد تمت عملية الحذف بنجاح.';
                             var title = data.title;

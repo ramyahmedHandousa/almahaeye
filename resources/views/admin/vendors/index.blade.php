@@ -52,6 +52,7 @@
                         <th>الحي التابع له</th>
                         <th>نسبة التاجر</th>
                         <th>@lang('trans.created_at')</th>
+                        <th>الحالة</th>
                         <th>@lang('trans.options')</th>
                     </tr>
                     </thead>
@@ -73,6 +74,35 @@
                             </td>
                             <td>{{ $row->created_at != ''? @$row->created_at->format('Y/m/d'): "--" }}</td>
                             <td>
+
+                                <div class="StatusActive{{ $row->id }}"  style="display: {{ $row->is_suspend == 0 ? "none" : "block" }}; text-align: center;">
+                                    <i class="fa fa-times text-danger" aria-hidden="true"></i>
+                                </div>
+                                <div class="StatusNotActive{{ $row->id }}" style="display: {{ $row->is_suspend == 0 ? "block" : "none" }};  text-align: center;">
+                                    <i class="fa fa-check  text-success" aria-hidden="true"></i>
+                                </div>
+
+                            </td>
+                            <td>
+
+                                <a href="javascript:;" data-id="{{ $row->id }}" data-type="0"
+                                   data-url="{{ route('users.suspend') }}"  style="@if($row->is_suspend == 0) display: none;  @endif"
+                                   class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill  suspendElement suspend{{ $row->id }}"
+                                   id="suspendElement" data-message="تاكيد التفعيل"
+                                   data-toggle="tooltip" data-placement="top"
+                                   title="" data-original-title="فك الحظر ">
+                                    <i class="fa fa-unlock"></i>
+                                </a>
+
+                                <a href="javascript:;" data-id="{{ $row->id }}" data-type="1"
+                                   data-url="{{ route('users.suspend') }}" style="@if($row->is_suspend == 1) display: none;  @endif"
+                                   class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill suspendElement unsuspend{{ $row->id }}"
+                                   id="suspendElement"
+                                   data-message="حظر"
+                                   data-toggle="tooltip" data-placement="top"
+                                   title="" data-original-title="{{ __('trans.suspend') }}">
+                                    <i class="fa fa-lock"></i>
+                                </a>
 
                                 <a href="{{ route('vendors.show', $row->id) }}"
                                    data-toggle="tooltip" data-placement="top"

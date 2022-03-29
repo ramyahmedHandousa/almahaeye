@@ -24,8 +24,8 @@
                         </svg>
                     </div>
                     <div class="text">
-                        <h3 class="title">هدفنا راحتك التامة</h3>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل و هى ان المحتوى المقروء لصفحة ما سيلهى القارئ</p>
+                        <h3 class="title"> {{$setting['static_name_'.app()->getLocale().'_1'] }}</h3>
+                        <p>{{$setting['static_desc_'.app()->getLocale().'_1'] }}</p>
                     </div>
                 </div>
             </div>
@@ -55,8 +55,8 @@
                         </svg>
                     </div>
                     <div class="text">
-                        <h3 class="title">هدفنا راحتك التامة</h3>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل و هى ان المحتوى المقروء لصفحة ما سيلهى القارئ</p>
+                        <h3 class="title"> {{$setting['static_name_'.app()->getLocale().'_2'] }}</h3>
+                        <p>{{$setting['static_desc_'.app()->getLocale().'_2'] }}</p>
                     </div>
                 </div>
             </div>
@@ -81,8 +81,8 @@
                         </svg>
                     </div>
                     <div class="text">
-                        <h3 class="title">هدفنا راحتك التامة</h3>
-                        <p>هناك حقيقة مثبتة منذ زمن طويل و هى ان المحتوى المقروء لصفحة ما سيلهى القارئ</p>
+                        <h3 class="title"> {{$setting['static_name_'.app()->getLocale().'_3'] }}</h3>
+                        <p>{{$setting['static_desc_'.app()->getLocale().'_3'] }}</p>
                     </div>
                 </div>
             </div>

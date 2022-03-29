@@ -40,6 +40,10 @@ class MarkingDataValid extends FormRequest
             'master_two.comingـfrom'            => 'required|string',
             'master_two.date'                   => 'required|date',
 
+            'products.*.brand_image'        => 'sometimes|image|mimes:jpeg,png,jpg|max:20000',
+            'products.*.product_type'       => 'required|exists:product_types,id',
+            'products.*.product_price'      => 'required',
+
         ];
     }
 

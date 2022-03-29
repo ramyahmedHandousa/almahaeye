@@ -15,7 +15,7 @@
                                     class="fa fa-reply"></i></span>
                     </button>
                 </div>
-                <h4 class="page-title">اسماء السلع المحظورة </h4>
+                <h4 class="page-title">أهداف الموقع     </h4>
             </div>
         </div>
 
@@ -23,25 +23,57 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-box">
-                    <h4 class="header-title m-t-0 m-b-30"> السلع المحظورة</h4>
-
-                    <div class="form-group">
-                        <label for="userName">@lang('maincp.name')*</label>
-                        <input type="text" name="suspendElement" parsley-trigger="change" required
-                               placeholder="@lang('maincp.name') ..." class="form-control"
-                               id="userName" value="{{ $setting->getBody('suspendElement') }}"
-                               data-parsley-required-message="هذا الحقل إلزامي">
-                    </div>
 
 
+                    @for($i = 1 ; $i <= 3 ;$i++)
 
+                                <h4 style="margin-bottom: 2%">الآهداف التعرفية رقم {{$i}}</h4>
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="userName">إسم الهدف -باللغة العربية*</label>
+                                        <input type="text" name="static_name_ar_{{$i}}" parsley-trigger="change" required
+                                               placeholder="@lang('maincp.name') ..." class="form-control"
+                                               id="userName" value="{{ $setting->getBody('static_name_ar_'.$i) }}"
+                                               data-parsley-required-message="هذا الحقل إلزامي">
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-6">
+                                    <div class="form-group">
+                                        <label for="userName">إسم الهدف -باللغة الإنجليزية*</label>
+                                        <input type="text" name="static_name_en_{{$i}}" parsley-trigger="change" required
+                                               placeholder="@lang('maincp.name') ..." class="form-control"
+                                               id="userName" value="{{ $setting->getBody('static_name_en_'.$i) }}"
+                                               data-parsley-required-message="هذا الحقل إلزامي">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" >
+                                    <div class="form-group">
+                                        <label for="terms_website"> الوصف -  باللغة العربية     </label>
+                                        <input type="text" name="static_desc_ar_{{$i}}" parsley-trigger="change" required
+                                               placeholder="الوصف -  باللغة العربية ..." class="form-control"
+                                               id="userName" value="{{ $setting->getBody('static_desc_ar_'.$i) }}"
+                                               data-parsley-required-message="هذا الحقل إلزامي">
+                                    </div>
+                                </div>
+                                <div class="col-xs-6" style="margin-bottom: 5%" >
+                                    <div class="form-group">
+                                        <label for="terms_website"> الوصف -  باللغة الإنجليزية     </label>
+                                        <input type="text" name="static_desc_en_{{$i}}" parsley-trigger="change" required
+                                               placeholder="الوصف -  باللغة الإنجليزية..." class="form-control"
+                                               id="userName" value="{{ $setting->getBody('static_desc_en_'.$i) }}"
+                                               data-parsley-required-message="هذا الحقل إلزامي">
+                                    </div>
+                                </div>
+
+                    @endfor
 
 
                     <div class="form-group text-right m-b-0">
-                        <button class="btn btn-primary waves-effect waves-light" type="submit"> @lang('maincp.save_data') 
+                        <button class="btn btn-primary waves-effect waves-light" type="submit"> @lang('maincp.save_data')
                         </button>
                         <button onclick="window.history.back();return false;"
-                                class="btn btn-default waves-effect waves-light m-l-5">@lang('maincp.disable')  
+                                class="btn btn-default waves-effect waves-light m-l-5">@lang('maincp.disable')
                         </button>
                     </div>
 

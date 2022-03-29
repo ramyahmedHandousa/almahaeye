@@ -21,9 +21,10 @@ class HomeController extends Controller
         $categoriesCount = Category::whereNull('parent_id')->count();
         $productsCount = Product::where('user_id','!=',auth()->id())->count();
         $shippingCount = Shipping::select('id')->count();
+        $newProductsCount = Product::select('id')->whereIsNew(0)->count();
 
         return view('admin.home.index',compact('usersCount',
         'vendorCount','countriesCount','categoriesCount','productsCount',
-            'shippingCount'));
+            'shippingCount','newProductsCount'));
     }
 }

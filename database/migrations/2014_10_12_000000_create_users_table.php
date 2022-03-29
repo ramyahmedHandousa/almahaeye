@@ -31,6 +31,9 @@ class CreateUsersTable extends Migration
             $table->string('iban')->nullable();
             $table->string('commercial_registration')->nullable();
             $table->string('lang',4);
+            $table->boolean('is_suspend')->default(0);
+            $table->boolean('marketing_agree')->default(0);
+            $table->text('marketing_agree_info')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

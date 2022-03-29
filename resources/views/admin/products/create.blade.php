@@ -68,7 +68,7 @@
                     <div class="col-xs-3">
                         <div class="form-group">
                             <label for="parent_id">التاجر</label>
-                            <select name="user_id" id="" class="form-control   requiredFieldWithMaxLenght" required>
+                            <select name="user_id" id="" class="form-control user_id  requiredFieldWithMaxLenght" required>
                                 <option value="" selected disabled=""> إختر  </option>
                                 @foreach($vendors as $value)
                                     <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -103,7 +103,7 @@
                     <div class="col-xs-2">
                         <div class="form-group">
                             <label for="brand_id">الماركة</label>
-                            <select name="brand_id" id="" class="form-control requiredFieldWithMaxLenght" required>
+                            <select name="brand_id" id="brand" class="form-control product_brand requiredFieldWithMaxLenght" required>
                                 <option value="" selected disabled=""> إختر  </option>
                                 @foreach($brands as $value)
                                     <option value="{{ $value->id }}" @if (old('brand_id') == $value->id) selected @endif>{{ $value->name }}</option>
@@ -312,7 +312,7 @@
                     <div class="col-xs-3">
                         <div class="form-group">
                             <label for="price">(price)  سعر المنتج  *</label>
-                            <input type="number" name="price"  min=0 oninput="validity.valid||(value='');"
+                            <input type="number" name="price" id="product_price" step="0.01" min=0 oninput="validity.valid||(value='');"
                                    value="{{ old('price') }}"
                                    class="form-control requiredFieldWithMaxLenght" required>
                             <p class="help-block" id="error_price"></p>
@@ -416,6 +416,29 @@
         $(document).ready(function() {
             $('.select2').select2();
         });
+
+        $(document).on('change', '.product_brand', function () {
+
+            var brand_id = $(this).val(),
+                user_id    = "{{request('user_id' ) }}" ? "{{request('user_id' ) }}" : $('.user_id').val();
+
+                if(brand_id && user_id){
+
+                    $.ajax({
+                        type: "Get",
+                        url: '{{route('products.priceBrandVendor')}}',
+                        data: {'brand_id': brand_id ,'user_id' : user_id},
+                        success: function (data) {
+
+                            $("#product_price").val(data.price);
+
+                        }
+                    })
+                }
+
+
+        });
+
         $(document).on('change', '.category', function () {
 
             var City_id = $(this).val(),

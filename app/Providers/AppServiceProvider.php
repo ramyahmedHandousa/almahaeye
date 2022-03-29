@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with(compact('setting'));
         });
 
-        view()->composer('website.layouts.master', function ($view) {
+        view()->composer('website.layouts.*', function ($view) {
 
             $mainCategories = Category::whereIsSuspended(0)->whereNull('parent_id')->take(3)->get(['id']);
 

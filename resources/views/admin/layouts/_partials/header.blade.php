@@ -126,6 +126,32 @@
                         <a href="{{ route('admin.home') }}"><i class="zmdi zmdi-view-dashboard"></i>
                             <span> الرئيسية </span> </a>
                     </li>
+
+                    <li class="has-submenu">
+                        <a href="javascript:;"><i
+                                class="zmdi zmdi-layers"></i><span> إدارة النظام </span>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="{{route('abilities.index')}}">صلاحيات النظام    </a>
+                            </li>
+{{--                            <li>--}}
+{{--                                <a href="{{route('users.index')}}">مديري النظام المفعلين</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="{{route('users.desactive')}}">مديري النظام المعطلين</a>--}}
+{{--                            </li>--}}
+
+{{--                            @if(auth()->user()->roles()->whereName('owner')->first())--}}
+{{--                                <li>--}}
+{{--                                    <a href="{{ route('roles.index') }}">الصلاحيات والادوار</a>--}}
+{{--                                </li>--}}
+{{--                            @endif--}}
+
+                        </ul>
+
+                    </li>
+
                     <li>
                         <a href="{{ route('users.index') }}"><i class="zmdi zmdi-view-dashboard"></i>
                             <span> المستخدمين </span> </a>
@@ -144,7 +170,7 @@
                         <a href="#"><i class="zmdi zmdi-layers"></i><span>  الإضافات الأساسية </span>
                         </a>
                         <ul class="submenu ">
-{{--                            <li><a href="{{ route('sliders.index') }}"> الإعلانات / البانر</a></li>--}}
+                            <li><a href="{{ route('sliders.index') }}"> اللسليدر</a></li>
                             <li><a href="{{ route('categories.index') }}"> الأقسام الرئيسية</a></li>
                             <li><a href="{{ route('categories.index').'?type=sub' }}"> الأقسام الفرعية</a></li>
                             <li><a href="{{ route('countries.index') }}"> الدول  </a></li>
@@ -167,6 +193,7 @@
                             <li><a href="{{ route('frame_materials.index') }}">        خامة الإطار</a></li>
                             <li><a href="{{ route('frame_shaps.index') }}">        شكل الإطار</a></li>
                             <li><a href="{{ route('product_types.index') }}">        نوع النظارة  </a></li>
+                            <li><a href="{{ route('products.index') }}?type=new">المنتجات الجديدة</a></li>
                             <li><a href="{{ route('products.index') }}">المنتجات</a></li>
                         </ul>
                     </li>
@@ -179,6 +206,7 @@
                         <ul class="submenu ">
                             <li><a href="{{ route('settings.contactus') }}"> بيانات التواصل </a></li>
                             <li><a href="{{ route('settings.global') }}">   بيانات الموقع</a></li>
+                            <li><a href="{{ route('settings.static') }}">   أهداف الموقع</a></li>
                         </ul>
                     </li>
 

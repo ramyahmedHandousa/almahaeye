@@ -38,7 +38,7 @@ class Products extends Component
     public function render()
     {
 
-        $products = Product::when(filled($this->q),function ($q) {
+        $products = Product::whereIsNew(1)->when(filled($this->q),function ($q) {
                         $q->where(function ($pro) {
                             $pro->whereTranslationLike('name', '%' . $this->q . '%')
                                 ->orWhereHas('brand', fn($brand) => $brand->whereTranslationLike('name', '%' . $this->q . '%'));
