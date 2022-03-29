@@ -127,14 +127,14 @@
                             <span> الرئيسية </span> </a>
                     </li>
 
-                    <li class="has-submenu">
-                        <a href="javascript:;"><i
-                                class="zmdi zmdi-layers"></i><span> إدارة النظام </span>
-                        </a>
-                        <ul class="submenu">
-                            <li>
-                                <a href="{{route('abilities.index')}}">صلاحيات النظام    </a>
-                            </li>
+{{--                    <li class="has-submenu">--}}
+{{--                        <a href="javascript:;"><i--}}
+{{--                                class="zmdi zmdi-layers"></i><span> إدارة النظام </span>--}}
+{{--                        </a>--}}
+{{--                        <ul class="submenu">--}}
+{{--                            <li>--}}
+{{--                                <a href="{{route('abilities.index')}}">صلاحيات النظام    </a>--}}
+{{--                            </li>--}}
 {{--                            <li>--}}
 {{--                                <a href="{{route('users.index')}}">مديري النظام المفعلين</a>--}}
 {{--                            </li>--}}
@@ -148,9 +148,9 @@
 {{--                                </li>--}}
 {{--                            @endif--}}
 
-                        </ul>
+{{--                        </ul>--}}
 
-                    </li>
+{{--                    </li>--}}
 
                     <li>
                         <a href="{{ route('users.index') }}"><i class="zmdi zmdi-view-dashboard"></i>
