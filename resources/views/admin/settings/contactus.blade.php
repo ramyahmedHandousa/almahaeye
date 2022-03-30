@@ -40,6 +40,15 @@
 
                         <div class="col-lg-6 col-xs-12">
                             <div class="input-group customeStyleSocail">
+                                <span class="input-group-addon" id="basic-addon2">رقم السجل </span>
+                                <input class="form-control" type="text" name="commercial_number"
+                                       value="{{ $setting->getBody('commercial_number') }}" placeholder="رقم السجل "
+                                       maxlength="500" >
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-xs-12">
+                            <div class="input-group customeStyleSocail">
                                 <span class="input-group-addon" id="basic-addon2">الفاكس </span>
                                 <input class="form-control" type="text" name="fax"
                                        value="{{ $setting->getBody('fax') }}" placeholder="0123456789"

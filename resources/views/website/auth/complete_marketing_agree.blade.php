@@ -32,8 +32,11 @@
                 @csrf
 
                 <h5 style="margin-bottom: 2%">
-                    إتفاقیة تسویق إلكتروني أبرمت ھذه الاتفاقیة الیوم الاربعاء الموافق
-                    <input type="date" name="date_now">
+                    إتفاقیة تسویق إلكتروني أبرمت ھذه الاتفاقیة الیوم
+                    {{$currentDay}}
+                    الموافق
+                    <input hidden type="date" name="date_now" value="{{date("Y-m-d")}}">
+                    {{date("Y-m-d")}}
                     في مدینة الدمام المملكة العربیة السعودیة فیما بین كل من:
 
                 </h5>

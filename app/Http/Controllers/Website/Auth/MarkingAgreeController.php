@@ -7,12 +7,14 @@ use App\Http\Requests\Website\Auth\MarkingDataValid;
 use App\Models\Brand;
 use App\Models\ProductType;
 use App\Models\VendorBrand;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class MarkingAgreeController extends Controller
 {
     public function __invoke(Request $request)
     {
+
         $user = $request->user();
 
         if ($user->marketing_agree_info != null){
@@ -26,9 +28,25 @@ class MarkingAgreeController extends Controller
 
         $productTypes = ProductType::all();
 
-        return view('website.auth.complete_marketing_agree',compact('brands','productTypes'));
+        $currentDay = $this->getMyDate();
+
+        return view('website.auth.complete_marketing_agree',compact('brands','productTypes','currentDay'));
     }
 
+    private function getMyDate(): ?string
+    {
+        $date = Carbon::today()->format('l');
+
+        return match ($date) {
+            'Saturday'          => ' السبت ',
+            'Sunday'            => ' الأحد ',
+            'Monday'            => ' الإثنين ',
+            'Tuesday'           => ' الثلاثاء ',
+            'Wednesday'         => ' الأربعاء ',
+            'Thursday'          => ' الخميس ',
+            default             => 'الجمعة',
+        };
+    }
     public function store(MarkingDataValid $request)
     {
 
