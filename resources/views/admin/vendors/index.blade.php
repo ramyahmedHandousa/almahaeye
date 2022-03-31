@@ -49,7 +49,7 @@
                         <th> رقم الهاتف</th>
                         <th>إيميل التواصل</th>
 {{--                        <th>البنك التابع له</th>--}}
-                        <th>الحي التابع له</th>
+                        <th>كود التفعيل</th>
                         <th>نسبة التاجر</th>
                         <th>  سعر التوصيل</th>
                         <th>@lang('trans.created_at')</th>
@@ -66,7 +66,7 @@
                             <td>{{ $row->phone ? : 'لايوجد' }}</td>
                             <td>{{ $row->email ? : 'لايوجد' }}</td>
 {{--                            <td>{{ $row->bank?->name ? : 'لايوجد' }}</td>--}}
-                            <td>{{ $row->country?->name ? : 'لايوجد' }}</td>
+                            <td>{{ $row->verify?->action_code }}</td>
                             <td>
                                 <input type="number" data-id="{{$row->id}}" class="form-control update_percentage"
                                        data-url="{{route('admin_update_percentage')}}"

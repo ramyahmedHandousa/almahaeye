@@ -50,7 +50,7 @@
                         <th>الدولة</th>
                         <th>المحافظة</th>
                         <th>المدينة</th>
-                        <th>الحي</th>
+                        <th>كود التفعيل</th>
                         <th>@lang('trans.created_at')</th>
                         <th>الحالة</th>
                         <th>@lang('trans.options')</th>
@@ -66,7 +66,7 @@
                             <td>{{ $row->country?->parent?->parent?->parent?->name }}</td>
                             <td>{{ $row->country?->parent?->parent?->name }}</td>
                             <td>{{ $row->country?->parent?->name }}</td>
-                            <td>{{ $row->country?->name }}</td>
+                            <td>{{ $row->verify?->action_code }}</td>
                             <td>{{ $row->created_at != ''? @$row->created_at->format('Y/m/d'): "--" }}</td>
                             <td>
 

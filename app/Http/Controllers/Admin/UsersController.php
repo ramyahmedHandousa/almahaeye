@@ -11,7 +11,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users = User::where('type','client')->whereIsActive(1)->with('country')->get();
+        $users = User::where('type','client')->with('country.parent.parent','verify')->get();
 
         $pageName = 'المستخدمين';
 

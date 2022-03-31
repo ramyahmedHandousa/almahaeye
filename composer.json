@@ -16,7 +16,8 @@
         "livewire/livewire": "^2.10",
         "pusher/pusher-php-server": "^7.0",
         "silber/bouncer": "^1.0",
-        "spatie/laravel-medialibrary": "^9.0.0"
+        "spatie/laravel-medialibrary": "^9.0.0",
+      "ext-curl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

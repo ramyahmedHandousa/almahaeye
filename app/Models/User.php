@@ -54,6 +54,11 @@ class User extends Authenticatable implements HasMedia
         });
     }
 
+    public function verify()
+    {
+        return $this->hasOne(VerifyUser::class);
+    }
+
     public function setPasswordAttribute($input)
     {
         if ($input)

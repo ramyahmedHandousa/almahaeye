@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\Sms;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Illuminate\Http\Request;
@@ -27,10 +28,15 @@ class ForgetPasswordController extends Controller
 
         $user = User::wherePhone($request->phone)->first();
 
+        $code = rand(1000,9999) ;
+
+
+        Sms::sendMessageToPhone($request->phone, ' كود الخاص بك  ' . $code);
+
         VerifyUser::updateOrCreate(['user_id' => $user->id],[
             'phone' => $request->phone,
             'email' => $user->email,
-            'action_code' => 1111
+            'action_code' => $code
         ]);
 
         return  redirect()->route('check-user-code',['token' => $user->api_token]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Website\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\Sms;
 use App\Http\Requests\Website\Auth\RegisterValid;
 use App\Http\Requests\Website\Auth\RegisterVendorValid;
 use App\Models\Address;
@@ -94,9 +95,13 @@ class RegisterController extends Controller
 
     private function verifyUser($user,$request)
     {
+        $code = rand(1000,9999) ;
+
+        Sms::sendMessageToPhone($request->phone, ' كود الخاص بك  ' . $code);
+
         VerifyUser::create([
             'user_id' => $user->id,'email' => $request->email,
-            'phone' => $request->phone, 'action_code' => 1111
+            'phone' => $request->phone, 'action_code' => $code
         ]);
     }
 
