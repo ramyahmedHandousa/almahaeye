@@ -15,6 +15,15 @@
                     </button>
                 </div>
                 <h4 class="page-title">إدارة المستخدمين</h4>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
 
@@ -22,12 +31,12 @@
             <div class="col-lg-8">
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30"> إضافة مستخدم  </h4>
-                    <div class="col-xs-12">
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="userName">الاسم  *</label>
-                            <input type="text" name="name" value="{{ old('name') }}" class="form-control"
+                    <div class="col-xs-6">
+                        <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                            <label for="userName">الاسم الاول *  *</label>
+                            <input type="text" name="first_name" value="{{ old('first_name') }}" class="form-control"
                                    required
-                                   placeholder="اسم المستخدم الأول..."
+                                   placeholder="الاسم الاول *"
                                    data-parsley-maxLength="20"
                                    data-parsley-maxLength-message=" الاسم  يجب أن يكون عشرون حروف فقط"
                                    data-parsley-minLength="3"
@@ -36,9 +45,31 @@
 
                             />
                             <p class="help-block" id="error_userName"></p>
-                            @if($errors->has('name'))
+                            @if($errors->has('first_name'))
                                 <p class="help-block">
-                                    {{ $errors->first('name') }}
+                                    {{ $errors->first('first_name') }}
+                                </p>
+                            @endif
+                        </div>
+
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                            <label for="userName">الاسم الاخير *     *</label>
+                            <input type="text" name="last_name" value="{{ old('last_name') }}" class="form-control"
+                                   required
+                                   placeholder="الاسم الاخير *     *   ..."
+                                   data-parsley-maxLength="20"
+                                   data-parsley-maxLength-message=" الاسم  يجب أن يكون عشرون حروف فقط"
+                                   data-parsley-minLength="3"
+                                   data-parsley-minLength-message=" الاسم  يجب أن يكون اكثر من 3 حروف "
+                                   data-parsley-required-message="يجب ادخال  اسم المستخدم"
+
+                            />
+                            <p class="help-block" id="error_userName"></p>
+                            @if($errors->has('last_name'))
+                                <p class="help-block">
+                                    {{ $errors->first('last_name') }}
                                 </p>
                             @endif
                         </div>
@@ -152,7 +183,7 @@
                                 data-plugin="multiselect">
                             @foreach($roles as  $value)
 
-                                <option value="{{ $value->name }}" {{ (collect(old('roles'))->contains($value->name)) ? 'selected':'' }}>{{ $value->title }}</option>
+                                <option value="{{ $value->id }}" {{ (collect(old('roles'))->contains($value->name)) ? 'selected':'' }}>{{ $value->title }}</option>
                             @endforeach
 
                         </select>

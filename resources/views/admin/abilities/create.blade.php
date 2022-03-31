@@ -25,6 +25,18 @@
                     <h4 class="header-title m-t-0 m-b-30">إضافة  </h4>
 
                     <div class="col-xs-6">
+                        <div class="form-group">
+                            <label for="name">master*</label>
+                            <select name="parent_id" class="form-control" id="">
+                                <option value="" selected>choose</option>
+                                @foreach($abilities as $abilitiy)
+                                    <option value="{{$abilitiy->id}}">{{$abilitiy->title}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name">إسم*</label>
                             <input type="text" name="name" value="{{ old('name') }}" class="form-control"

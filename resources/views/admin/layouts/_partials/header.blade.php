@@ -122,101 +122,193 @@
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu" style="    font-size: 14px;">
 
-                    <li>
-                        <a href="{{ route('admin.home') }}"><i class="zmdi zmdi-view-dashboard"></i>
-                            <span> الرئيسية </span> </a>
-                    </li>
-
-{{--                    <li class="has-submenu">--}}
-{{--                        <a href="javascript:;"><i--}}
-{{--                                class="zmdi zmdi-layers"></i><span> إدارة النظام </span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="submenu">--}}
-{{--                            <li>--}}
-{{--                                <a href="{{route('abilities.index')}}">صلاحيات النظام    </a>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a href="{{route('users.index')}}">مديري النظام المفعلين</a>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <a href="{{route('users.desactive')}}">مديري النظام المعطلين</a>--}}
-{{--                            </li>--}}
-
-{{--                            @if(auth()->user()->roles()->whereName('owner')->first())--}}
-{{--                                <li>--}}
-{{--                                    <a href="{{ route('roles.index') }}">الصلاحيات والادوار</a>--}}
-{{--                                </li>--}}
-{{--                            @endif--}}
-
-{{--                        </ul>--}}
-
-{{--                    </li>--}}
-
-                    <li>
-                        <a href="{{ route('users.index') }}"><i class="zmdi zmdi-view-dashboard"></i>
-                            <span> المستخدمين </span> </a>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="#"><i class="zmdi zmdi-layers"></i><span>التجار</span>
-                        </a>
-                        <ul class="submenu ">
-                             <li><a href="{{ route('vendors.index').'?type=new' }}"> التجار الجدد</a></li>
-                            <li><a href="{{ route('vendors.index') }}">التجار الحالين</a></li>
-                            <li><a href="{{ route('change_profile') }}">طلبات التغير  </a></li>
-                        </ul>
-                    </li>
-
-                    <li class="has-submenu">
-                        <a href="#"><i class="zmdi zmdi-layers"></i><span>  الإضافات الأساسية </span>
-                        </a>
-                        <ul class="submenu ">
-                            <li><a href="{{ route('sliders.index') }}"> اللسليدر</a></li>
-                            <li><a href="{{ route('categories.index') }}"> الأقسام الرئيسية</a></li>
-                            <li><a href="{{ route('categories.index').'?type=sub' }}"> الأقسام الفرعية</a></li>
-                            <li><a href="{{ route('countries.index') }}"> الدول  </a></li>
-                            <li><a href="{{ route('countries.index').'?type=sub' }}"> المحافظات</a></li>
-                            <li><a href="{{ route('countries.index').'?type=subSub' }}"> المدن</a></li>
-                            <li><a href="{{ route('countries.index').'?type=subSubSub' }}"> الأحياء</a></li>
-                            <li><a href="{{ route('banks.index') }}"> البنوك</a></li>
-                            <li><a href="{{ route('promo_codes.index') }}"> أكواد الخصم</a></li>
-                            <li><a href="{{ route('shipping.index') }}">شركات الشحن</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu">
-                        <a href="#"><i class="zmdi zmdi-layers"></i><span>  الإضافات الخاصة بالمنتج </span>
-                        </a>
-                        <ul class="submenu ">
-                            <li><a href="{{ route('brands.index') }}"> الماركات</a></li>
-                            <li><a href="{{ route('ages.index') }}">   السن</a></li>
-                            <li><a href="{{ route('colors.index') }}?type=frame_colors">   لون الإطار</a></li>
-                            <li><a href="{{ route('colors.index') }}?type=lens_colors">      لون العدسة</a></li>
-                            <li><a href="{{ route('frame_materials.index') }}">        خامة الإطار</a></li>
-                            <li><a href="{{ route('frame_shaps.index') }}">        شكل الإطار</a></li>
-                            <li><a href="{{ route('product_types.index') }}">        نوع النظارة  </a></li>
-                            <li><a href="{{ route('products.index') }}?type=new">المنتجات الجديدة</a></li>
-                            <li><a href="{{ route('products.index') }}">المنتجات</a></li>
-                        </ul>
-                    </li>
+                    @can('home')
                         <li>
-                            <a href="{{ route('offers.index') }}">العروض</a>
+                            <a href="{{ route('admin.home') }}"><i class="zmdi zmdi-view-dashboard"></i>
+                                <span> الرئيسية </span> </a>
                         </li>
-                    <li class="has-submenu">
-                        <a href="#"><i class="zmdi zmdi-layers"></i><span>الإعدادت العامة</span>
-                        </a>
-                        <ul class="submenu ">
-                            <li><a href="{{ route('settings.contactus') }}"> بيانات التواصل </a></li>
-                            <li><a href="{{ route('settings.global') }}">   بيانات الموقع</a></li>
-                            <li><a href="{{ route('settings.static') }}">   أهداف الموقع</a></li>
-                        </ul>
-                    </li>
+                    @endcan
 
-                    <li>
-                        <a href="{{ route('contact_us_inbox.index') }}">تواصل معنا</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('public_notification') }}">الإشعارات الجماعية</a>
-                    </li>
+                    @can('manager-helper')
+                        <li class="has-submenu">
+                            <a href="javascript:;"><i
+                                    class="zmdi zmdi-layers"></i><span> إدارة النظام </span>
+                            </a>
+                            <ul class="submenu">
+{{--                                    <li>--}}
+{{--                                        <a href="{{route('abilities.index')}}">صلاحيات النظام    </a>--}}
+{{--                                    </li>--}}
+                                @can('helper-admin')
+                                    <li>
+                                        <a href="{{route('helpAdmin.index')}}">مديري النظام  </a>
+                                    </li>
+                                @endcan
+                                @can('add-roles')
+                                    <li>
+                                        <a href="{{ route('roles.index') }}"> الادوار</a>
+                                    </li>
+                                @endcan
+                            </ul>
 
+                        </li>
+                    @endcan
+
+                    @can('users')
+                        <li>
+                            <a href="{{ route('users.index') }}"><i class="zmdi zmdi-view-dashboard"></i>
+                                <span> المستخدمين </span> </a>
+                        </li>
+                    @endcan
+
+                    @can('manage-vendors')
+                        <li class="has-submenu">
+                            <a href="#"><i class="zmdi zmdi-layers"></i><span>التجار</span>
+                            </a>
+                            <ul class="submenu ">
+                                @can('new-vendors')
+                                    <li><a href="{{ route('vendors.index').'?type=new' }}"> التجار الجدد</a></li>
+                                @endcan
+
+                                @can('current-vendors')
+                                    <li><a href="{{ route('vendors.index') }}">التجار الحالين</a></li>
+                                @endcan
+
+                                @can('change-vendors')
+                                    <li><a href="{{ route('change_profile') }}">طلبات التغير  </a></li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
+
+                    @can('master-add')
+                        <li class="has-submenu">
+                            <a href="#"><i class="zmdi zmdi-layers"></i><span>  الإضافات الأساسية </span>
+                            </a>
+                            <ul class="submenu ">
+                                @can('slider')
+                                    <li><a href="{{ route('sliders.index') }}"> اللسليدر</a></li>
+                                @endcan
+
+                                @can('master-categories')
+                                    <li><a href="{{ route('categories.index') }}"> الأقسام الرئيسية</a></li>
+                                @endcan
+
+                                @can('sub-master-categories')
+                                    <li><a href="{{ route('categories.index').'?type=sub' }}"> الأقسام الفرعية</a></li>
+                                @endcan
+
+                                @can('countries')
+                                    <li><a href="{{ route('countries.index') }}"> الدول  </a></li>
+                                @endcan
+
+                                @can('area')
+                                    <li><a href="{{ route('countries.index').'?type=sub' }}"> المناطق</a></li>
+                                @endcan
+
+                                @can('cities')
+                                    <li><a href="{{ route('countries.index').'?type=subSub' }}"> المدن</a></li>
+                                @endcan
+
+                                @can('sub-cities')
+                                    <li><a href="{{ route('countries.index').'?type=subSubSub' }}"> الأحياء</a></li>
+                                @endcan
+
+                                @can('banks')
+                                    <li><a href="{{ route('banks.index') }}"> البنوك</a></li>
+                                @endcan
+
+                                @can('promo-codes')
+                                    <li><a href="{{ route('promo_codes.index') }}"> أكواد الخصم</a></li>
+                                @endcan
+
+                                @can('shipping')
+                                    <li><a href="{{ route('shipping.index') }}">شركات الشحن</a></li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
+
+                    @can('products-adds')
+                        <li class="has-submenu">
+                            <a href="#"><i class="zmdi zmdi-layers"></i><span>  الإضافات الخاصة بالمنتج </span>
+                            </a>
+                            <ul class="submenu ">
+                                @can('brands')
+                                    <li><a href="{{ route('brands.index') }}"> الماركات</a></li>
+                                @endcan
+
+                                @can('age')
+                                    <li><a href="{{ route('ages.index') }}">   السن</a></li>
+                                @endcan
+
+                                @can('frame-color')
+                                    <li><a href="{{ route('colors.index') }}?type=frame_colors">   لون الإطار</a></li>
+                                @endcan
+
+                                @can('lens-color')
+                                    <li><a href="{{ route('colors.index') }}?type=lens_colors">      لون العدسة</a></li>
+                                @endcan
+
+                                @can('frame-materials')
+                                    <li><a href="{{ route('frame_materials.index') }}">        خامة الإطار</a></li>
+                                @endcan
+
+                                @can('frame-shap')
+                                    <li><a href="{{ route('frame_shaps.index') }}">        شكل الإطار</a></li>
+                                @endcan
+
+                                @can('product-types')
+                                    <li><a href="{{ route('product_types.index') }}">        نوع النظارة  </a></li>
+                                @endcan
+
+                                @can('new-products')
+                                    <li><a href="{{ route('products.index') }}?type=new">المنتجات الجديدة</a></li>
+                                @endcan
+
+                                @can('products')
+                                     <li><a href="{{ route('products.index') }}">المنتجات</a></li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
+
+                    @can('offers')
+                        <li>
+                                <a href="{{ route('offers.index') }}">العروض</a>
+                        </li>
+                    @endcan
+
+                    @can('global-setting')
+                        <li class="has-submenu">
+                            <a href="#"><i class="zmdi zmdi-layers"></i><span>الإعدادت العامة</span>
+                            </a>
+                            <ul class="submenu ">
+                                @can('contact-setting')
+                                    <li><a href="{{ route('settings.contactus') }}"> بيانات التواصل </a></li>
+                                @endcan
+
+                                @can('website-setting')
+                                    <li><a href="{{ route('settings.global') }}">   بيانات الموقع</a></li>
+                                @endcan
+
+                                @can('goals-setting')
+                                    <li><a href="{{ route('settings.static') }}">   أهداف الموقع</a></li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
+
+                    @can('contact-us')
+                        <li>
+                            <a href="{{ route('contact_us_inbox.index') }}">تواصل معنا</a>
+                        </li>
+                    @endcan
+
+                    @can('global-notifications')
+                        <li>
+                            <a href="{{ route('public_notification') }}">الإشعارات الجماعية</a>
+                        </li>
+                    @endcan
 
                 </ul>
                 <!-- End navigation menu  -->

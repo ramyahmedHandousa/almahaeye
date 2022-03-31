@@ -18,7 +18,9 @@ class AbilitiesController extends Controller
 
     public function create()
     {
-        return view('admin.abilities.create');
+        $abilities = Ability::whereNull('parent_id')->get();
+
+        return view('admin.abilities.create',compact('abilities'));
     }
 
 

@@ -35,15 +35,11 @@
                 <table id="datatable-fixed-header" class="table  table-striped">
                     <thead>
                     <tr>
-                        <th>الصورة</th>
 
                         <th>اسم المستخدم</th>
                         <th>البريد الإلكتروني</th>
                         <th>رقم الجوال</th>
-
-                            <th>الصلاحيات</th>
-
-
+                        <th>الصلاحيات</th>
                         <th>الحالة</th>
                         <th>الخيارات</th>
 
@@ -54,18 +50,6 @@
                     @foreach($users as $user)
 
                         <tr>
-
-                            <td style="width: 10%;">
-
-
-                                <a data-fancybox="gallery"
-                                   href="{{ $helper->getDefaultImage($user->image, request()->root().'/public/assets/admin/custom/images/default.png') }}">
-                                    <img style="width: 50%; border-radius: 50%; height: 49px;"
-                                         src="{{ $helper->getDefaultImage($user->image, request()->root().'/public/assets/admin/custom/images/default.png') }}"/>
-                                </a>
-
-                            </td>
-
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->phone }}</td>
@@ -81,10 +65,10 @@
                             <td>
 
                                 <div class="StatusActive{{ $user->id }}"  style="display: {{ $user->is_suspend == 0 ? "none" : "block" }}; text-align: center;">
-                                    <img  width="23px" src="{{ request()->root() }}/public/assets/admin/images/false.png" alt="">
+                                    <i class="fa fa-times text-danger" aria-hidden="true"></i>
                                 </div>
                                 <div class="StatusNotActive{{ $user->id }}" style="display: {{ $user->is_suspend == 0 ? "block" : "none" }};  text-align: center;">
-                                    <img width="23px" src="{{ request()->root() }}/public/assets/admin/images/ok.png" alt="">
+                                    <i class="fa fa-check  text-success" aria-hidden="true"></i>
                                 </div>
 
                             </td>
@@ -109,7 +93,7 @@
                                 {{--</a>--}}
 
                                 <a href="javascript:;" data-id="{{ $user->id }}" data-type="0"
-                                   data-url="{{ route('user.suspend') }}"  style="@if($user->is_suspend == 0) display: none;  @endif"
+                                   data-url="{{ route('users.suspend') }}"  style="@if($user->is_suspend == 0) display: none;  @endif"
                                    class="m-portlet__nav-link btn m-btn m-btn--hover-success m-btn--icon m-btn--icon-only m-btn--pill  suspendElement suspend{{ $user->id }}"
                                    id="suspendElement" data-message="تاكيد التفعيل"
                                    data-toggle="tooltip" data-placement="top"
@@ -118,7 +102,7 @@
                                 </a>
 
                                 <a href="javascript:;" data-id="{{ $user->id }}" data-type="1"
-                                   data-url="{{ route('user.suspend') }}" style="@if($user->is_suspend == 1) display: none;  @endif"
+                                   data-url="{{ route('users.suspend') }}" style="@if($user->is_suspend == 1) display: none;  @endif"
                                    class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill suspendElement unsuspend{{ $user->id }}"
                                    id="suspendElement"
                                    data-message="حظر"

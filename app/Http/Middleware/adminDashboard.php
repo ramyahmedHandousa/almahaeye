@@ -17,7 +17,7 @@ class adminDashboard
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->type === 'admin') {
+        if (auth()->check() && in_array(auth()->user()->type ,[ 'admin','helper_admin'])) {
 
             return $next($request);
         } else {

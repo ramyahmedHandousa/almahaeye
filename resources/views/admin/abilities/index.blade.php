@@ -29,6 +29,7 @@
                     <tr>
                         <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
                         <th>الإسم</th>
+                        <th>---</th>
                         <th>&nbsp;خيارات</th>
 
                     </tr>
@@ -39,6 +40,7 @@
                     @foreach ($abilities as $key => $ability)
                         <tr data-entry-id="{{ $ability->id }}">
                             <td>{{ $key + 1 }}</td>
+                            <td>{{ $ability->title }}</td>
                             <td>{{ $ability->name }}</td>
                             <td>
                                 <a href="{{ route('abilities.edit',[$ability->id]) }}" class="btn btn-xs btn-info"> تعديل الصلاحية</a>

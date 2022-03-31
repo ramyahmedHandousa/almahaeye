@@ -71,20 +71,20 @@
                     </div>
 
 
-                    {{--<div class="col-xs-6">--}}
-                        {{--<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">--}}
-                            {{--<label for="emailAddress">تاريخ إنشاء المستخدم</label>--}}
+                    <div class="col-xs-6">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="emailAddress">تاريخ إنشاء المستخدم</label>
 
-                            {{--<input type="email" name="email" parsley-trigger="change"--}}
-                                   {{--value="{{ $user->created_at}}"--}}
-                                   {{--class="form-control"  readonly/>--}}
-                            {{--@if($errors->has('email'))--}}
-                                {{--<p class="help-block">{{ $errors->first('email') }}</p>--}}
-                            {{--@endif--}}
+                            <input type="email" name="email" parsley-trigger="change"
+                                   value="{{ $user->created_at}}"
+                                   class="form-control"  readonly/>
+                            @if($errors->has('email'))
+                                <p class="help-block">{{ $errors->first('email') }}</p>
+                            @endif
 
-                        {{--</div>--}}
+                        </div>
 
-                    {{--</div>--}}
+                    </div>
 
                     <!--<div class="col-xs-6">-->
                     <!--    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">-->
@@ -101,20 +101,20 @@
 
                     <!--</div>-->
 
-                    {{--<div class="col-xs-6">--}}
-                        {{--<div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">--}}
-                            {{--<label for="emailAddress">آخر تاريخ و وقت تم الدخول فيه</label>--}}
+                    <div class="col-xs-6">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="emailAddress">آخر تاريخ و وقت تم الدخول فيه</label>
 
-                            {{--<input type="email" name="email" parsley-trigger="change"--}}
-                                   {{--value="{{ $user->updated_at }}"--}}
-                                   {{--class="form-control"  readonly/>--}}
-                            {{--@if($errors->has('email'))--}}
-                                {{--<p class="help-block">{{ $errors->first('email') }}</p>--}}
-                            {{--@endif--}}
+                            <input type="email" name="email" parsley-trigger="change"
+                                   value="{{ $user->updated_at }}"
+                                   class="form-control"  readonly/>
+                            @if($errors->has('email'))
+                                <p class="help-block">{{ $errors->first('email') }}</p>
+                            @endif
 
-                        {{--</div>--}}
+                        </div>
 
-                    {{--</div>--}}
+                    </div>
 
 
                     <div class="row">
@@ -175,10 +175,10 @@
                             <div class="form-group">
                                 <a data-fancybox="gallery"
 
-                                   href="{{ $helper->getDefaultImage($user->image, request()->root().'/assets/admin/custom/images/default.png') }}">
+                                   href="{{ $user->getFirstMediaUrl()  }}">
                                     <img class="img-thumbnail"
 
-                                         src="{{ $helper->getDefaultImage($user->image, request()->root().'/assets/admin/custom/images/default.png') }}"/>
+                                         src="{{ $user->getFirstMediaUrl() }}"/>
                                 </a>
                             </div>
 

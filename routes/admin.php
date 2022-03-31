@@ -28,6 +28,10 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' =
         Route::resource('abilities', 'AbilitiesController');
         Route::post('abilities_mass_destroy', 'AbilitiesController@massDestroy')->name('abilities.mass_destroy');
 
+        Route::resource('roles', 'RolesController');
+        Route::post('role/delete', 'RolesController@delete')->name('role.delete');
+        Route::post('role/delete/group', 'RolesController@groupDelete')->name('roles.group.delete');
+
     });
 
     Route::post('/logout', 'Auth\LoginController@logout')->name('administrator.logout');
@@ -120,3 +124,10 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' =
 });
 
 
+Route::get('roles', function () {
+
+    $user = \App\Models\User::find(1);
+
+
+    \Bouncer::allow($user)->everything();
+});

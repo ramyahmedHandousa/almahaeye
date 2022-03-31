@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('trade_name')->nullable();
-            $table->enum('type',['admin','client','vendor']);
+            $table->enum('type',['admin','help_admin','client','vendor']);
             $table->foreignId('country_id')->nullable()->constrained('countries')->cascadeOnDelete();
             $table->foreignId('bank_id')->nullable()->constrained('banks')->cascadeOnDelete();
             $table->string('phone',20)->unique()->nullable();

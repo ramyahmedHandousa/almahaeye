@@ -5,7 +5,7 @@
 
     <form method="POST" action="{{ route('helpAdmin.update', $user->id) }}" enctype="multipart/form-data"
           data-parsley-validate novalidate>
-    {{ csrf_field() }}
+    @csrf
     {{ method_field('PUT') }}
 
 
@@ -51,6 +51,30 @@
                             @if($errors->has('name'))
                                 <p class="help-block">
                                     {{ $errors->first('name') }}
+                                </p>
+                            @endif
+                        </div>
+                    </div>
+
+
+                    <div class="col-xs-6">
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label for="userPhone">رقم الجوال*</label>
+                            <input type="number" name="phone" value="{{ $user->phone }}" class="form-control"
+                                   required
+                                   data-parsley-maxLength="10"
+                                   data-parsley-maxLength-message=" الاسم  يجب أن يكون 10 حروف فقط"
+                                   data-parsley-minLength="5"
+                                   data-parsley-minLength-message=" الاسم  يجب أن يكون اكثر من 5 حروف "
+                                   data-parsley-type-message="أدخل رقم الجوال بطريقة صحيحة"
+                                   data-parsley-pattern="/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/"
+                                   data-parsley-pattern-message="أدخل  رقم الجوال بطربقة صحيحة ليبدا من (05)"
+                                   data-parsley-required-message="يجب ادخال رقم الجوال"
+                                   placeholder="رقم الجوال..."
+                            />
+                            @if($errors->has('phone'))
+                                <p class="help-block">
+                                    {{ $errors->first('phone') }}
                                 </p>
                             @endif
                         </div>
@@ -118,7 +142,6 @@
 
                         </div>
                     </div>
-
 
                     <div class="form-group text-right m-t-20">
                         <button class="btn btn-primary waves-effect waves-light m-t-20" type="submit">
