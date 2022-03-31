@@ -227,7 +227,7 @@
                     </div>
 
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="userName"> قطر العدسه*</label>
                             <input type="number" name="additional_data[lens_width]" value="{{ old('additional_data.lens_width') }}" class="form-control"
@@ -250,24 +250,24 @@
                             @endif
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="delivery_price">سعر التوصيل</label>
-                            <input type="number" name="additional_data[delivery_price]" value="{{ old('additional_data.delivery_price') }}" class="form-control"
-                                   {{--min="1"--}} placeholder="سعر التوصيل"
-                                   {{--data-parsley-max="99"--}}
-                                   data-parsley-min="0" data-parsley-min-message=" اقل رقم مسموح به 0"
-                                   data-parsley-type="digits" data-parsley-type-message="سعر التوصيل لا تقبل الحروف ارقام فقط"
-                                   data-parsley-trigger="keyup" data-parsley-required-message="سعر التوصيل  المنتج إلزامي"
-                            />
-                            <p class="help-block" id="error_delivery_price"></p>
-                            @if($errors->has('delivery_price'))
-                                <p class="help-block validationStyle">{{ $errors->first('delivery_price') }}</p>
-                            @endif
-                        </div>
-                    </div>
+{{--                    <div class="col-sm-3">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label for="delivery_price">سعر التوصيل</label>--}}
+{{--                            <input type="number" name="additional_data[delivery_price]" value="{{ old('additional_data.delivery_price') }}" class="form-control"--}}
+{{--                                   --}}{{--min="1"--}}{{-- placeholder="سعر التوصيل"--}}
+{{--                                   --}}{{--data-parsley-max="99"--}}
+{{--                                   data-parsley-min="0" data-parsley-min-message=" اقل رقم مسموح به 0"--}}
+{{--                                   data-parsley-type="digits" data-parsley-type-message="سعر التوصيل لا تقبل الحروف ارقام فقط"--}}
+{{--                                   data-parsley-trigger="keyup" data-parsley-required-message="سعر التوصيل  المنتج إلزامي"--}}
+{{--                            />--}}
+{{--                            <p class="help-block" id="error_delivery_price"></p>--}}
+{{--                            @if($errors->has('delivery_price'))--}}
+{{--                                <p class="help-block validationStyle">{{ $errors->first('delivery_price') }}</p>--}}
+{{--                            @endif--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-6">
                         <div class="form-group">
                             <label for="delivery_days">ايام التوصيل</label>
                             <input type="number" name="additional_data[delivery_days]" value="{{ old('additional_data.delivery_days') }}"
@@ -319,7 +319,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-3">
                         <div class="form-group">
                             <label for="quantity">(quantity) الكمية المتوفرة من المنتج  *</label>
                             <input type="number" name="quantity" min=0 oninput="validity.valid||(value='');"
@@ -329,7 +329,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         <div class="form-group">
                             <label for="userName"> وصف باللغة العربية</label>
                             <textarea type="text" name="description_ar" class="form-control m-input requiredFieldWithMaxLenght" required
@@ -343,7 +343,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-6">
+                    <div class="col-xs-12">
                         <div class="form-group">
                             <label for="userName">   وصف باللغة الإنجليزية</label>
                             <textarea type="text" name="description_en" class="form-control m-input requiredFieldWithMaxLenght" required

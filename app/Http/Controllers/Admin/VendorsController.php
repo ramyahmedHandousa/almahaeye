@@ -70,4 +70,12 @@ class VendorsController extends Controller
             $user->update(['percentage' => intval($request->value)]);
         }
     }
+
+    public function deliveryPrice(Request $request)
+    {
+        $user = User::find($request->id);
+        if ($user ){
+            $user->update(['delivery_price' => $request->value]);
+        }
+    }
 }

@@ -34,6 +34,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_suspend')->default(0);
             $table->boolean('marketing_agree')->default(0);
             $table->text('marketing_agree_info')->nullable();
+            $table->string('delivery_price')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

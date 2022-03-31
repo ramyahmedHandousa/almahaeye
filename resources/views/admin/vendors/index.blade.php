@@ -51,6 +51,7 @@
                         <th>البنك التابع له</th>
                         <th>الحي التابع له</th>
                         <th>نسبة التاجر</th>
+                        <th>  سعر التوصيل</th>
                         <th>@lang('trans.created_at')</th>
                         <th>الحالة</th>
                         <th>@lang('trans.options')</th>
@@ -71,6 +72,12 @@
                                        data-url="{{route('admin_update_percentage')}}"
                                        min=0 oninput="validity.valid||(value='');"
                                        value="{{ $row->percentage ? : "0" }}"><br>
+                            </td>
+                            <td>
+                                <input type="number" data-id="{{$row->id}}" class="form-control admin_update_delivery_price"
+                                       data-url="{{route('admin_update_delivery_price')}}"
+                                       min=0 oninput="validity.valid||(value='');"
+                                       value="{{ $row->delivery_price ? : "0" }}"><br>
                             </td>
                             <td>{{ $row->created_at != ''? @$row->created_at->format('Y/m/d'): "--" }}</td>
                             <td>
@@ -237,9 +244,30 @@
 
         },500));
 
+        $(".admin_update_delivery_price").bind('change keyup',delay( function (e) {
+
+            var myId = e.target.dataset.id,
+                url = e.target.dataset.url,
+                myValue = e.target.value;
+
+            if($.isNumeric(myValue) && myValue >= 0){
+
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: {id: myId,value: myValue},
+                    dataType: 'json',
+                    success: function (data) {
+
+                    }
+                });
+            }
+
+        },500));
+
         $(document).ready(function () {
             $('#datatable-responsive').DataTable( {
-                "order": [[ 3, "desc" ]]
+                "order": [[ 8, "desc" ]]
             } );
 
         });

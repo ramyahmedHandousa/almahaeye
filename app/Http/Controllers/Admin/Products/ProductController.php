@@ -127,7 +127,6 @@ class ProductController extends Controller
             'temple_length'     => $request->additional_data['temple_length'] ??   $product->temple_length,
             'lens_width'        => $request->additional_data['lens_width']  ?? $product->lens_width,
             'nose_bridge'       => $request->additional_data['nose_bridge'] ??   $product->nose_bridge,
-            'delivery_price'    => $request->additional_data['delivery_price'] ??   $product->delivery_price,
             'delivery_days'     => $request->additional_data['delivery_days'] ??   $product->delivery_days,
         ];
 

@@ -28,7 +28,7 @@ class OrderController extends Controller
 
         if ($user->type == 'client'){
 
-            $ordersQuery =  $user->orders();
+            $ordersQuery =  $user->orders()->latest();
         }else{
             $ordersQuery = $user->order_vendors();
         }
