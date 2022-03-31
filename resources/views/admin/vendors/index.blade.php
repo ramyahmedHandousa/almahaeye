@@ -48,7 +48,7 @@
                         <th> الإسم</th>
                         <th> رقم الهاتف</th>
                         <th>إيميل التواصل</th>
-                        <th>البنك التابع له</th>
+{{--                        <th>البنك التابع له</th>--}}
                         <th>الحي التابع له</th>
                         <th>نسبة التاجر</th>
                         <th>  سعر التوصيل</th>
@@ -65,7 +65,7 @@
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->phone ? : 'لايوجد' }}</td>
                             <td>{{ $row->email ? : 'لايوجد' }}</td>
-                            <td>{{ $row->bank?->name ? : 'لايوجد' }}</td>
+{{--                            <td>{{ $row->bank?->name ? : 'لايوجد' }}</td>--}}
                             <td>{{ $row->country?->name ? : 'لايوجد' }}</td>
                             <td>
                                 <input type="number" data-id="{{$row->id}}" class="form-control update_percentage"
