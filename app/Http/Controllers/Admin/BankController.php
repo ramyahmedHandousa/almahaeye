@@ -35,9 +35,9 @@ class BankController extends Controller
         $this->validate($request,[
             'name_ar'           => 'sometimes|string|max:255',
             'name_en'           => 'sometimes|string|max:255',
-            'account_name_ar'           => 'sometimes|string|max:255',
-            'account_name_en'           => 'sometimes|string|max:255',
-            'iban'              => 'sometimes|string|max:255',
+//            'account_name_ar'           => 'sometimes|string|max:255',
+//            'account_name_en'           => 'sometimes|string|max:255',
+//            'iban'              => 'sometimes|string|max:255',
         ]);
 
         $bank = new Bank();
@@ -54,9 +54,9 @@ class BankController extends Controller
         $this->validate($request,[
             'name_ar'           => 'sometimes|string|max:255',
             'name_en'           => 'sometimes|string|max:255',
-            'account_name_ar'           => 'sometimes|string|max:255',
-            'account_name_en'           => 'sometimes|string|max:255',
-            'iban'              => 'sometimes|string|max:255',
+//            'account_name_ar'           => 'sometimes|string|max:255',
+//            'account_name_en'           => 'sometimes|string|max:255',
+//            'iban'              => 'sometimes|string|max:255',
         ]);
 
         $this->modelData($request,$bank);
@@ -83,9 +83,9 @@ class BankController extends Controller
     {
         $country->{'name:ar'} = $request->name_ar;
         $country->{'name:en'} = $request->name_en;
-        $country->{'account_name:ar'} = $request->account_name_ar;
-        $country->{'account_name:en'} = $request->account_name_en;
-        $country->iban           = $request->iban ;
+//        $country->{'account_name:ar'} = $request->account_name_ar;
+//        $country->{'account_name:en'} = $request->account_name_en;
+//        $country->iban           = $request->iban ;
         $country->save();
     }
 }

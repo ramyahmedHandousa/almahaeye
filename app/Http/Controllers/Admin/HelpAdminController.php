@@ -34,8 +34,15 @@ class HelpAdminController extends Controller
 
     public function create()
     {
+        $roles =  Role::all();
+
+        if(count($roles) == 0){
+            session()->flash('myErrors','برجاء إضافة صلاحيات و أدوار !!');
+
+            return redirect()->back();
+        }
         return view('admin.helpAdmin.create',[
-            'roles' => Role::all()
+            'roles' => $roles
         ]);
     }
 

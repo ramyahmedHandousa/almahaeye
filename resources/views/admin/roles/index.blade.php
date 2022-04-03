@@ -83,20 +83,13 @@
                                        class="btn btn-icon btn-xs waves-effect btn-default m-b-5">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <form  action="{{ route('roles.destroy',$role->id) }}" method="post" style="display: inline-block">
-                                        {{csrf_field()}}
-                                        {{method_field('delete')}}
-                                        <button type="submit" class="btn btn-icon btn-trans btn-xs waves-effect waves-light btn-danger">  <i class="fa fa-remove"></i></button>
 
-                                    </form><!-- end form -->
-
-   {{--
-                                        <a href="javascript:;" id="elementRow{{ $role->id }}" data-id="{{ $role->id }}" data-url="{{ route('roles.destroy', $role->id) }}"
+                                        <a href="javascript:;" id="elementRow{{ $role->id }}" data-id="{{ $role->id }}"
                                            class="removeElement btn btn-icon btn-trans btn-xs waves-effect waves-light btn-danger m-b-5">
                                             <i class="fa fa-remove"></i>
                                         </a>
 
-   --}}
+
 
                                 </td>
                             </tr>

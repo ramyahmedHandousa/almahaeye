@@ -80,42 +80,42 @@
 
                     </div>
 
-                    <div class="col-xs-12">
-                        <div class="form-group{{ $errors->has('account_name_ar') ? ' has-error' : '' }}">
-                            <label for="account_name_ar">إسم الحساب بالعربي*</label>
-                            <input type="text" name="account_name_ar"  class="form-control"
-                                   value="{{ $bank?->account_name }}"
-                                   required placeholder="account_name_ar  ..." data-parsley-maxLength="225"
-                                   data-parsley-maxLength-message=" account_name_ar  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"
-                                   data-parsley-minLength-message=" account_name_ar  يجب أن يكون اكثر من 3 حروف "
-                                   data-parsley-required-message="يجب ادخال  account_name_ar  "
-                            />
-                            <p class="help-block" id="error_account_name_ar"></p>
-                        </div>
-                    </div>
+{{--                    <div class="col-xs-12">--}}
+{{--                        <div class="form-group{{ $errors->has('account_name_ar') ? ' has-error' : '' }}">--}}
+{{--                            <label for="account_name_ar">إسم الحساب بالعربي*</label>--}}
+{{--                            <input type="text" name="account_name_ar"  class="form-control"--}}
+{{--                                   value="{{ $bank?->account_name }}"--}}
+{{--                                   required placeholder="account_name_ar  ..." data-parsley-maxLength="225"--}}
+{{--                                   data-parsley-maxLength-message=" account_name_ar  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"--}}
+{{--                                   data-parsley-minLength-message=" account_name_ar  يجب أن يكون اكثر من 3 حروف "--}}
+{{--                                   data-parsley-required-message="يجب ادخال  account_name_ar  "--}}
+{{--                            />--}}
+{{--                            <p class="help-block" id="error_account_name_ar"></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-xs-12">
-                        <div class="form-group{{ $errors->has('account_name_en') ? ' has-error' : '' }}">
-                            <label for="account_name_en">إسم الحساب بالإنجليزي*</label>
-                            <input type="text" name="account_name_en" value="{{ $bank?->translate('en')?->account_name }}" class="form-control"
-                                   required placeholder="account_name_en  ..." data-parsley-maxLength="225"
-                                   data-parsley-maxLength-message=" account_name_en  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"
-                                   data-parsley-minLength-message=" account_name_en  يجب أن يكون اكثر من 3 حروف "
-                                   data-parsley-required-message="يجب ادخال  account_name_en  "
-                            />
-                            <p class="help-block" id="error_account_name_en"></p>
-                        </div>
-                    </div>
+{{--                    <div class="col-xs-12">--}}
+{{--                        <div class="form-group{{ $errors->has('account_name_en') ? ' has-error' : '' }}">--}}
+{{--                            <label for="account_name_en">إسم الحساب بالإنجليزي*</label>--}}
+{{--                            <input type="text" name="account_name_en" value="{{ $bank?->translate('en')?->account_name }}" class="form-control"--}}
+{{--                                   required placeholder="account_name_en  ..." data-parsley-maxLength="225"--}}
+{{--                                   data-parsley-maxLength-message=" account_name_en  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"--}}
+{{--                                   data-parsley-minLength-message=" account_name_en  يجب أن يكون اكثر من 3 حروف "--}}
+{{--                                   data-parsley-required-message="يجب ادخال  account_name_en  "--}}
+{{--                            />--}}
+{{--                            <p class="help-block" id="error_account_name_en"></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label for="quantity">رقم الأيبان</label>
-                            <input type="number" min="0"  name="iban" oninput="validity.valid||(value='');"
-                                   value="{{ $bank?->iban }}"
-                                   class="form-control requiredFieldWithMaxLenght" required>
-                            <p class="help-block" id="error_iban"></p>
-                        </div>
-                    </div>
+{{--                    <div class="col-xs-12">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label for="quantity">رقم الأيبان</label>--}}
+{{--                            <input type="number" min="0"  name="iban" oninput="validity.valid||(value='');"--}}
+{{--                                   value="{{ $bank?->iban }}"--}}
+{{--                                   class="form-control requiredFieldWithMaxLenght" required>--}}
+{{--                            <p class="help-block" id="error_iban"></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
                     <div class="form-group text-right m-t-20">
