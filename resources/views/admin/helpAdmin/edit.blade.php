@@ -3,8 +3,8 @@
 @section('content')
 
 
-    <form method="POST" action="{{ route('helpAdmin.update', $user->id) }}" enctype="multipart/form-data"
-          data-parsley-validate novalidate>
+    <form method="POST" id="my_form" action="{{ route('helpAdmin.update', $user->id) }}" enctype="multipart/form-data"
+          data-parsley-validate novalidate  >
     @csrf
     {{ method_field('PUT') }}
 
@@ -60,15 +60,15 @@
                     <div class="col-xs-6">
                         <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
                             <label for="userPhone">رقم الجوال*</label>
-                            <input type="number" name="phone" value="{{ $user->phone }}" class="form-control"
+                            <input type="number" name="phone" value="{{ $user->phone }}" id="my_phone" class="form-control"
                                    required
-                                   data-parsley-maxLength="10"
-                                   data-parsley-maxLength-message=" الاسم  يجب أن يكون 10 حروف فقط"
-                                   data-parsley-minLength="5"
-                                   data-parsley-minLength-message=" الاسم  يجب أن يكون اكثر من 5 حروف "
+{{--                                   data-parsley-maxLength="10"--}}
+{{--                                   data-parsley-maxLength-message=" رقم الجوال  يجب أن يكون 10 حروف فقط"--}}
+{{--                                   data-parsley-minLength="5"--}}
+{{--                                   data-parsley-minLength-message=" رقم الجوال  يجب أن يكون اكثر من 5 حروف "--}}
                                    data-parsley-type-message="أدخل رقم الجوال بطريقة صحيحة"
-                                   data-parsley-pattern="/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/"
-                                   data-parsley-pattern-message="أدخل  رقم الجوال بطربقة صحيحة ليبدا من (05)"
+                                   data-parsley-pattern="/^(009665|9665|\+9665|05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})|01[0125]{1}[0-9]{8}$/"
+                                   data-parsley-pattern-message="أدخل  رقم الجوال بطربقة صحيحة مصري او سعودي"
                                    data-parsley-required-message="يجب ادخال رقم الجوال"
                                    placeholder="رقم الجوال..."
                             />
@@ -125,7 +125,6 @@
                         </div>
                     </div>
 
-
                     <div class="col-xs-6">
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="passWord2">تأكيد كلمة المرور*</label>
@@ -181,6 +180,17 @@
         </div>
         <!-- end row -->
     </form>
+
+@endsection
+
+
+@section('scripts')
+
+
+    <script>
+
+
+    </script>
 
 @endsection
 

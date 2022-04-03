@@ -177,7 +177,7 @@ class HelpAdminController extends Controller
         return [
              'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
-            'phone'         => 'required|numeric|digits:10|regex:/(05)[0-9]{8}/|unique:users,phone,'. $id,
+            'phone'         => 'required|unique:users,phone,'. $id,
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'password_confirmation' => 'same:password'
         ];
