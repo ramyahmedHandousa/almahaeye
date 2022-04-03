@@ -113,7 +113,7 @@
 
                                 <a href="{{ route('vendors.show', $row->id) }}"
                                    data-toggle="tooltip" data-placement="top"
-                                   data-original-title="تعديل"
+                                   data-original-title="تفاصيل"
                                    class="btn btn-icon btn-xs waves-effect  btn-info">
                                     <i class="fa fa-pencil"></i>
                                 </a>
