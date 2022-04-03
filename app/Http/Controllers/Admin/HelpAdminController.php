@@ -97,7 +97,6 @@ class HelpAdminController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $postData = $this->postData($request);
 
         // Declare Validation Rules.
@@ -157,6 +156,7 @@ class HelpAdminController extends Controller
     {
         $data =  [
             'name' => $request->name,
+            'phone' => $request->phone,
             'email' => $request->email,
             'password' => $request->password,
             'password_confirmation' => $request->password_confirmation,
@@ -177,6 +177,7 @@ class HelpAdminController extends Controller
         return [
              'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
+            'phone'         => 'required|numeric|digits:10|regex:/(05)[0-9]{8}/|unique:users,phone,'. $id,
             'image' => 'image|mimes:jpeg,png,jpg|max:2048',
             'password_confirmation' => 'same:password'
         ];
