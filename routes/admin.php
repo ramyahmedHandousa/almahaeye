@@ -124,10 +124,10 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' =
 });
 
 
-Route::get('roles', function () {
-
-    $user = \App\Models\User::find(1);
-
-
-    \Bouncer::allow($user)->everything();
-});
+//Route::get('roles', function () {
+//
+//    $user = \App\Models\User::find(1);
+//
+//
+//    \Bouncer::allow($user)->everything();
+//});
