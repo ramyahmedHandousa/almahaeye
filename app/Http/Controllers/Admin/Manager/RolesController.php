@@ -51,7 +51,7 @@ class RolesController extends Controller
             $role->allow($abilites);
         }
 
-        session()->flash('success', __('trans.addingSuccess'));
+        session()->flash('success', __('trans.addingSuccess',['itemName' => $role->title]));
 
         return redirect(route('roles.index'));
     }
