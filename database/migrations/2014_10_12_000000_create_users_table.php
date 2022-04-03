@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('iban')->nullable();
+            $table->string('city_address')->nullable();
             $table->string('commercial_registration')->nullable();
             $table->string('lang',4);
             $table->boolean('is_suspend')->default(0);

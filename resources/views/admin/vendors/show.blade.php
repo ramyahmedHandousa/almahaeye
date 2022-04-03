@@ -78,6 +78,11 @@
                                                             <input class="form-control" readonly value="{{ $user->email ? : "--------" }}"><br>
                                                         </div>
 
+                                                        <div class="col-lg-12 col-xs-12 col-md-12 col-sm-12">
+                                                            <label>عنوان الحي    :</label>
+                                                            <input class="form-control" readonly value="{{ $user->city_address ? : "--------" }}"><br>
+                                                        </div>
+
 
                                                     </div>
 

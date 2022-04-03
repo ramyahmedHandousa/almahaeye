@@ -31,6 +31,7 @@ class RegisterVendorValid extends FormRequest
             'latitude'       => 'required',
             'longitude'      => 'required',
             'address'        => 'required',
+            'city_address'  => 'required|string|max:500',
 
             'iban' => 'required|max:30',
             'commercial_registration' => 'required|string|max:30',
@@ -47,6 +48,7 @@ class RegisterVendorValid extends FormRequest
         $data =  parent::validated();
         $data['type'] = 'vendor';
         $data['name'] = $this->first_name .'-'. $this->last_name;
+        $data['city_address'] = $this->city_address;
         return collect($data)->except(['confirm_password','latitude','longitude','address',
             'image_commercial','image_marketing_agreement','image_service_provider'
             ])->toArray();

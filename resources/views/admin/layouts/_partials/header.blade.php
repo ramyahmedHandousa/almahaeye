@@ -120,7 +120,7 @@
         <div class="container">
             <div id="navigation">
                 <!-- Navigation Menu-->
-                <ul class="navigation-menu" style="    font-size: 14px;">
+                <ul class="navigation-menu" style="    font-size: 11px;">
 
                     @can('home')
                         <li>

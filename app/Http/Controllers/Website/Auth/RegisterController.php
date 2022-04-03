@@ -34,6 +34,7 @@ class RegisterController extends Controller
 
     public function register(RegisterValid $request)
     {
+
         $user = User::create($request->validated());
 
         $this->createAddress($user,$request);

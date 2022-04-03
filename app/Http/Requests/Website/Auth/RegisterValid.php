@@ -30,6 +30,7 @@ class RegisterValid extends FormRequest
             'latitude'      => 'required',
             'longitude'      => 'required',
             'address'       => 'required',
+            'city_address'  => 'required|string|max:500'
         ];
     }
 
@@ -39,6 +40,7 @@ class RegisterValid extends FormRequest
         $data =  parent::validated();
         $data['type'] = 'client';
         $data['name'] = $this->first_name .'-'. $this->last_name;
+        $data['city_address'] = $this->city_address;
         return collect($data)->except(['confirm_password','latitude','longitude','address'])->toArray();
     }
 }

@@ -64,23 +64,29 @@
 
                 <div class="col-lg-4 form-group">
                     <select class="form-select"  id="region"  required>
-                        <option value=''>اختار المحافظة</option>
+                        <option value=''>اختار المنطقة</option>
                     </select>
                 </div>
 
                 <div class="col-lg-4 form-group">
-                    <select class="form-select" id="city" required>
+                    <select class="form-select" name="country_id" id="city" required>
                         <option value=''>اختار المدينة</option>
                     </select>
-                </div>
-
-                <div class="col-lg-4 form-group">
-                    <select class="form-select" name="country_id"  id="state"  required>
-                        <option value=''>اختار الحي</option>
-                    </select>
-
                     @error('country_id') <span class="error">{{ $message }}</span> @enderror
                 </div>
+
+                <div class="col-lg-12 form-group">
+                    <input type="text"  name="city_address" value="{{old('city_address')}}" class="form-control" placeholder="عنوان الحي الخاص بك  " required>
+                    @error('city_address') <span class="error">{{ $message }}</span> @enderror
+                </div>
+
+{{--                <div class="col-lg-4 form-group">--}}
+{{--                    <select class="form-select" name="country_id"  id="state"  required>--}}
+{{--                        <option value=''>اختار الحي</option>--}}
+{{--                    </select>--}}
+
+{{--                    @error('country_id') <span class="error">{{ $message }}</span> @enderror--}}
+{{--                </div>--}}
 
 
                 <div class="col-12" >
