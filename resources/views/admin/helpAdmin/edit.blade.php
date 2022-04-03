@@ -62,8 +62,8 @@
                             <label for="userPhone">رقم الجوال*</label>
                             <input type="number" name="phone" value="{{ $user->phone }}" id="my_phone" class="form-control"
                                    required
-{{--                                   data-parsley-maxLength="10"--}}
-{{--                                   data-parsley-maxLength-message=" رقم الجوال  يجب أن يكون 10 حروف فقط"--}}
+                                   data-parsley-maxLength="13"
+                                   data-parsley-maxLength-message="أدخل رقم الجوال بطريقة صحيحة"
 {{--                                   data-parsley-minLength="5"--}}
 {{--                                   data-parsley-minLength-message=" رقم الجوال  يجب أن يكون اكثر من 5 حروف "--}}
                                    data-parsley-type-message="أدخل رقم الجوال بطريقة صحيحة"
