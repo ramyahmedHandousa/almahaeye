@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="btn-group pull-right m-t-15 ">
-                <a href="{{ route('products.create') }}"
+                <a href="{{ route('products.create') }}@if(request('type'))?type={{request('type')}}@endif"
                    type="button" class="btn btn-custom waves-effect waves-light"
                    aria-expanded="false">
                 <span class="m-l-5">
@@ -87,9 +87,9 @@
 
                                 @endif
 
-                                <a href="{{ route('products.edit', $row->id) }}"
+                                <a href="{{ route('products.edit', $row->id) }}@if(request('type'))?type={{request('type')}}@endif"
                                    data-toggle="tooltip" data-placement="top"
-                                   data-original-title="@lang('institutioncp.show_details')"
+                                   data-original-title="@lang('institutioncp.edit')"
                                    class="btn btn-icon btn-xs waves-effect  btn-info">
                                     <i class="fa fa-edit"></i>
                                 </a>

@@ -111,6 +111,7 @@ Route::group(['prefix' => 'administrator' ,'namespace' => 'Admin','middleware' =
         Route::resource('products','ProductController');
         Route::post('/products/new', 'ProductController@new')->name('products.new');
         Route::post('/products/delete', 'ProductController@delete')->name('products.delete');
+        Route::post('/products/delete_image', 'ProductController@deleteImages')->name('products.delete_image');
         Route::get('/price/product/brand', 'ProductController@priceBrandVendor')->name('products.priceBrandVendor');
 
         Route::resource('offers','OfferController');

@@ -16,7 +16,10 @@
 @section('content')
     <form id="myForm" method="POST" action="{{ route('products.store') }}@if(request('user_id'))?user_id={{request('user_id')}}@endif" enctype="multipart/form-data" data-parsley-validate
           novalidate>
-    {{ csrf_field() }}
+   @csrf
+
+
+        <input type="hidden" name="type" value="{{request('type')}}">
 
     <!-- Page-Title -->
         <div class="row">
@@ -40,7 +43,7 @@
                         <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">
                             <label for="name_ar">إسم*</label>
                             <input type="text" name="name_ar" value="{{ old('name_ar') }}" class="form-control"
-                                   required placeholder="name_ar  ..." data-parsley-maxLength="225"
+                                   placeholder="name_ar  ..." data-parsley-maxLength="225"
                                    data-parsley-maxLength-message=" name_ar  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"
                                    data-parsley-minLength-message=" name_ar  يجب أن يكون اكثر من 3 حروف "
                                    data-parsley-required-message="يجب ادخال  name_ar  "
@@ -54,7 +57,7 @@
                         <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
                             <label for="name_en">إسم بالإنجليزي*</label>
                             <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control"
-                                   required placeholder="name_en  ..." data-parsley-maxLength="225"
+                                   placeholder="name_en  ..." data-parsley-maxLength="225"
                                    data-parsley-maxLength-message=" name_en  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"
                                    data-parsley-minLength-message=" name_en  يجب أن يكون اكثر من 3 حروف "
                                    data-parsley-required-message="يجب ادخال  name_en  "
@@ -389,15 +392,47 @@
                             </div>
                         </div>
                     </div>
-                </div><!-- end col -->
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-box" style="overflow: hidden;">
+                        <h4 class="header-title m-t-0 m-b-30">  صورة GTLF    </h4>
+                        <div class="form-group {{ $errors->has('gtlf') ? ' has-error' : '' }}">
+                            <div class="col-sm-12">
+                                <input   id="gtlf" type="file"   accept='.jpeg,.png,.jpg'
+                                       name="gtlf" class="dropify" data-max-file-size="6M"/>
+                                @if($errors->has('gtlf'))
+                                    <p class="help-block">
+                                        {{ $errors->first('gtlf') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card-box" style="overflow: hidden;">
+                        <h4 class="header-title m-t-0 m-b-30">   صورة   BIN</h4>
+                        <div class="form-group {{ $errors->has('btn') ? ' has-error' : '' }}">
+                            <div class="col-sm-12">
+                                <input  id="btn" type="file"   accept='.jpeg,.png,.jpg'
+                                       name="btn" class="dropify" data-max-file-size="6M"/>
+                                @if($errors->has('btn'))
+                                    <p class="help-block">
+                                        {{ $errors->first('btn') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card-box" style="overflow: hidden;">
                         @for ($i = 0; $i < 4; $i++)
                             <div class="col-xs-3">
                                 <div class="form-group">
                                     <label for="usernames">  صور  المنتج  </label>
-                                    <input type="file" name="images[]" class="dropify" data-max-file-size="6M"/>
+                                    <input type="file" accept='.jpeg,.png,.jpg' name="images[]" class="dropify" data-max-file-size="6M"/>
                                 </div>
                             </div>
                         @endfor

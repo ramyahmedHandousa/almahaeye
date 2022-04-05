@@ -12,6 +12,15 @@ trait ImageUploadMedia
         endif;
     }
 
+
+    public function upload_request_image($model ,$request,$key)
+    {
+        if ($request->hasFile($key)):
+            $model->clearMediaCollection($key);
+            $model->addMedia($request->$key)->toMediaCollection($key);
+        endif;
+    }
+
     public function upload_multi_images($model ,$request)
     {
         if ($request->images):

@@ -29,7 +29,7 @@ class ProductController extends Controller
 
         return view('admin.products.index',[
             'products' => $productQuest->with(['user','brand'])->latest()->get(),
-            'pageName' => 'المنتجات'
+            'pageName' => $request->type == 'new' ? ' المنتجات الجديدة' : 'المنتجات'
         ]);
     }
 
@@ -59,18 +59,19 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-
         $product = new Product();
         $this->modelData($request,$product);
 
         $product->lens_colors()->sync($request->lens_color_id);
         $product->frame_colors()->sync($request->frame_color_id);
         $this->upload_image($product,$request);
+        $this->upload_request_image($product,$request,'gtlf');
+        $this->upload_request_image($product,$request,'btn');
         $this->upload_multi_images($product,$request);
 
         session()->flash('success','تم الإضافة  بنجاح');
 
-        return redirect()->route('products.index') ;
+        return redirect()->route('products.index',['type' => $request->type]) ;
     }
 
     public function update(Request $request,Product $product)
@@ -79,9 +80,15 @@ class ProductController extends Controller
             $product->update(['price' => $request->price ]);
         }
 
+
+        $this->upload_image($product,$request);
+        $this->upload_request_image($product,$request,'gtlf');
+        $this->upload_request_image($product,$request,'btn');
+        $this->upload_multi_images($product,$request);
+
         session()->flash('success','تم التعديل  بنجاح');
 
-        return redirect()->route('products.index') ;
+        return redirect()->route('products.index',['type' => $request->type]) ;
     }
 
     public function delete(Request $request)
@@ -93,6 +100,21 @@ class ProductController extends Controller
         if ($model->delete()) {
             return response()->json(['status' => true, 'data' => $model->id]);
         }
+    }
+
+    public function deleteImages(Request $request)
+    {
+        $model = Product::find($request->product_id);
+
+        if ($model){
+            $media_image = $model->media()->where('id', '=', $request->id)->first();
+            if ($media_image) {
+                $media_image->delete();
+            }
+        }
+        return response()->json([
+            'status' => true,
+        ]);
     }
 
     public function priceBrandVendor(Request $request)
@@ -130,6 +152,8 @@ class ProductController extends Controller
             'delivery_days'     => $request->additional_data['delivery_days'] ??   $product->delivery_days,
         ];
 
+        $brand = Brand::find($request->brand_id);
+
         $product->user_id               = $request->user_id ? :  auth()->id();
         $product->category_id           = $request->category_id;
         $product->brand_id              = $request->brand_id;
@@ -140,8 +164,8 @@ class ProductController extends Controller
         $product->additional_data       = $additional_data;
         $product->price                 = $request->price;
         $product->quantity              = $request->quantity;
-        $product->{'name:ar'}           = $request->name_ar;
-        $product->{'name:en'}           = $request->name_en;
+        $product->{'name:ar'}           = $request->name_ar ? : $brand?->name ;
+        $product->{'name:en'}           = $request->name_en ? : $brand?->translate('en')?->name ;
         $product->{'description:ar'}    = $request->description_ar;
         $product->{'description:en'}    = $request->description_en;
         $product->save();
