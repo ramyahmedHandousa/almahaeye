@@ -39,32 +39,32 @@
                 <div class="card-box">
                     <h4 class="header-title m-t-0 m-b-30">إضافة منتج</h4>
 
-                    <div class="col-xs-6">
-                        <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">
-                            <label for="name_ar">إسم*</label>
-                            <input type="text" name="name_ar" value="{{ old('name_ar') }}" class="form-control"
-                                   placeholder="name_ar  ..." data-parsley-maxLength="225"
-                                   data-parsley-maxLength-message=" name_ar  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"
-                                   data-parsley-minLength-message=" name_ar  يجب أن يكون اكثر من 3 حروف "
-                                   data-parsley-required-message="يجب ادخال  name_ar  "
-                            />
-                            <p class="help-block" id="error_name_ar"></p>
-                        </div>
-                    </div>
+{{--                    <div class="col-xs-6">--}}
+{{--                        <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">--}}
+{{--                            <label for="name_ar">إسم*</label>--}}
+{{--                            <input type="text" name="name_ar" value="{{ old('name_ar') }}" class="form-control"--}}
+{{--                                   placeholder="name_ar  ..." data-parsley-maxLength="225"--}}
+{{--                                   data-parsley-maxLength-message=" name_ar  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"--}}
+{{--                                   data-parsley-minLength-message=" name_ar  يجب أن يكون اكثر من 3 حروف "--}}
+{{--                                   data-parsley-required-message="يجب ادخال  name_ar  "--}}
+{{--                            />--}}
+{{--                            <p class="help-block" id="error_name_ar"></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
-                    <div class="col-xs-6">
-                        <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
-                            <label for="name_en">إسم بالإنجليزي*</label>
-                            <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control"
-                                   placeholder="name_en  ..." data-parsley-maxLength="225"
-                                   data-parsley-maxLength-message=" name_en  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"
-                                   data-parsley-minLength-message=" name_en  يجب أن يكون اكثر من 3 حروف "
-                                   data-parsley-required-message="يجب ادخال  name_en  "
-                            />
-                            <p class="help-block" id="error_name_en"></p>
-                        </div>
-                    </div>
+{{--                    <div class="col-xs-6">--}}
+{{--                        <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">--}}
+{{--                            <label for="name_en">إسم بالإنجليزي*</label>--}}
+{{--                            <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control"--}}
+{{--                                   placeholder="name_en  ..." data-parsley-maxLength="225"--}}
+{{--                                   data-parsley-maxLength-message=" name_en  يجب أن يكون 225 حروف فقط" data-parsley-minLength="3"--}}
+{{--                                   data-parsley-minLength-message=" name_en  يجب أن يكون اكثر من 3 حروف "--}}
+{{--                                   data-parsley-required-message="يجب ادخال  name_en  "--}}
+{{--                            />--}}
+{{--                            <p class="help-block" id="error_name_en"></p>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
 
                     @if(!request('user_id'))
