@@ -335,7 +335,7 @@
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="userName"> وصف باللغة العربية</label>
-                            <textarea type="text" name="description_ar" class="form-control m-input requiredFieldWithMaxLenght" required
+                            <textarea type="text" name="description_ar" class="form-control m-input  "
                                       placeholder="إدخل  وصف عن  المنتج العربية   "   >{{ old('description_ar') }}</textarea>
                             <p class="help-block" id="error_userName"></p>
                             @if($errors->has('description_ar'))
@@ -349,7 +349,7 @@
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="userName">   وصف باللغة الإنجليزية</label>
-                            <textarea type="text" name="description_en" class="form-control m-input requiredFieldWithMaxLenght" required
+                            <textarea type="text" name="description_en" class="form-control m-input  "
                                       placeholder="إدخل  وصف عن  المنتج بالإنجليزي   "   >{{ old('description_en') }}</textarea>
                             <p class="help-block" id="error_userName"></p>
                             @if($errors->has('description_en'))
