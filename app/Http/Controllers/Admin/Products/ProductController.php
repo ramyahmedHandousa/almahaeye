@@ -33,7 +33,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $vendors = User::whereType('vendor')->get(['id','name']);
         $brands = Brand::whereIsSuspended(0)->get();
@@ -46,6 +46,13 @@ class ProductController extends Controller
         $colors         = Color::whereIsSuspended(0)->get();
         $lensColors     =   $colors->where('type','lens')->values();
         $framesColors   = $colors->where('type','frame')->values();
+
+        if (count($vendors) == 0){
+
+            session()->flash('myErrors','لا يوجد تاجر للإضافة !!');
+
+            return redirect()->back();
+        }
 
         return view('admin.products.create',compact('vendors','brands','categories',
             'frame_materials','frame_shaps','product_types','ages','lensColors','framesColors'
