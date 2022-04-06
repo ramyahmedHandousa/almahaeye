@@ -22,6 +22,7 @@ class OrderShowResource extends JsonResource
             'promo_discount'    => $this->promo_discount,
             'total_price'       => $this->total_price,
             'address'           => $this->address?->address,
+            'is_rate'            => (bool)$this->rate,
             'status'            => $this->status,
             'status_translate'            => $this->status_translate,
             'tax'               => $this->tax,

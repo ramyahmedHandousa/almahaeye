@@ -70,6 +70,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::post('orders/{order}/refuse','Actions\OrderRefuseController');
         Route::post('orders/{order}/accepted','Actions\OrderAcceptedController');
         Route::post('orders/{order}/finish','Actions\OrderFinishController');
+        Route::post('orders/{order}/rate','Actions\OrderRateController');
 
         Route::post('orders/check-promo-code','Actions\checkPromoCodeController');
 

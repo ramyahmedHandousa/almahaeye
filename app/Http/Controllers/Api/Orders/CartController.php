@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\Product;
 use App\Models\Setting;
+use App\Models\User;
 use App\Support\Facade\Responder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -106,14 +107,26 @@ class CartController extends Controller
 
         $totalCart = $totalPrice;
         $totalPrice += round($totalPrice * $percentage / 100,2);
-
+        
         return [
             'cart' =>   CartResource::collection($orderItems),
             'info' => [
                 'total_cart' => number_format($totalCart,2),
                 'percentage' => $percentage,
                 'total_price' => number_format($totalPrice,2),
+                'delivery_price'=> $this->calcDeliveryPrice($orderItems)
             ]
         ];
+    }
+
+    private function calcDeliveryPrice($orderItems)
+    {
+
+        $deliveryPrice = Setting::getBody('delivery_price') ? : 0;
+
+        return User::whereIn('id', collect($orderItems)->groupBy('user_id')->keys())
+            ->get(['id','delivery_price'])
+            ->each(fn($user) => $user->delivery_price = $user?->delivery_price ? : $deliveryPrice)
+            ->sum('delivery_price');
     }
 }

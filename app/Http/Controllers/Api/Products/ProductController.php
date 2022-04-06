@@ -8,6 +8,7 @@ use App\Http\Resources\Products\ListProductResource;
 use App\Http\Resources\Products\ShowProductResource;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\User;
@@ -99,12 +100,14 @@ class ProductController extends MasterApiController
 
         $maxAndMinPrice = Product::selectRaw("MIN(price) AS min_price, MAX(price) AS max_price")->first();
 
+        $colors = Color::all(['id','type']);
 
         return Responder::success(['brands' => $brands,
-            'types' => $productTypes,
-            'categories' => $categories,
-            'min_price' => $maxAndMinPrice?->min_price,
-            'max_price' => $maxAndMinPrice?->max_price,
+            'types'         => $productTypes,
+            'categories'    => $categories,
+            'min_price'     => $maxAndMinPrice?->min_price,
+            'max_price'     => $maxAndMinPrice?->max_price,
+            'colors'        => $colors
         ]);
     }
 }
