@@ -107,7 +107,7 @@ class CartController extends Controller
 
         $totalCart = $totalPrice;
         $totalPrice += round($totalPrice * $percentage / 100,2);
-        
+
         return [
             'cart' =>   CartResource::collection($orderItems),
             'info' => [

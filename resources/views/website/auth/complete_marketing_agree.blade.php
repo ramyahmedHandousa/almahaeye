@@ -30,7 +30,6 @@
             <form class="row" method="post" action="{{route('submit-marking-agree')}}" enctype="multipart/form-data">
 
                 @csrf
-
                 <h5 style="margin-bottom: 2%">
                     إتفاقیة تسویق إلكتروني أبرمت ھذه الاتفاقیة الیوم
                     {{$currentDay}}
@@ -43,16 +42,22 @@
                 <h5 >
                       1.السادة شركة/ عین المھا للنظارات ب- سجل تجاري رقم 2050141744 وعنوانھا الدمام ھاتف رقم 966504966997+ ویمثلھا في التوقیع على ھذه الإتفاقیة
                 </h5>
+
+
                 <h5 style="margin-bottom: 2%">
                      السید/
-                        <input name="master_one[name]">
+                    علي منصور الحرز
+                        <input name="master_one[name]" value="علي منصور الحرز" hidden>
                     سعودي الجنسیة
                     بموجب بطاقة أحوال رقم
-                        <input name="master_one[status_card]">
+                    1003232715
+                        <input name="master_one[status_card]"  value="1003232715" hidden>
                     صادرة من
-                        <input name="master_one[comingـfrom]">
+                    الدمام
+                        <input name="master_one[comingـfrom]"  value="الدمام" hidden>
                     تاریخ
-                        <input type="date" name="master_one[date]">,
+                    1409/6/11
+                        <input type="date" name="master_one[date]"  value="1409/6/11" hidden>,
                     ویشار إلیھ فیما بعد.
                     بـ (الطرف الأول).
                 </h5>
