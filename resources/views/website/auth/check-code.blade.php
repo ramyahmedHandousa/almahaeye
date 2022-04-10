@@ -25,20 +25,21 @@
                 <div class="col-lg-2 form-group ">
                 </div>
 
+
                 <div class="col-lg-2 form-group ">
-                    <input type="text" name="code1"  maxlength="1" class="form-control inputCode" required>
+                    <input type="text" name="code1" id="n0"  maxlength="1" class="form-control input-key inputCode" autofocus data-next="1" required>
                     @error('code1') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-lg-2 form-group">
-                    <input type="text"  name="code2" maxlength="1"  class="form-control inputCode" required>
+                    <input type="text"  name="code2" id="n1" maxlength="1"  class="form-control input-key inputCode" data-next="2" required>
                     @error('code2') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-lg-2 form-group">
-                    <input type="text"  name="code3" maxlength="1"  class="form-control inputCode" required>
+                    <input type="text"  name="code3" id="n2" maxlength="1"  class="form-control input-key inputCode" data-next="3" required>
                     @error('code3') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-lg-2 form-group">
-                    <input type="text"  name="code4" maxlength="1"  class="form-control inputCode" required>
+                    <input type="text"  name="code4" id="n3" maxlength="1"  class="form-control input-key inputCode" data-next="0" required>
                     @error('code4') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
@@ -105,5 +106,15 @@
             clearTimeout(start);
             $('#active').show();
         }
+
+
+        $(document).ready(function() {
+            $('.input-key').keyup(function(e) {
+                if (this.value.length === this.maxLength) {
+                    let next = $(this).data('next');
+                    $('#n' + next).focus();
+                }
+            });
+        });
     </script>
 @endsection

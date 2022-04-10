@@ -31,7 +31,7 @@ class ForgetPasswordController extends Controller
         $code = rand(1000,9999) ;
 
 
-        Sms::sendMessageToPhone($request->phone, ' كود الخاص بك  ' . $code);
+//        Sms::sendMessageToPhone($request->phone, ' كود الخاص بك  ' . $code);
 
         VerifyUser::updateOrCreate(['user_id' => $user->id],[
             'phone' => $request->phone,

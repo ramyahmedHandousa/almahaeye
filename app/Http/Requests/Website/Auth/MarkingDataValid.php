@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests\Website\Auth;
 
+use App\Http\Requests\Api\MasterApiFormRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class MarkingDataValid extends FormRequest
+class MarkingDataValid extends MasterApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -38,7 +39,7 @@ class MarkingDataValid extends FormRequest
             'master_two.name'                   => 'required|string',
             'master_two.status_card'            => 'required|string',
             'master_two.comingـfrom'            => 'required|string',
-            'master_two.date'                   => 'required|date',
+            'master_two.date'                   => 'required',
 
             'products.*.brand_image'        => 'sometimes|image|mimes:jpeg,png,jpg|max:20000',
             'products.*.product_type'       => 'required|exists:product_types,id',

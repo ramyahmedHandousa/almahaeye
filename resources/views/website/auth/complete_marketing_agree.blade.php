@@ -3,6 +3,8 @@
 @section('styles')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+
+    <link rel="stylesheet" href="{{asset('website/templates/css/bootstrap-datetimepicker.css')}}">
     <style>
         .error{
             color: red;
@@ -27,7 +29,16 @@
                 </div>
             @endif
 
-            <form class="row" method="post" action="{{route('submit-marking-agree')}}" enctype="multipart/form-data">
+
+            <div class="alert alert-danger my_errors_form" style="display: none">
+                <ul>
+
+
+
+                </ul>
+            </div>
+
+            <form id="my_form" class="row" method="post" action="{{route('submit-marking-agree')}}" enctype="multipart/form-data">
 
                 @csrf
                 <h5 style="margin-bottom: 2%">
@@ -57,16 +68,18 @@
                         <input name="master_one[comingـfrom]"  value="الدمام" hidden>
                     تاریخ
                     1409/6/11
-                        <input type="date" name="master_one[date]"  value="1409/6/11" hidden>,
+                        <input type="text" name="master_one[date]"  value="1409/6/11" hidden>,
                     ویشار إلیھ فیما بعد.
                     بـ (الطرف الأول).
                 </h5>
                 <h5 style="margin-bottom: 2%">
                     2.السادة شركة/
-                        <input  name="master_two[company_name]">
+                        <input  name="master_two[company_name]" style="padding: 2px">
                     - بسجل تجاري رقم
                         <input name="master_two[commercialـrecord]">
-                    وعنوانھا الدمام ھاتف رقم
+                    وعنوانھا
+                    <input name="master_two[address]">
+                    ھاتف رقم
                         <input name="master_two[number]">
                     ویمثلھا في التوقیع على ھذه الإتفاقیة السید/
                         <input name="master_two[name]">
@@ -76,7 +89,7 @@
                     صادرة من
                         <input name="master_two[comingـfrom]">
                     , تاریخ
-                        <input type="date" name="master_two[date]">
+                        <input type="text" id="hijri-date-input" name="master_two[date]">
                     ـ, ویشار إلیھ فیما بـ (الطرف الثاني) .
                 </h5>
 
@@ -127,8 +140,36 @@
 @section('scripts')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <script src="{{asset('website/templates/js/momentjs.js')}}"></script>
+
+    <script src="{{asset('website/templates/js/moment-hijri.js')}}"></script>
+
+    <script src="{{asset('website/templates/js/bootstrap-hijri-datetimepicker.js')}}"></script>
 
     <script>
+
+        $('#my_form').on('submit', function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: '{{route('submit-marking-agree')}}',
+                data: $(this).serialize(),
+                success: function(data) {
+                    window.location.href = '/';
+                },
+                error:function (er) {
+                    printErrorMsg(er.responseJSON.errors)
+                }
+            });
+        });
+
+        function printErrorMsg (msg) {
+            $(".my_errors_form").find("ul").html('');
+            $(".my_errors_form").css('display','block');
+            $.each( msg, function( key, value ) {
+                $(".my_errors_form").find("ul").append('<li>'+value+'</li>');
+            });
+        }
 
         var selectBrands = document.createElement('select'),
             selectProductTypes = document.createElement('select'),
@@ -231,6 +272,47 @@
                 rowIdx--;
             });
         });
+
+        // $(function () {
+        //     $("#hijri-date-input").hijriDatePicker();
+        // });
+
+
+
+        $(function () {
+
+            initHijrDatePicker();
+
+            //initHijrDatePickerDefault();
+
+            $('#hijri-date-input').hijriDatePicker({
+                hijri:true,
+            });
+
+        });
+
+        function initHijrDatePicker() {
+
+            $(".hijri-date-input").hijriDatePicker({
+                locale: "ar-sa",
+                format: "DD-MM-YYYY",
+                hijriFormat:"iYYYY-iMM-iDD",
+                dayViewHeaderFormat: "MMMM YYYY",
+                hijriDayViewHeaderFormat: "iMMMM iYYYY",
+                // showSwitcher: true,
+                // allowInputToggle: true,
+                useCurrent: true,
+                isRTL: true,
+                viewMode:'months',
+                keepOpen: false,
+                hijri: true,
+                showClear: true,
+                showTodayButton: true,
+                showClose: true
+            });
+        }
+
+
     </script>
 
 @endsection

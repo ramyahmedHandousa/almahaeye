@@ -192,7 +192,7 @@
                                    class="form-control" placeholder=" طول الاطار.."
                                    {{--data-parsley-max="99"--}}
                                    data-parsley-min="0" data-parsley-min-message=" اقل رقم مسموح به 0"
-                                   data-parsley-type="digits"data-parsley-type-message="طول الاطار لا تقبل الحروف ارقام فقط"
+                                   data-parsley-type="digits" data-parsley-type-message="طول الاطار لا تقبل الحروف ارقام فقط"
                                    data-parsley-trigger="keyup"
                                    data-parsley-required-message="طول الاطار  المنتج إلزامي"
                             />

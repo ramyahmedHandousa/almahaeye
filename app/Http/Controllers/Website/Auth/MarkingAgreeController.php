@@ -49,9 +49,6 @@ class MarkingAgreeController extends Controller
     }
     public function store(MarkingDataValid $request)
     {
-
-
-
         $user = $request->user();
 
         if ($user->marketing_agree_info != null){
@@ -71,9 +68,10 @@ class MarkingAgreeController extends Controller
 
         $user->update(['marketing_agree_info' => $data]);
 
-        session()->flash('success','تم تقديم السمتند بنجاح ');
-
-        return redirect('/');
+        return  response()->json(['status' => 200]);
+//        session()->flash('success','تم تقديم السمتند بنجاح ');
+//
+//        return redirect('/');
     }
 
     private function addBrands($request)

@@ -96,4 +96,3 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
 
 Route::get('/search','Livewire\Products')->name('search');
 
-
