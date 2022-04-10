@@ -96,3 +96,10 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
 
 Route::get('/search','Livewire\Products')->name('search');
 
+
+
+Route::get('test-phone',function (){
+
+     \App\Http\Helpers\Sms::test('+966591496036','code active ');
+
+});

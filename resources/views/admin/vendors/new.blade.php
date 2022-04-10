@@ -38,6 +38,7 @@
                         <th> الإسم</th>
                         <th> رقم الهاتف</th>
                         <th>إيميل التواصل</th>
+                        <th>كود التفعيل</th>
                         <th>البنك التابع له</th>
                         <th>الحي التابع له</th>
                         <th>@lang('trans.created_at')</th>
@@ -52,6 +53,7 @@
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->phone ? : 'لايوجد' }}</td>
                             <td>{{ $row->email ? : 'لايوجد' }}</td>
+                            <td>{{ $row->verify?->action_code }}</td>
                             <td>{{ $row->bank?->name ? : 'لايوجد' }}</td>
                             <td>{{ $row->country?->name ? : 'لايوجد' }}</td>
                             <td>{{ $row->created_at != ''? @$row->created_at->format('Y/m/d'): "--" }}</td>
