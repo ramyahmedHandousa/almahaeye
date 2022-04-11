@@ -84,4 +84,42 @@
 
     </div>
 
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+
+
+                <table class="table table-striped table-bordered dt-responsive nowrap">
+                    <thead>
+                    <tr>
+                        <th> صورة الماركة</th>
+                        <th> إسم الماركة</th>
+                        <th> نوع المنتج</th>
+                        <th> سعر المنتج</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach($vendorBrands as $row)
+                        <tr>
+                            <td>
+                                <a data-fancybox="gallery"
+                                   href="{{ $row->getFirstMediaUrl()?:asset('/default.png')  }}">
+                                    <img class="img" style="width: 50px;height: 50px;object-fit: cover;border-radius: 10px;"
+                                         src="{{ $row->getFirstMediaUrl()?:asset('/default.png') }}"/>
+                                </a>
+                            </td>
+                            <td>{{ $row->brand?->name }}</td>
+                            <td>{{ $row->product_type?->name }}</td>
+                            <td>{{ $row->price }}</td>
+                        </tr>
+                    @endforeach
+
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- end col -->
+    </div>
 @endsection

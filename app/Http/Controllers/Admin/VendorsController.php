@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\VendorBrand;
 use Illuminate\Http\Request;
 
 class VendorsController extends Controller
@@ -40,7 +41,9 @@ class VendorsController extends Controller
 
     public function marketing_information(User $user)
     {
-        return view('admin.vendors.marketing_agreement',compact('user'));
+        $vendorBrands = VendorBrand::where('user_id',$user->id)->with('brand','product_type')->get();
+
+        return view('admin.vendors.marketing_agreement',compact('user','vendorBrands'));
     }
 
 
