@@ -69,7 +69,7 @@ class VendorsController extends Controller
     public function percentage(Request $request)
     {
         $user = User::find($request->id);
-        if ($user && (intval($request->value) <= 100)){
+        if ($user && (intval($request->value) <= 1000)){
             $user->update(['percentage' => intval($request->value)]);
         }
     }
