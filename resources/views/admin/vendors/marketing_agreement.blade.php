@@ -57,7 +57,9 @@
                                 {{$user->marketing_agree_info['master_two']['company_name'] ?? '---'}}
                                 - بسجل تجاري رقم
                                 {{$user->marketing_agree_info['master_two']['commercialـrecord'] ?? '---'}}
-                                وعنوانھا الدمام ھاتف رقم
+                                وعنوانھا
+                                {{$user->marketing_agree_info['master_two']['address'] ?? '---'}}
+                                ھاتف رقم
                                 {{$user->marketing_agree_info['master_two']['number'] ?? '---'}}
                                 ویمثلھا في التوقیع على ھذه الإتفاقیة
                             </h4>
