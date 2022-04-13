@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\ProductType;
 use App\Models\User;
 use App\Models\VendorBrand;
 use Illuminate\Http\Request;
@@ -43,7 +45,11 @@ class VendorsController extends Controller
     {
         $vendorBrands = VendorBrand::where('user_id',$user->id)->with('brand','product_type')->get();
 
-        return view('admin.vendors.marketing_agreement',compact('user','vendorBrands'));
+        $brands = Brand::all();
+
+        $productTypes = ProductType::all();
+
+        return view('admin.vendors.marketing_agreement',compact('user','vendorBrands','brands','productTypes'));
     }
 
 
@@ -80,5 +86,13 @@ class VendorsController extends Controller
         if ($user ){
             $user->update(['delivery_price' => $request->value]);
         }
+    }
+
+    public function updateVendorBrandData(Request $request)
+    {
+        $vendorBrand = VendorBrand::findOrFail($request->id);
+
+        $vendorBrand->fill([$request->type  => $request->value]);
+        $vendorBrand->save();
     }
 }
