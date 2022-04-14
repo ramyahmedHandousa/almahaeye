@@ -74,6 +74,7 @@ class ProductController extends Controller
         $this->upload_image($product,$request);
         $this->upload_request_image($product,$request,'gtlf');
         $this->upload_request_image($product,$request,'btn');
+        $this->upload_request_image($product,$request,'glb');
         $this->upload_multi_images($product,$request);
 
         session()->flash('success','تم الإضافة  بنجاح');
@@ -91,6 +92,7 @@ class ProductController extends Controller
         $this->upload_image($product,$request);
         $this->upload_request_image($product,$request,'gtlf');
         $this->upload_request_image($product,$request,'btn');
+        $this->upload_request_image($product,$request,'glb');
         $this->upload_multi_images($product,$request);
 
         session()->flash('success','تم التعديل  بنجاح');

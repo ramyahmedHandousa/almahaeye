@@ -16,7 +16,9 @@ class OrderNotification extends Notification implements HasFirebaseChannel
 
     public function via($notifiable)
     {
-        return [ 'database', FireBaseChannel::class];
+        return [ 'database',
+            FireBaseChannel::class
+        ];
     }
 
     public function toArray($notifiable)

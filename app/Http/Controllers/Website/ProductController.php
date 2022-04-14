@@ -26,5 +26,14 @@ class ProductController extends Controller
     }
 
 
+    public function virtual(Product $product)
+    {
+        if (!$product->getFirstMediaUrl('glb')){
+            return redirect()->back();
+        }
+
+        return view('website.products.virtual',compact('product'));
+    }
+
 
 }

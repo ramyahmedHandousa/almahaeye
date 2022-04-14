@@ -24,7 +24,7 @@
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
                             <div class="carousel-indicators">
-                                @foreach($product->media as $media)
+                                @foreach($product->media->where('collection_name','!=','glb') as $media)
                                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                                             class="active" aria-current="true" aria-label="Slide 1">
                                         <img loading="lazy"  src="{{$media->getUrl()}}">
@@ -32,7 +32,7 @@
                                 @endforeach
                             </div>
                             <div class="carousel-inner">
-                                @foreach($product->media as $media)
+                                @foreach($product->media->where('collection_name','!=','glb') as $media)
                                     <div class="carousel-item active">
                                         <img loading="lazy"  src="{{$media->getUrl()}}">
                                     </div>
@@ -156,6 +156,22 @@
                                     </div>
                                     <span>أضف إلى سلة الشراء</span>
                                 </a>
+
+
+                                @if($product->getFirstMediaUrl('glb'))
+                                    <!-- product Virtual experience button -->
+                                    <a class="btn btn-black"   href="{{route('virtual-product',$product->id)}}">
+                                        <div class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="39.064" height="16"
+                                                 viewBox="0 0 39.064 16">
+                                                <path id="Path_3765" data-name="Path 3765"
+                                                      d="M37.92,153.342H35.214a7.988,7.988,0,0,0-11.709.769,6.42,6.42,0,0,0-7.947,0,7.988,7.988,0,0,0-11.709-.769H1.144a1.144,1.144,0,1,0,0,2.289h1.02a8,8,0,1,0,14.583.474,4.125,4.125,0,0,1,5.571,0A8,8,0,1,0,36.9,155.63h1.02a1.144,1.144,0,1,0,0-2.289ZM9.348,164.858a5.711,5.711,0,1,1,5.711-5.711A5.718,5.718,0,0,1,9.348,164.858Zm20.367,0a5.711,5.711,0,1,1,5.711-5.711A5.718,5.718,0,0,1,29.716,164.858Z"
+                                                      transform="translate(0 -151.147)" fill="#fff"/>
+                                            </svg>
+                                        </div>
+                                        <span>التجربة الإفتراضى</span>
+                                    </a>
+                                @endif
                                 <!-- product share -->
                                 <div class="share">
                                     <span class="title">شارك المنتج</span>

@@ -377,7 +377,7 @@
 
             <div class="row">
 
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="card-box" style="overflow: hidden;">
                         <h4 class="header-title m-t-0 m-b-30">  الصورة   الأساسية</h4>
                         <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
@@ -393,7 +393,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="card-box" style="overflow: hidden;">
                         <h4 class="header-title m-t-0 m-b-30">  صورة GTLF    </h4>
                         <div class="form-group {{ $errors->has('gtlf') ? ' has-error' : '' }}">
@@ -409,7 +409,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="card-box" style="overflow: hidden;">
                         <h4 class="header-title m-t-0 m-b-30">   صورة   BIN</h4>
                         <div class="form-group {{ $errors->has('btn') ? ' has-error' : '' }}">
@@ -419,6 +419,23 @@
                                 @if($errors->has('btn'))
                                     <p class="help-block">
                                         {{ $errors->first('btn') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="card-box" style="overflow: hidden;">
+                        <h4 class="header-title m-t-0 m-b-30">   glb    </h4>
+                        <div class="form-group {{ $errors->has('glb') ? ' has-error' : '' }}">
+                            <div class="col-sm-12">
+                                <input   id="glb" type="file"
+                                         name="glb" class="dropify" data-max-file-size="6M"/>
+                                @if($errors->has('glb'))
+                                    <p class="help-block">
+                                        {{ $errors->first('glb') }}
                                     </p>
                                 @endif
                             </div>

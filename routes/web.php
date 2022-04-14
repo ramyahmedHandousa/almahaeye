@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
     Route::get('categories/{category?}','CategoryController')->name('categories');
 
     Route::get('products/{product?}','ProductController')->name('products');
-
+    Route::get('virtual-product/{product}','ProductController@virtual')->name('virtual-product');
     Route::group(['namespace' => 'Auth'], function () {
 
         Route::post('/login','LoginController')->name('login');
@@ -103,3 +103,5 @@ Route::get('test-phone',function (){
      \App\Http\Helpers\Sms::test('+966591496036','code active ');
 
 });
+
+Route::view('test_vr','test_vr');
