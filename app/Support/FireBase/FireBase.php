@@ -28,10 +28,12 @@ class FireBase
         $request = [
             'registration_ids'                      => $tokens,
             'priority'                              => 'high',
-            $notification ? 'notification' : 'data' => $data,
+//            $notification ? 'notification' : 'data' => $data,
+            'notification'  => $data,
+            'data' => $data,
         ];
 
-        return self::makeRequest($request);
+        return self::makeRequest($request,true);
     }
 
     public static function usingTopic(string $topic, string $title, string $body) : bool

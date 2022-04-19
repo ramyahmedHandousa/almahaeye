@@ -7,7 +7,6 @@ use App\Support\FireBase\FireBaseChannel;
 use App\Support\FireBase\FireBaseModel;
 use App\Support\FireBase\HasFirebaseChannel;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\Facades\Log;
 
 class OrderNotification extends Notification implements HasFirebaseChannel
 {
@@ -28,22 +27,18 @@ class OrderNotification extends Notification implements HasFirebaseChannel
 
     public function toFirebase($notifiable): FireBaseModel
     {
-        return $this->arrayToFireBase($notifiable);
-    }
-
-    private function arrayToFireBase($notifiable)
-    {
         $title  = __('eye_lang.'.$this->dataPass->title);
+
         $message  = __('eye_lang.'.$this->dataPass->message);
+
         $orderModel  = [
-//            'title' => $title ,
-//            'body'  => $message ,
+            'title' => $title ,
+            'body'  => $message ,
             'order' => (new OrderNotificationModelResource($this->order))->resolve(request())
         ] ;
 
         return new FireBaseModel('order',$title,$message, $orderModel);
     }
-
 
     private function dataSendToUser($notifiable): array
     {

@@ -5,7 +5,8 @@ let carts =   document.querySelectorAll('.add-to-cart'),
     cartCoupon = null,
     cartAddressId = null,
     cartShippingId = null,
-    pageStatus = 0
+    cartPaymentChoose = null,
+    pageStatus = 0;
 
 
 // for (let i = 0; i < carts.length; i++) {
@@ -212,51 +213,62 @@ $("#check-code").on('click',function () {
 $("#cartNextStep").click(function () {
     let cartListProducts = $(".cart-list-products"),
         cartListAddress = $(".cart-list-address"),
-        cartListShipping = $(".cart-list-shipping");
+        cartListShipping = $(".cart-list-shipping"),
+        cartPayment = $(".cart-payment-choose");
 
 
     if (pageStatus === 0){
 
-        cartListProducts.hide()
-        cartListAddress.show()
-        pageStatus = 1
+        cartListProducts.hide();
+        cartListAddress.show();
+        pageStatus = 1;
 
     }else if(pageStatus === 1){
 
         if ($(".cart-choose-address").is(":checked")){
-            cartAddressId = $('.cart-choose-address:checked').val()
-            cartListProducts.hide()
-            cartListAddress.hide()
-            cartListShipping.show()
-            pageStatus = 2
+            cartAddressId = $('.cart-choose-address:checked').val();
+            cartListProducts.hide();
+            cartListAddress.hide();
+            cartListShipping.show();
+            pageStatus = 2;
         }else {
             toastr['error']('إختار عنوان من فضلك', 'عنوان الطلب');
         }
     }else if (pageStatus === 2 ){
 
         if ($(".cart-choose-shipping").is(":checked")){
-            cartShippingId = $('.cart-choose-shipping:checked').val()
-            cartListProducts.hide()
-            cartListAddress.hide()
-            cartListShipping.show()
-
-           if (cartAddressId && cartShippingId){
-               makeOrderCart(cartAddressId,cartShippingId,cartCoupon)
-           }
-
+            cartShippingId = $('.cart-choose-shipping:checked').val();
+            cartListProducts.hide();
+            cartListAddress.hide();
+            cartListShipping.hide();
+            cartPayment.show();
+            pageStatus = 3;
         }else {
             toastr['error']('إختار شركة الشحن من فضلك', 'شحن الطلب');
         }
     }else {
 
-        console.log('========pageStatus else =============')
+        if ($(".cart-choose-payment").is(":checked")){
+            cartPaymentChoose = $('.cart-choose-payment:checked').val();
+            cartListProducts.hide();
+            cartListAddress.hide();
+            cartListShipping.hide();
+            cartPayment.show();
+
+            if (cartAddressId && cartShippingId && cartPaymentChoose){
+                makeOrderCart(cartAddressId,cartShippingId,cartCoupon,cartPaymentChoose);
+            }
+
+        }else {
+            toastr['error']('إختار  طريقة الدفع من فضلك', 'دفع الطلب');
+        }
 
 
     }
 
 });
 
-function makeOrderCart(cartAddressId,cartShippingId,cartCoupon){
+function makeOrderCart(cartAddressId,cartShippingId,cartCoupon,payment_method){
 
     $.ajax({
         url: "/orders",
@@ -268,20 +280,24 @@ function makeOrderCart(cartAddressId,cartShippingId,cartCoupon){
             address_id:cartAddressId,
             shipping_id:cartShippingId,
             coupon:cartCoupon,
+            payment_method: payment_method
         },
         success:function(response){
 
            if (response.status === 200){
-               toastr['success']('تم طلبك بنجاح ', 'الطلبات');
-               localStorage.setItem('itemsNumbers',0  );
-               window.location.href = '/orders'
+
+               if(response.data.empty){
+                   toastr['success']('تم طلبك بنجاح ', 'الطلبات');
+                   localStorage.setItem('itemsNumbers',0  );
+               }
+
+               window.location.href = response.data.url;
            }else {
                toastr['error']('للأسف حدث خطأ ما اثناء الطلب...', 'الطلبات');
            }
         },
         error: function(error) {
 
-            console.log(error)
             toastr['error']('برجاء التأكد من إستكمال جميع البيانات من فضلك', 'الطلبات');
 
             $("#cartNextStep").show();

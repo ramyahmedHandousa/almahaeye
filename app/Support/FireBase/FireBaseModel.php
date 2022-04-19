@@ -30,7 +30,7 @@ class FireBaseModel
         return [
             'type'         => $this->type,
             'title'        => $this->title,
-            'message'      => $this->message,
+            'body'          => $this->message,
             'related_data' => $this->relatedData,
             'icon'         => asset('icon.png'),
         ];
@@ -40,7 +40,7 @@ class FireBaseModel
     {
         return [
             'title'        => $this->title,
-            'message'         => $this->message,
+            'body'         => $this->message,
             'click_action' => $this->action,
             "sound"        => "default",
         ];

@@ -91,6 +91,13 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
         Route::post('contact/us','ContactUsController@store')->name('send.contact.us');
 
     });
+
+
+//    Route::get('payment', 'MyFatoorahController@index');
+    Route::get('payment', 'MyFatoorahController@index')->name('pay-online');
+    Route::get('my-payment/callback', 'MyFatoorahController@callback');
+    Route::get('my-payment/error', 'MyFatoorahController@error');
+
 });
 
 
@@ -105,3 +112,12 @@ Route::get('test-phone',function (){
 });
 
 Route::view('test_vr','test_vr');
+
+Route::get('bola',function (\Illuminate\Http\Request $request){
+
+    $ids = [1,2,3,4,5,6];
+
+
+    return  redirect()->route('pay-online',['ids' => json_encode($ids),'total' => 1000]);
+//    return  redirect()->route('pay-online');
+});

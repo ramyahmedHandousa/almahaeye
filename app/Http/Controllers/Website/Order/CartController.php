@@ -50,26 +50,10 @@ class CartController extends Controller
 
                 $firstCart = collect($cart)->firstWhere('id','=',$product->id);
 
-                $cart[$product->id] = [
-                    'id'        => $product->id,
-                    'user_id'   => $product->user_id,
-                    'name'      => $product->name,
-                    'price'     => $product->price,
-                    'discount'  => $product->discount,
-                    'quantity'  => $quantity + $firstCart['quantity'],
-                    'image'     => $product->getFirstMediaUrl('master_image')
-                ];
+                $cart[$product->id] = $this->baseModelCart($product,$quantity + $firstCart['quantity']);
             }else{
 
-                $cart[$product->id] = [
-                    'id'        => $product->id,
-                    'user_id'   => $product->user_id,
-                    'name'      => $product->name,
-                    'price'     => $product->price,
-                    'discount'  => $product->discount,
-                    'quantity'  => $quantity,
-                    'image'     => $product->getFirstMediaUrl('master_image')
-                ];
+                $cart[$product->id] = $this->baseModelCart($product,$quantity);
             }
 
 
@@ -85,19 +69,23 @@ class CartController extends Controller
         return response()->json(['status' => 400,'data' => null],400);
     }
 
-    public function update(Request $request,Product $product)
+    private function baseModelCart($product,$quantity): array
     {
-        $cart = collect(session()->get('cart'))->keyBy('id');
-
-        $cart[$product->id] = [
+        return [
             'id'        => $product->id,
             'user_id'   => $product->user_id,
             'name'      => $product->name,
             'price'     => $product->price,
             'discount'  => $product->discount,
-            'quantity'  => $request->quantity,
+            'quantity'  => $quantity,
             'image'     => $product->getFirstMediaUrl('master_image')
         ];
+    }
+    public function update(Request $request,Product $product)
+    {
+        $cart = collect(session()->get('cart'))->keyBy('id');
+
+        $cart[$product->id] = $this->baseModelCart($product,$request->quantity);
 
         session()->put('cart',$cart);
 

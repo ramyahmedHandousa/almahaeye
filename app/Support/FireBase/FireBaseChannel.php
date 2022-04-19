@@ -2,7 +2,6 @@
 
 namespace App\Support\FireBase;
 
-use Illuminate\Support\Facades\Log;
 
 class FireBaseChannel
 {

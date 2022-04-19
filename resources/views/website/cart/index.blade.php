@@ -19,6 +19,8 @@
 
                 @include('website.cart.sections.list-shipping')
 
+                @include('website.cart.sections.list-payment-choose')
+
                 @include('website.cart.sections.order-info')
 
         </div>

@@ -148,6 +148,64 @@
             "install-path": "../astrotomic/laravel-translatable"
         },
         {
+            "name": "ayman-elmalah/laravel-myfatoorah",
+            "version": "v1.0.3",
+            "version_normalized": "1.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ayman-elmalah/laravel-myfatoorah.git",
+                "reference": "f08c92258577bf071bdb78de8caf2d40f49d3de9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ayman-elmalah/laravel-myfatoorah/zipball/f08c92258577bf071bdb78de8caf2d40f49d3de9",
+                "reference": "f08c92258577bf071bdb78de8caf2d40f49d3de9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.4|^8.0"
+            },
+            "time": "2021-04-02T20:41:36+00:00",
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AymanElmalah\\MyFatoorah\\MyFatoorahServiceProvider"
+                    ],
+                    "aliases": {
+                        "MyFatoorah": "AymanElmalah\\MyFatoorah\\Facades\\MyFatoorah"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "AymanElmalah\\MyFatoorah\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ayman Elmalah",
+                    "email": "aymanelmalah77@gmail.com"
+                }
+            ],
+            "description": "My fatoorah api wrapper ",
+            "support": {
+                "issues": "https://github.com/ayman-elmalah/laravel-myfatoorah/issues",
+                "source": "https://github.com/ayman-elmalah/laravel-myfatoorah/tree/v1.0.3"
+            },
+            "install-path": "../ayman-elmalah/laravel-myfatoorah"
+        },
+        {
             "name": "brick/math",
             "version": "0.9.3",
             "version_normalized": "0.9.3.0",

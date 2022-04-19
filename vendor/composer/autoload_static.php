@@ -20,14 +20,14 @@ class ComposerStaticInit3c866e926888c6771da7805e962b403a
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '9cdd7b9056abc3081735233ba9dd9c7f' => __DIR__ . '/..' . '/facade/flare-client-php/src/helpers.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
@@ -191,6 +191,7 @@ class ComposerStaticInit3c866e926888c6771da7805e962b403a
         ),
         'A' => 
         array (
+            'AymanElmalah\\MyFatoorah\\' => 24,
             'Astrotomic\\Translatable\\' => 24,
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
@@ -566,6 +567,10 @@ class ComposerStaticInit3c866e926888c6771da7805e962b403a
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'AymanElmalah\\MyFatoorah\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ayman-elmalah/laravel-myfatoorah/src',
+        ),
         'Astrotomic\\Translatable\\' => 
         array (
             0 => __DIR__ . '/..' . '/astrotomic/laravel-translatable/src/Translatable',
@@ -604,6 +609,9 @@ class ComposerStaticInit3c866e926888c6771da7805e962b403a
         'App\\Http\\Controllers\\Admin\\CountryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CountryController.php',
         'App\\Http\\Controllers\\Admin\\HelpAdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HelpAdminController.php',
         'App\\Http\\Controllers\\Admin\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/HomeController.php',
+        'App\\Http\\Controllers\\Admin\\Manager\\AbilitiesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Manager/AbilitiesController.php',
+        'App\\Http\\Controllers\\Admin\\Manager\\HelperAdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Manager/HelperAdminController.php',
+        'App\\Http\\Controllers\\Admin\\Manager\\RolesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Manager/RolesController.php',
         'App\\Http\\Controllers\\Admin\\NotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/NotificationController.php',
         'App\\Http\\Controllers\\Admin\\Products\\AgeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Products/AgeController.php',
         'App\\Http\\Controllers\\Admin\\Products\\ColorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Products/ColorController.php',
@@ -640,6 +648,7 @@ class ComposerStaticInit3c866e926888c6771da7805e962b403a
         'App\\Http\\Controllers\\Api\\MasterApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/MasterApiController.php',
         'App\\Http\\Controllers\\Api\\Orders\\Actions\\OrderAcceptedController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Orders/Actions/OrderAcceptedController.php',
         'App\\Http\\Controllers\\Api\\Orders\\Actions\\OrderFinishController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Orders/Actions/OrderFinishController.php',
+        'App\\Http\\Controllers\\Api\\Orders\\Actions\\OrderRateController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Orders/Actions/OrderRateController.php',
         'App\\Http\\Controllers\\Api\\Orders\\Actions\\OrderRefuseController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Orders/Actions/OrderRefuseController.php',
         'App\\Http\\Controllers\\Api\\Orders\\Actions\\checkPromoCodeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Orders/Actions/checkPromoCodeController.php',
         'App\\Http\\Controllers\\Api\\Orders\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Orders/CartController.php',
@@ -794,6 +803,10 @@ class ComposerStaticInit3c866e926888c6771da7805e962b403a
         'Astrotomic\\Translatable\\TranslatableServiceProvider' => __DIR__ . '/..' . '/astrotomic/laravel-translatable/src/Translatable/TranslatableServiceProvider.php',
         'Astrotomic\\Translatable\\Validation\\RuleFactory' => __DIR__ . '/..' . '/astrotomic/laravel-translatable/src/Translatable/Validation/RuleFactory.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'AymanElmalah\\MyFatoorah\\Facades\\MyFatoorah' => __DIR__ . '/..' . '/ayman-elmalah/laravel-myfatoorah/src/Facades/MyFatoorah.php',
+        'AymanElmalah\\MyFatoorah\\MyFatoorah' => __DIR__ . '/..' . '/ayman-elmalah/laravel-myfatoorah/src/MyFatoorah.php',
+        'AymanElmalah\\MyFatoorah\\MyFatoorahServiceProvider' => __DIR__ . '/..' . '/ayman-elmalah/laravel-myfatoorah/src/MyFatoorahServiceProvider.php',
+        'AymanElmalah\\MyFatoorah\\Services\\Service' => __DIR__ . '/..' . '/ayman-elmalah/laravel-myfatoorah/src/Services/Service.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',

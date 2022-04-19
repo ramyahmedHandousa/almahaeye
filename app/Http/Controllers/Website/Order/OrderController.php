@@ -4,15 +4,14 @@ namespace App\Http\Controllers\Website\Order;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Website\Order\OrderStoreValid;
-use App\Models\Address;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use App\Models\PromoCode;
 use App\Models\Setting;
 use App\Models\Shipping;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\URL;
 use JetBrains\PhpStorm\ArrayShape;
 
 class OrderController extends Controller
@@ -69,18 +68,35 @@ class OrderController extends Controller
 
             $cartProducts = collect($cart)->groupBy('user_id');
 
-            foreach ($cartProducts as $vendorId =>  $cartProduct){
+            $orderDataFilter  = [];
 
-                $order = $this->createOrder($cartProduct,$vendorId,$request);
+                foreach ($cartProducts as $vendorId =>  $cartProduct){
 
-                OrderDetails::insert($this->transformProducts($cartProduct,$order));
-            }
+                    $order = $this->createOrder($cartProduct,$vendorId,$request);
 
-            Session::forget('cart');
+                    $orderDataFilter[$vendorId]['id'] = $order->id;
+                    $orderDataFilter[$vendorId]['total_price'] = $order->total_price;
+
+                    OrderDetails::insert($this->transformProducts($cartProduct,$order));
+                }
+
+                    if ($request->payment_method != 'online'){
+                        Session::forget('cart');
+                    }
 
             DB::commit();
 
-            return response()->json(['status' => 200]);
+            $orderIds = collect($orderDataFilter)->pluck('id');
+            $totalOrderPrice = collect($orderDataFilter)->sum('total_price');
+
+            return response()->json([
+                'status' => 200,
+                'data' => [
+                    'url'   => $request->payment_method != 'online' ? URL::to('orders') : URL::to('/payment?ids='. json_encode($orderIds) .'&total=' . $totalOrderPrice),
+                    'empty' => $request->payment_method != 'online',
+                    'orderData' => $orderDataFilter
+                ]
+            ]);
 
         } catch (\Exception $e) {
 
@@ -110,7 +126,7 @@ class OrderController extends Controller
             'tax'               => $percentage,
             'price'             => $calculatorCart['cartPrice'],
             'total_price'       => $calculatorCart['totalPrice'] + $shipping?->price,
-            'status'            => 'pending',
+            'status'            => $request->payment_method != 'online' ? 'pending' : 'cart',
             'payment'           => $request->payment ? : 'cash'
         ]);
 

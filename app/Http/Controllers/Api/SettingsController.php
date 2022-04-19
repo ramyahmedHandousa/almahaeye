@@ -45,18 +45,21 @@ class SettingsController extends MasterApiController
 
     public function testNotification()
     {
-//        $data = ['fmfLfo9dRXOfPYL87tcumy:APA91bGps8qc26gNQRe75wBlQ5RIY163CfND_2j2Qh8GJ_khOkFB1xqo89uuhA0MY8LFmSSU86CkuBzCSdwmNC9SAVdW3DSZahR1RoThe3wX9ZBIO166MhRI7EMXxeRHYRL3qomruUj7'];
+
+//        $data = ['dNyvu_8vS_WqfsLWemimFY:APA91bFEVEy3rxAz1RI8Uzqmgx8r44ub35DMg7jLX4qAjS6-Z_vJliTER1kMJ2gg68YgE0vz9GNHBheH7H2IbtQjvlcB0TY50qvCQ3nzU6cH_qEd9no4Y16zVpCUqOQhMTnwlcX-xwFt'];
 
 //        return FireBase::usingTokens($data,['title' => 'testing','body' => 'bola','ramy' => 'testing now'],true);
 
-        $order = Order::find(6);
-
+        $order = Order::find(5);
+//
         $dataNotification  =  new NotificationClass(title: 'order.orders',message: 'order.new order' );
 
         $order?->user?->notify(new OrderNotification($order,$dataNotification));
 //
 //        return 'ok';
-        return FireBase::usingTopic('public_notification','topic','public notification channel');
+
+//        return FireBase::usingTopic('public_notification','topic','public notification channel');
+
     }
 
 }

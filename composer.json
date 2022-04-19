@@ -6,7 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-curl": "*",
         "astrotomic/laravel-translatable": "^11.9",
+        "ayman-elmalah/laravel-myfatoorah": "^1.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.75",
@@ -16,8 +18,7 @@
         "livewire/livewire": "^2.10",
         "pusher/pusher-php-server": "^7.0",
         "silber/bouncer": "^1.0",
-        "spatie/laravel-medialibrary": "^9.0.0",
-      "ext-curl": "*"
+        "spatie/laravel-medialibrary": "^9.0.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

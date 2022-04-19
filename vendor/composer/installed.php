@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '7bfcc4ea7722645cf2eaa63daa77126372edaa0e',
+        'reference' => 'b8869b2fc4bccb202fc6e028318e8d946158e774',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../astrotomic/laravel-translatable',
             'aliases' => array(),
             'reference' => 'd853a3c34be42941dc83c5cddd9e1e98c71abae1',
+            'dev_requirement' => false,
+        ),
+        'ayman-elmalah/laravel-myfatoorah' => array(
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ayman-elmalah/laravel-myfatoorah',
+            'aliases' => array(),
+            'reference' => 'f08c92258577bf071bdb78de8caf2d40f49d3de9',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -418,7 +427,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '7bfcc4ea7722645cf2eaa63daa77126372edaa0e',
+            'reference' => 'b8869b2fc4bccb202fc6e028318e8d946158e774',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
