@@ -49,6 +49,8 @@ Route::group(['namespace' => 'Api'], function () {
 
         Route::apiResource('favorites','FavoriteProductController');
 
+        Route::apiResource('rating-products','ProductRateController');
+
     });
 
     Route::get('home-page','HomePageController');

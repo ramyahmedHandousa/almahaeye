@@ -3,7 +3,10 @@
 namespace App\Http\Resources\Products;
 
 use App\Http\Resources\GlobalFilterNameResource;
+use App\Models\FavoriteProduct;
+use App\Models\OrderDetails;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShowProductResource extends JsonResource
@@ -11,6 +14,8 @@ class ShowProductResource extends JsonResource
 
     public function toArray($request)
     {
+        $user = User::whereApiToken($request->bearerToken())->first();
+
         return [
             'id'                    => $this->id,
             'name'                  => $this->name,
@@ -19,8 +24,8 @@ class ShowProductResource extends JsonResource
             'discount_after'        => number_format($this->price - $this->discount,2),
             'discount_percentage'   => $this->discountProduct(),
             'image'                 => $this->getFirstMediaUrl('master_image'),
-            'in_cart'               => false,
-            'in_favourite'          => false,
+            'in_cart'               =>  OrderDetails::whereUserIdAndProductId($user?->id,$this->id)->exists(),
+            'in_favourite'          =>  FavoriteProduct::whereUserIdAndProductId($user?->id,$this->id)->exists(),
             'category'              => new GlobalFilterNameResource($this->category),
             'brand'                 => new GlobalFilterNameResource($this->brand),
             'age'                   => new GlobalFilterNameResource($this->age),
@@ -45,4 +50,6 @@ class ShowProductResource extends JsonResource
     {
         return Product::where('id','!=', $this->id)->where('brand_id',$this->brand_id)->take(5)->get();
     }
+
+
 }

@@ -97,7 +97,7 @@ class MyFatoorahController extends Controller
         $orders->each->update($data);
 
         Session::forget('cart');
-        
+
         session()->flash('success','تم  طلبك بنجاح');
 
         return redirect()->route('orders.index');
