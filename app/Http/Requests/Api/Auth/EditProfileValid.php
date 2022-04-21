@@ -30,6 +30,7 @@ class EditProfileValid extends MasterApiFormRequest
             'email'         => 'sometimes|email|unique:users,email,'.auth()->id(),
             'phone'         => 'sometimes|digits:10|regex:/(05)[0-9]{8}/|numeric|unique:users,phone,'.auth()->id(),
             'image'         => 'sometimes|mimes:jpeg,png,jpg|max:20000',
+            'city_address'  => 'required',
         ];
     }
 
