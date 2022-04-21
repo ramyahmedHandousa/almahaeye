@@ -18,7 +18,7 @@ class ShowProductResource extends JsonResource
 
         return [
             'id'                    => $this->id,
-            'name'                  => $this->name,
+            'name'                  => $this->name ? : $this->brand?->name,
             'price'                 => $this->price,
             'discount'              => $this->discount,
             'discount_after'        => number_format($this->price - $this->discount,2),

@@ -12,7 +12,7 @@ class ListProductResource extends JsonResource
     {
         return [
             'id'                    => $this->id,
-            'name'                  => $this->name,
+            'name'                  => $this->name ? : $this->brand?->name,
             'price'                 => number_format($this->price,2),
             'discount'              => $this->discount,
             'discount_after'        => number_format($this->price - $this->discount,2),

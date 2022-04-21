@@ -30,7 +30,7 @@ class ProductController extends MasterApiController
 
         $this->pagination_query($request,$productQuery);
 
-        $products = $productQuery->get();
+        $products = $productQuery->with('brand')->get();
 
         $this->checkAuthUser($products,$request);
 
