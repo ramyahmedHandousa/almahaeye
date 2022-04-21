@@ -14,6 +14,7 @@ class ListProductResource extends JsonResource
             'id'                    => $this->id,
             'name'                  => $this->name ? : $this->brand?->name,
             'price'                 => number_format($this->price,2),
+            'avg_rate'              => number_format($this->rating_avg_rate,2),
             'discount'              => $this->discount,
             'discount_after'        => number_format($this->price - $this->discount,2),
             'discount_percentage'   => $this->discountProduct(),
