@@ -75,7 +75,7 @@
                 <!-- comment -->
                     <div class="comment">
                 <div class="writer-img">
-                    <div class="img"><img loading="lazy" src="{{ $rate?->user?->getFirstMediaUrl('master_image')}}"></div>
+                    <div class="img"><img loading="lazy" src="{{ $rate?->user?->getFirstMediaUrl() ? : asset('website/templates/images/avatar.png')}}"></div>
                 </div>
                 <div class="comment-details">
                     <div class="comment-time">{{$rate->created_at?->diffForHumans()}}</div>
