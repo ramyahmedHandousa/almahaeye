@@ -1,5 +1,8 @@
 @extends('website.layouts.master')
+@section('styles')
 
+    <link rel="stylesheet" href="{{ asset('website/templates/css/star-rating.min.css') }}">
+@endsection
 @section('content')
 
 
@@ -232,11 +235,61 @@
 {{--        </div>--}}
 {{--    </section>--}}
 
+
+    @auth
+        @include('.website.products.comments')
+    @endauth
+
 @endsection
 
 
 @section('scripts')
 
+    <script src="{{ asset('website/templates/js/star-rating.min.js') }}"></script>
+
+    <script>
+        // if ($('.kv-rtl-theme-fas-star').length) {
+            $('.kv-rtl-theme-fas-star').rating({
+                hoverOnClear: false,
+                theme: 'krajee-fas',
+                showCaption: 'false',
+                containerClass: 'is-star',
+                disabled: false
+            });
+            $('.kv-rtl-theme-fas-star').on('rating:change', function (event, value, caption) {
+
+                $('#rate_value').val(value);
+            });
+
+
+           $("#rate-product").submit(function (e) {
+            e.preventDefault();
+
+            var rate = $("#rate_value").val(),
+                comment = $(".my_comment_rate").val();
+
+            if(!rate.trim() && !comment.trim()){
+                toastr['error']('برجاء التأكد من إضافة تقييم او تعليق من فضلك', 'التقيمات');
+            }else {
+                $.ajax({
+                    url: '{{route('vendor-products.rate')}}',
+                    type:"post",
+                    data:{
+                        rate: rate,
+                        comment : comment ,
+                        product_id : '{{$product->id}}'
+                    },
+                    success:function(response){
+                        location.reload();
+                    },
+                    error: function(error) {
+                    }
+                });
+            }
+
+        });
+
+    </script>
     <script>
 
         $('.products').slick({
@@ -292,9 +345,5 @@
         }
     </script>
 
-
-    <script>
-
-    </script>
 
 @endsection

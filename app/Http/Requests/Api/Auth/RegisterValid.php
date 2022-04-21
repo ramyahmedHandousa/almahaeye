@@ -34,6 +34,7 @@ class RegisterValid extends MasterApiFormRequest
             'latitude'      => 'required',
             'longitude'      => 'required',
             'address'       => 'required',
+            'city_address'  => 'required',
             'image'         => 'sometimes|mimes:jpeg,png,jpg|max:20000'
         ];
     }

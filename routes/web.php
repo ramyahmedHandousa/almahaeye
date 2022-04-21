@@ -63,6 +63,7 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
             'parameters' => [  'vendor-products' => 'product' ]
         ]);
         Route::post('vendor-products-delete','ProductController@destroy')->name('vendor-products.delete');
+        Route::post('vendor-products-rate','RateProductController@store')->name('vendor-products.rate');
         Route::get('/list/categories/data','ProductController@categoriesData')->name('categories-data');
 
     });

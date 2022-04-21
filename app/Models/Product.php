@@ -84,4 +84,9 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(Color::class,'product_frame_colors');
     }
+
+    public function rating()
+    {
+        return $this->hasMany(ProductRate::class);
+    }
 }
