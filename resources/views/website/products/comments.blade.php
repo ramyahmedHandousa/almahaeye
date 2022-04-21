@@ -8,7 +8,7 @@
         <!-- review info -->
         <div class="info">
             <div class="total-info">
-                <div class="total">{{$countRatingProducts->avg_rate}} </div>
+                <div class="total">{{$countRatingProducts?->avg_rate}} </div>
                 <div class="stars ">
                     <i class="fas fa-star yellow"></i>
                     <i class="fas fa-star yellow"></i>
@@ -16,7 +16,7 @@
                     <i class="fas fa-star yellow"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <small>استنادا إلى {{$countRatingProducts->count}} تقييم</small>
+                <small>استنادا إلى {{$countRatingProducts?->count}} تقييم</small>
             </div>
             <div class="total-details">
                 <ul>
@@ -25,35 +25,35 @@
                         <span class="bar">
                                 <span style="width: 80%;"></span>
                             </span>
-                        <span>{{$countRatingProducts->five}}</span>
+                        <span>{{$countRatingProducts?->five}}</span>
                     </li>
                     <li>
                         <span>4 <i class="fas fa-star"></i></span>
                         <span class="bar">
                                 <span style="width: 60%;"></span>
                             </span>
-                        <span>{{$countRatingProducts->four}}</span>
+                        <span>{{$countRatingProducts?->four}}</span>
                     </li>
                     <li>
                         <span>3 <i class="fas fa-star"></i></span>
                         <span class="bar">
                                 <span style="width: 15%;"></span>
                             </span>
-                        <span>{{$countRatingProducts->three}}</span>
+                        <span>{{$countRatingProducts?->three}}</span>
                     </li>
                     <li>
                         <span>2 <i class="fas fa-star"></i></span>
                         <span class="bar">
                                 <span style="width: 42%;"></span>
                             </span>
-                        <span>{{$countRatingProducts->two}}</span>
+                        <span>{{$countRatingProducts?->two}}</span>
                     </li>
                     <li>
                         <span>1 <i class="fas fa-star"></i></span>
                         <span class="bar">
                                 <span style="width: 13%;"></span>
                             </span>
-                        <span>{{$countRatingProducts->one}}</span>
+                        <span>{{$countRatingProducts?->one}}</span>
                     </li>
                 </ul>
             </div>
