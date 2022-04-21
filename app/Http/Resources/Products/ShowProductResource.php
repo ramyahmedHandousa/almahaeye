@@ -26,6 +26,7 @@ class ShowProductResource extends JsonResource
             'image'                 => $this->getFirstMediaUrl('master_image'),
             'in_cart'               =>  OrderDetails::whereUserIdAndProductId($user?->id,$this->id)->exists(),
             'in_favourite'          =>  FavoriteProduct::whereUserIdAndProductId($user?->id,$this->id)->exists(),
+            'vr'                    => (boolean) $this->getFirstMediaUrl('glb'),
             'category'              => new GlobalFilterNameResource($this->category),
             'brand'                 => new GlobalFilterNameResource($this->brand),
             'age'                   => new GlobalFilterNameResource($this->age),
