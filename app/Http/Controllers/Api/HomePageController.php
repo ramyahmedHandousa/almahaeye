@@ -16,9 +16,9 @@ class HomePageController extends MasterApiController
 
         $mainCategories = Category::whereIsSuspended(0)->whereNull('parent_id')->get(['id']);
 
-        $productsMostOrder = Product::take(5)->latest()->get();
+        $productsMostOrder = Product::take(5)->latest()->withAvg('rating','rate')->get();
 
-        $offers = Product::where('discount','!=',0)->get();
+        $offers = Product::where('discount','!=',0)->withAvg('rating','rate')->get();
 
         $data = [
             'sliders'                   => $sliders,
@@ -51,6 +51,7 @@ class HomePageController extends MasterApiController
     {
         $categoriesHaveProducts = Product::whereHas('category',fn($category) => $category->whereHas('parent'))
             ->with('category.parent')
+            ->withAvg('rating','rate')
             ->get()
             ->groupBy('category.parent.id')->take(3);
 
