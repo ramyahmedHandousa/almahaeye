@@ -65,7 +65,7 @@
                             <span class="old-price"><span>{{$product->price_percentage ?? $product->price}}</span> ريال سعودى</span>
                         @else
 
-                            <span>{{$product->price}}</span> ريال سعودى
+                            <span>{{$product->price_percentage ?? $product->price}}</span> ريال سعودى
                         @endif
                     </div>
                     <!-- product summary -->
