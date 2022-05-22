@@ -105,7 +105,7 @@
                                     <li>
                                         <span class="attribute-name">لون الإطار</span>
                                         <span class="attribute-value">
-                                            <span class="colors">
+                                            <span class="colors" style="display: inline-block">
                                                 @foreach($product->frame_colors as $color)
                                                     <span class="color">{{$color->name}}</span>
                                                 @endforeach
@@ -117,7 +117,7 @@
                                 <li>
                                     <span class="attribute-name">لون العدسة</span>
                                     <span class="attribute-value">
-                                        <span class="colors">
+                                        <span class="colors" style="display: inline-block">
                                             @foreach($product->lens_colors as $color)
                                                 <span class="color">{{$color->name}}</span>
                                             @endforeach
