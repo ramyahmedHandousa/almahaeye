@@ -27,7 +27,7 @@
                             <a href="{{route('products',$product->id)}}">{{$product->name}}</a>
                         </h4>
                         <div class="product-price">
-                            <span>{{$product->price}}</span> ر.س
+                            <span>{{$product->price_percentage ?? $product->price}}</span> ر.س
                         </div>
                         <div class="product-title">
                             <span>{{$product->brand?->name}}</span>

@@ -62,7 +62,7 @@
                     <div class="product-price">
                         @if($product->discount)
                             <span>{{$product->discount}}</span> ريال سعودى
-                            <span class="old-price"><span>{{$product->price}}</span> ريال سعودى</span>
+                            <span class="old-price"><span>{{$product->price_percentage ?? $product->price}}</span> ريال سعودى</span>
                         @else
 
                             <span>{{$product->price}}</span> ريال سعودى

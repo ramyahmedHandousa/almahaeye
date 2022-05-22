@@ -41,7 +41,7 @@ class CartController extends Controller
 
         OrderDetails::updateOrCreate(['order_id' => $orderCart->id, 'product_id' => $product->id],[
             'user_id' => $product->user_id ,
-            'price' => $product->price, 'price_discount' => $product->discount
+            'price' => $product->price_percentage  ?? $product->price, 'price_discount' => $product->discount
         ]);
 
         $cart = auth()->user()->orders()->where('status','cart')->with('orderItems.product')->get();
@@ -62,7 +62,7 @@ class CartController extends Controller
 
             OrderDetails::updateOrCreate(['order_id' => $orderCart->id, 'product_id' => $product->id],[
                 'user_id'   => $product->user_id ,
-                'price'     => $product->price, 'price_discount' => $product->discount,
+                'price'     => $product->price_percentage ?? $product->price, 'price_discount' => $product->discount,
                 'quantity'  => $productRequest['quantity'] ?? DB::raw('quantity')
             ]);
         }
