@@ -75,7 +75,7 @@ class CartController extends Controller
             'id'        => $product->id,
             'user_id'   => $product->user_id,
             'name'      => $product->name,
-            'price'     => $product->price,
+            'price'     =>  $product->price_percentage  ?? $product->price,
             'discount'  => $product->discount,
             'quantity'  => $quantity,
             'image'     => $product->getFirstMediaUrl('master_image')
