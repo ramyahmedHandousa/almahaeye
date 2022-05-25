@@ -124,18 +124,30 @@
                                 <span>{{$order?->promoCode?->code ?? '-----'}}</span>
                             </li>
                         </ul>
+{{--                        <ul class="cart-orders-list">--}}
+{{--                            <li>--}}
+{{--                                <span>الشحن</span>--}}
+{{--                                <span class="product-price"><span>{{$order->shipping_price}}</span> ريال سعودى</span>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
                         <ul class="cart-orders-list">
                             <li>
-                                <span>الشحن</span>
+                                <span>قيمة التوصيل</span>
                                 <span class="product-price"><span>{{$order->shipping_price}}</span> ريال سعودى</span>
                             </li>
                         </ul>
                         <ul class="cart-orders-list">
                             <li>
-                <span>
-                  الإجمالي
-                  <small>شامل الضريبة المضافة</small>
-                </span>
+                                <span>الضريبة المضافة</span>
+                                <span class="product-price"><span>{{$order->tax}}</span> %</span>
+                            </li>
+                        </ul>
+                        <ul class="cart-orders-list">
+                            <li>
+                            <span>
+                              الإجمالي
+                              <small>شامل الضريبة المضافة</small>
+                            </span>
                                 <span class="product-price total"><span>{{$order->total_price}}</span> ريال سعودى</span>
                             </li>
                         </ul>
