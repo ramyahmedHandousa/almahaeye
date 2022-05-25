@@ -177,7 +177,7 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="lens_color_id">لون العدسة</label>
-                            <select name="lens_color_id[]" id="" class="form-control select2 requiredFieldWithMaxLenght" multiple required>
+                            <select name="lens_color_id[]" id="" class="form-control select2 requiredFieldWithMaxLenght" multiple  >
                                 @foreach($lensColors as $value)
                                     <option value="{{ $value->id }}">{{ $value->name }}</option>
                                 @endforeach

@@ -69,7 +69,9 @@ class ProductController extends Controller
         $product = new Product();
         $this->modelData($request,$product);
 
-        $product->lens_colors()->sync($request->lens_color_id);
+        if($request->has('lens_color_id')){
+            $product->lens_colors()->sync($request->lens_color_id);
+        }
         $product->frame_colors()->sync($request->frame_color_id);
         $this->upload_image($product,$request);
         $this->upload_request_image($product,$request,'gtlf');
