@@ -24,10 +24,13 @@ class ContactUsController extends Controller
             'message' => 'required|string|max:255',
         ]);
 
-        ContactUs::create([
-                'name' => $request->name,'phone' => $request->phone,
-                'email' => $request->email, 'message' => $request->message
-        ]);
+        $has_link = stristr($request->message, 'http://') ?: stristr($request->message, 'https://');
+        if (!$has_link){
+            ContactUs::create([
+                    'name' => $request->name,'phone' => $request->phone,
+                    'email' => $request->email, 'message' => $request->message
+            ]);
+        }
 
         session()->flash('success','تم إرسال  الرسالة بنجاح');
 
