@@ -74,9 +74,8 @@ class ProductController extends MasterApiController
                     fn($q) => $q->whereTranslationLike('name', '%' . $request->q . '%'))
             ->when(filled($request->category_id),
                             fn($pro) => $pro->whereHas('category',
-//                                fn($category) => $category->whereHas('parent',
-                                    fn($parent) => $parent->where('id',$request->category_id)))
-//    )
+                                fn($category) => $category->where('id',$request->category_id)->orWhereHas('parent',
+                                    fn($parent) => $parent->where('id',$request->category_id))))
             ->when(filled($request->brand_id),fn($pro) => $pro->where('brand_id',$request->brand_id))
             ->when(filled($request->product_type_id),fn($pro) => $pro->where('product_type_id',$request->product_type_id))
             ->when(filled($request->price),fn($pro) => $pro->where('price','>=',$request->price))
