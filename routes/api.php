@@ -59,6 +59,7 @@ Route::group(['namespace' => 'Api'], function () {
     Route::group(['prefix' => 'users','namespace' => 'User'], function () {
         Route::apiResource('address','AddressController');
         Route::get('notifications','NotificationController');
+        Route::post('update-lang','ProfileController@updateLang');
     });
 
     Route::group(['namespace' => 'Orders'], function () {
