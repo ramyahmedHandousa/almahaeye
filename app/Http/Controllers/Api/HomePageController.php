@@ -20,12 +20,15 @@ class HomePageController extends MasterApiController
 
         $offers = Product::where('discount','!=',0)->withAvg('rating','rate')->get();
 
+        $mostProductsSearch = Product::inRandomOrder()->limit(5)->withAvg('rating','rate')->get();
+
         $data = [
             'sliders'                   => $sliders,
             'categories'                =>  CategoryFilterResource::collection($mainCategories),
             'most_order_products'       => ListProductResource::collection($productsMostOrder),
             'offers'                    => ListProductResource::collection($offers),
-            'new_product_of_categories' => $this->newProductOfCategories()
+            'new_product_of_categories' => $this->newProductOfCategories(),
+            'most_products_search'      => ListProductResource::collection($mostProductsSearch)
         ];
 
         return Responder::success($data);
