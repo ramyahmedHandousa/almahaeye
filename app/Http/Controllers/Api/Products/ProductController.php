@@ -50,8 +50,8 @@ class ProductController extends MasterApiController
                     'orders.orderItems' => fn($orderItem) => $orderItem->select('order_id','product_id')
                 ])->first();
 
-            $cartIds = $user ?  $user['orders']?->pluck('orderItems')?->flatten()?->pluck('product_id')?->toArray() : null;
-            $favoriteIds = $user ?  $user['favorite_products']?->pluck('id')?->toArray() : null;
+            $cartIds = $user ?  $user['orders']?->pluck('orderItems')?->flatten()?->pluck('product_id')?->toArray() : [];
+            $favoriteIds = $user ?  $user['favorite_products']?->pluck('id')?->toArray() : [];
 
         }else{
             $cartIds = [];
