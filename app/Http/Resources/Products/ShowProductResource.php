@@ -33,8 +33,9 @@ class ShowProductResource extends JsonResource
             'product_type'          => new GlobalFilterNameResource($this->product_type),
             'frame_material'        => new GlobalFilterNameResource($this->frame_material),
             'frame_shap'            => new GlobalFilterNameResource($this->frame_shap),
-            'lens_colors'           =>  GlobalFilterNameResource::collection($this->lens_colors),
-            'frame_colors'          => GlobalFilterNameResource::collection($this->frame_colors),
+//            'lens_colors'           =>  GlobalFilterNameResource::collection($this->lens_colors),
+            'lens_colors'           =>  ProductColorsResource::collection($this->lens_colors),
+            'frame_colors'          => ProductColorsResource::collection($this->frame_colors),
             'media'                 => ProductImageResource::collection($this->getMedia()),
             'related_products'     => ListProductResource::collection($this->relatedProducts())
         ];
@@ -51,6 +52,7 @@ class ShowProductResource extends JsonResource
     {
         return Product::where('id','!=', $this->id)->where('brand_id',$this->brand_id)->take(5)->get();
     }
+
 
 
 }
