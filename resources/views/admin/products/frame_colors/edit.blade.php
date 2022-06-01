@@ -12,7 +12,9 @@
             top: -22px;
             right: 80px;
         }
+        
     </style>
+    <link href="{{asset('assets/admin/css/colorpicker.css')}}" rel="stylesheet" />
 
 @endsection
 
@@ -49,6 +51,14 @@
 
                     <h4 class="header-title m-t-0 m-b-30">تعديل بيانات  </h4>
 
+
+                    <div class="col-xs-6 " >
+                        <div id="colorSelector">
+                            <div style="background-color: {{'#'.$color->hash_code}}; ">
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_code_color" maxlength="6" size="6" id="mycolor" value="{{$color->hash_code}}">
+                    </div>
 
                     <div class="col-xs-6">
                         <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">
@@ -106,5 +116,18 @@
 <script type="text/javascript"
         src="{{ request()->root() }}/assets/admin/js/validate-{{ config('app.locale') }}.js"></script>
 
+<script type="text/javascript" src="{{asset('assets/admin/js/colorpicker.js')}}"></script>
+<script>
+    var currentHex = '#0000ff';
+
+    $('#colorSelector').ColorPicker({
+        flat: true,
+        onChange: function (hsb, hex, rgb) {
+            // every time a new colour is selected, this function is called
+            currentHex = hex;
+            $('#mycolor').val(currentHex);
+        }
+    });
+</script>
 @endsection
 

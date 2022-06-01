@@ -10,6 +10,9 @@
 
 
     </style>
+
+    <link href="{{asset('assets/admin/css/colorpicker.css')}}" rel="stylesheet" />
+
 @endsection
 @section('content')
     <form id="myForm" method="POST" action="{{ route('colors.store') }}@if(request('type') )?type={{request('type')}} @endif" enctype="multipart/form-data" data-parsley-validate
@@ -34,6 +37,15 @@
                     <h4 class="header-title m-t-0 m-b-30">إضافة  </h4>
 
                     <input type="hidden" name="type_color" value="frame">
+
+
+                    <div class="col-xs-6 " >
+                        <div id="colorSelector">
+                            <div style="background-color: rgb(62, 62, 189); ">
+                            </div>
+                        </div>
+                        <input type="hidden" name="hash_code_color" maxlength="6" size="6" id="mycolor" value="00ff00">
+                    </div>
                     <div class="col-xs-6">
                         <div class="form-group{{ $errors->has('name_ar') ? ' has-error' : '' }}">
                             <label for="name_ar">إسم*</label>
@@ -46,7 +58,6 @@
                             <p class="help-block" id="error_name_ar"></p>
                         </div>
                     </div>
-
 
                     <div class="col-xs-6">
                         <div class="form-group{{ $errors->has('name_en') ? ' has-error' : '' }}">
@@ -83,5 +94,36 @@
 
 @section('scripts')
 
+    <script type="text/javascript" src="{{asset('assets/admin/js/colorpicker.js')}}"></script>
+
+    <script>
+        var currentHex = '#0000ff';
+
+        $('#colorSelector').ColorPicker({
+            flat: true,
+            onChange: function (hsb, hex, rgb) {
+                // every time a new colour is selected, this function is called
+                currentHex = hex;
+                $('#mycolor').val(currentHex);
+            }
+        });
+
+        // $('#colorSelector').ColorPicker({
+        //     color: currentHex,
+        //     onShow: function (colpkr) {
+        //         $(colpkr).fadeIn(500);
+        //         return false;
+        //     },
+        //     onHide: function (colpkr) {
+        //         $(colpkr).fadeOut(500);
+        //         return false;
+        //     },
+        //     onChange: function (hsb, hex, rgb) {
+        //         // every time a new colour is selected, this function is called
+        //         currentHex = hex;
+        //         $('#mycolor').val(currentHex);
+        //     }
+        // });
+    </script>
 
 @endsection

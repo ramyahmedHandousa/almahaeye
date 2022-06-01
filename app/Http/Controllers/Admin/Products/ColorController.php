@@ -103,6 +103,7 @@ class ColorController extends Controller
         $color->{'name:ar'} = $request->name_ar;
         $color->{'name:en'} = $request->name_en;
         $color->type        = $request->type_color ? : $color->type;
+        $color->hash_code   = $request->hash_code_color ? : $color->hash_code_color;
         $color->save();
     }
 }
