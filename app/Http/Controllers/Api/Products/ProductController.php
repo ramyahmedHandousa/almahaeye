@@ -100,7 +100,7 @@ class ProductController extends MasterApiController
 
         $maxAndMinPrice = Product::selectRaw("MIN(price) AS min_price, MAX(price) AS max_price")->first();
 
-        $colors = Color::all(['id','type']);
+        $colors = Color::all(['id','hash_code','type']);
 
         return Responder::success(['brands' => $brands,
             'types'         => $productTypes,
