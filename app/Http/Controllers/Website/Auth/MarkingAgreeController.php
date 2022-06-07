@@ -17,7 +17,7 @@ class MarkingAgreeController extends Controller
 
         $user = $request->user();
 
-        if ($user->marketing_agree_info != null){
+        if ($user?->marketing_agree_info != null){
 
             session()->flash('my-errors','تم تقديم طلبك مسبقا ..');
 
