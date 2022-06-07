@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Website\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\Sms;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 
 class ActiveController extends Controller
@@ -70,7 +72,21 @@ class ActiveController extends Controller
             return redirect()->back();
         }
 
-        $verify->update(['action_code' => 1111 ]);
+        if (RateLimiter::tooManyAttempts($verify->phone, 1)) {
+            return back()->withErrors([
+                'phone' => 'من فضلك إنتظر دقيقة اخري  ',
+            ]);
+        }
+
+        if (RateLimiter::remaining($verify->phone, 1)) {
+            RateLimiter::hit($verify->phone);
+        }
+
+        $code = rand(1000,9999) ;
+
+        Sms::sendMessageToPhone($request->phone, ' كود الخاص بك  ' . $code);
+
+        $verify->update(['action_code' => $code ]);
 
         session()->flash('success','تم إعادة إرسال الكود بنجاح');
 

@@ -7,6 +7,7 @@ use App\Http\Helpers\Sms;
 use App\Models\User;
 use App\Models\VerifyUser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 
 class ForgetPasswordController extends Controller
@@ -27,6 +28,16 @@ class ForgetPasswordController extends Controller
         ]);
 
         $user = User::wherePhone($request->phone)->first();
+
+        if (RateLimiter::tooManyAttempts($request->phone, 1)) {
+            return back()->withErrors([
+                'phone' => 'من فضلك إنتظر دقيقة اخري  ',
+            ]);
+        }
+
+        if (RateLimiter::remaining($request->phone, 1)) {
+            RateLimiter::hit($request->phone);
+        }
 
         $code = rand(1000,9999) ;
 

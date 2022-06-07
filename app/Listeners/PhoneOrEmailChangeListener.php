@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\PhoneOrEmailChange;
+use App\Http\Helpers\Sms;
 use App\Models\VerifyUser;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -22,9 +23,13 @@ class PhoneOrEmailChangeListener
 
         $phone = $event->request?->phone ? : $event->user?->phone;
 
-        $data = [ 'email' => $email,'phone' => $phone , 'action_code'  => 1111  ];
+        $code = rand(1000,9999) ;
+
+        $data = [ 'email' => $email,'phone' => $phone , 'action_code'  => $code  ];
 
         VerifyUser::updateOrCreate(['user_id' => $event->user->id], $data);
+
+        Sms::sendMessageToPhone($phone, ' كود الخاص بك  ' . $code);
 
     }
 }
