@@ -66,7 +66,7 @@ class MarkingAgreeController extends Controller
             'master_two' => $request->master_two,
         ];
 
-        $user->update(['marketing_agree_info' => $data]);
+        $user->update(['marketing_agree_info' => $data,'is_accepted' => 0]);
 
         return  response()->json(['status' => 200]);
 //        session()->flash('success','تم تقديم السمتند بنجاح ');
