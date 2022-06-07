@@ -67,6 +67,8 @@ class VendorsController extends Controller
 
         $user->update(['is_accepted' => -1]);
 
+        $user->update(['marketing_agree_info' => null]);
+
         session()->flash('success','تم رفض  التاجر بنجاح');
 
         return redirect()->back() ;
