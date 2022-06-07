@@ -69,6 +69,8 @@ class VendorsController extends Controller
 
         $user->update(['marketing_agree_info' => null]);
 
+        VendorBrand::whereUserId($user->id)->delete();
+
         session()->flash('success','تم رفض  التاجر بنجاح');
 
         return redirect()->back() ;
