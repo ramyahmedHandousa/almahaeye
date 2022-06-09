@@ -19,7 +19,8 @@ class Sms
             "userName"      => "almaha",
             "numbers"      => $phone,
             "userSender"   => "almahaeye",
-            "apiKey"       => "40d3b8974d217c0c60d1fe0ffb2a2ad2",
+//            "apiKey"       => "40d3b8974d217c0c60d1fe0ffb2a2ad2",
+            "apiKey"       => "d51d0185203081951db3b40867c60c13",
             "msg"          => $msg
         ]);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
