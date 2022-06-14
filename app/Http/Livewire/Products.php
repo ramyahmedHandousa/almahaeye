@@ -46,8 +46,7 @@ class Products extends Component
 
         })->when(filled($this->category_id),
             fn($pro) => $pro->whereHas('category',
-                fn($category) => $category->whereHas('parent',
-                    fn($parent) => $parent->where('id',$this->category_id))))
+                    fn($category) => $category->where('id',$this->category_id)))
             ->when(filled($this->brand_id),fn($pro) => $pro->where('brand_id',$this->brand_id))
             ->when(filled($this->price),fn($pro) => $pro->where('price','>=',$this->price))
             ->when($this->discount,fn($pro) => $pro->where('discount','!=',0))

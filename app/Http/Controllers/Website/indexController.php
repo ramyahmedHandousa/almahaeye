@@ -23,6 +23,7 @@ class indexController extends Controller
         $categoriesHaveProducts = Category::whereIsSuspended(0)->whereNull('parent_id')
 //            ->whereHas('children', fn($child) => $child->whereHas('products',fn($pro) => $pro->where('is_new','=',1)))
 //            ->with(['children.products' => fn($pro) => $pro->where('is_new','=',1)])->take(3)->get(['id']);
+            ->whereHas('products',fn($pro) => $pro->where('is_new','=',1))
             ->with(['products' => fn($pro) => $pro->where('is_new','=',1)])->take(6)->get(['id']);
  
 
