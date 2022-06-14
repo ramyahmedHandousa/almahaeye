@@ -86,6 +86,7 @@ class ProductController extends Controller
 
     public function update(Request $request,Product $product)
     {
+
         if ($request->price){
             $product->update(['price' => $request->price ]);
         }
