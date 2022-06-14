@@ -55,6 +55,7 @@
                     <thead>
                     <tr>
                         <th>إسم المنتج</th>
+                        <th>قسم المنتج</th>
                         <th>سعر المنتج</th>
                         <th>كمية المنتج</th>
                         <th>ماركة المنتج</th>
@@ -67,6 +68,7 @@
                     @foreach($products as $row)
                         <tr>
                             <td>{{ $row->name }}</td>
+                            <td>{{ $row->category?->name }}</td>
                             <td>{{ $row->price }}</td>
                             <td>{{ $row->quantity }}</td>
                             <td>{{ $row->brand?->name }}</td>

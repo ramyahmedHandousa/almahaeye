@@ -28,7 +28,7 @@ class ProductController extends Controller
             ->when($request->type !='new',fn($pro) => $pro->where('is_new','!=',0));
 
         return view('admin.products.index',[
-            'products' => $productQuest->with(['user','brand'])->latest()->get(),
+            'products' => $productQuest->with(['user','brand','category'])->latest()->get(),
             'pageName' => $request->type == 'new' ? ' المنتجات الجديدة' : 'المنتجات'
         ]);
     }
