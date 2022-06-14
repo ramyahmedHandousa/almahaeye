@@ -18,7 +18,7 @@ class indexController extends Controller
 
         $mainCategories = Category::whereIsSuspended(0)->whereNull('parent_id')->get(['id']);
 
-        $productsMostOrder = Product::whereIsNew(1)->take(10)->with('brand')->latest()->get();
+        $productsMostOrder = Product::whereIsNew(1)->take(12)->with('brand')->latest()->get();
 
         $categoriesHaveProducts = Category::whereIsSuspended(0)
             ->whereHas('children', fn($child) => $child->whereHas('products',fn($pro) => $pro->where('is_new','=',1)))
