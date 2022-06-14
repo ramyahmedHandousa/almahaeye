@@ -23,8 +23,7 @@
             </div>
         </div>
         <div class="row products">
-            @foreach($category->children  as $child)
-                @foreach($child->products as $product)
+                @foreach($category->products as $product)
                  <div class="col-lg-2">
                     <div class="product">
                     <a class="wishlist add-product-to-favorite" data-id="{{$product->id}}" href="#">
@@ -61,7 +60,6 @@
                 </div>
                 </div>
                 @endforeach
-            @endforeach
 
         </div>
 

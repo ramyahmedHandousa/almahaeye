@@ -20,10 +20,11 @@ class indexController extends Controller
 
         $productsMostOrder = Product::whereIsNew(1)->take(12)->with('brand')->latest()->get();
 
-        $categoriesHaveProducts = Category::whereIsSuspended(0)
-            ->whereHas('children', fn($child) => $child->whereHas('products',fn($pro) => $pro->where('is_new','=',1)))
-            ->with(['children.products' => fn($pro) => $pro->where('is_new','=',1)])->take(3)->get(['id']);
-
+        $categoriesHaveProducts = Category::whereIsSuspended(0)->whereNull('parent_id')
+//            ->whereHas('children', fn($child) => $child->whereHas('products',fn($pro) => $pro->where('is_new','=',1)))
+//            ->with(['children.products' => fn($pro) => $pro->where('is_new','=',1)])->take(3)->get(['id']);
+            ->with(['products' => fn($pro) => $pro->where('is_new','=',1)])->take(6)->get(['id']);
+ 
 
         $offers = Product::whereIsNew(1)->with('brand')->where('discount','!=',0)->get();
 

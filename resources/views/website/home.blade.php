@@ -17,7 +17,7 @@
     <!-- start Offers products -->
     @include('website.layouts.sections.offers')
     <!-- end products -->
-    @include('website.layouts.sections.filter-categories-have-products')
+{{--    @include('website.layouts.sections.filter-categories-have-products')--}}
     <!-- start banner -->
 
 @endsection
