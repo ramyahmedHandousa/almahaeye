@@ -19,7 +19,7 @@ class HomeController extends Controller
         $vendorCount = User::where('type','=','vendor')->count();
         $countriesCount = Country::whereNull('parent_id')->count();
         $categoriesCount = Category::whereNull('parent_id')->count();
-        $productsCount = Product::where('user_id','!=',auth()->id())->count();
+        $productsCount = Product::where('user_id','!=',auth()->id())->where('is_new','!=',0)->count();
         $shippingCount = Shipping::select('id')->count();
         $newProductsCount = Product::select('id')->whereIsNew(0)->count();
 

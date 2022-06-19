@@ -72,11 +72,11 @@
         <div class="col-lg-3 col-md-6">
             <a href="{{ route('products.index') }}">
                 <div class="card-box">
-                    <h4 class="header-title m-t-0 m-b-30"> المنتجات </h4>
+                    <h4 class="header-title m-t-0 m-b-30"> المنتجات الحالية </h4>
                     <div class="widget-box-2">
                         <div class="widget-detail-2"><span class="pull-left"> <i class="zmdi zmdi-accounts zmdi-hc-3x"></i> </span>
                             <h2 class="m-b-0">{{$productsCount}}</h2>
-                            <p class="text-muted m-b-0"> المنتجات  في التطبيق  </p>
+                            <p class="text-muted m-b-0"> المنتجات الحالية في التطبيق  </p>
                         </div>
                     </div>
                 </div>
