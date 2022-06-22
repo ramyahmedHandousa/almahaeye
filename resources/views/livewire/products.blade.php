@@ -67,7 +67,7 @@
                             </div>
                             <div class="product-content">
                                 <h4 class="product-title"><a href="{{route('products',$product->id)}}">{{$product->name}}</a></h4>
-                                <div class="product-price"><span>{{$product->price}}</span> ر.س</div>
+                                <div class="product-price"><span>{{$product->price_percentage ?? $product->price}}</span> ر.س</div>
 
                                 <div class="stars">
                                     <i class="fas fa-star yellow"></i>
