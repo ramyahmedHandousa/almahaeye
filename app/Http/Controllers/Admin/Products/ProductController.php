@@ -131,7 +131,7 @@ class ProductController extends Controller
 
     public function priceBrandVendor(Request $request)
     {
-        $data = VendorBrand::whereUserIdAndBrandId($request->user_id,$request->brand_id)->first();
+        $data = VendorBrand::whereUserIdAndBrandIdAndProductTypeId($request->user_id,$request->brand_id,$request->product_type_id)->first();
 
         return  response()->json(['price' => $data?->price]);
     }
