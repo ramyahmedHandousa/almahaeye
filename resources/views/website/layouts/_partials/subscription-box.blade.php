@@ -12,7 +12,7 @@
                 </svg>
             </div>
             <div class="col-lg-5">
-                <h5 class="title">شارك في بريد عيون المها الأن</h5>
+                <h5 class="title">شارك في بريد عين المها الأن</h5>
                 <h5 class="sub-title">حتى يصلك كل جديد فى عروضنا اليومية و الشهرية و الموسمية</h5>
             </div>
             <div class="col-lg-4">

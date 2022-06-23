@@ -6,7 +6,7 @@
     @include('website.layouts.sections.slider')
     <!-- end slider -->
     <!-- start our Goal section -->
-    @include('website.layouts.sections.our-goal')
+{{--    @include('website.layouts.sections.our-goal')--}}
     <!-- end section -->
     <!-- start categories section -->
     @include('website.layouts.sections.main-categories',['mainCategories' => $mainCategories ?? []])
