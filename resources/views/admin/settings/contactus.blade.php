@@ -49,6 +49,14 @@
 
                         <div class="col-lg-6 col-xs-12">
                             <div class="input-group customeStyleSocail">
+                                <span class="input-group-addon" id="basic-addon2"> الضريبة   %   </span>
+                                <input class="form-control" type="text" name="percentage"
+                                       value="{{ $setting->getBody('percentage') }}" placeholder=" نسبة الضريبة "
+                                       maxlength="500" >
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-xs-12">
+                            <div class="input-group customeStyleSocail">
                                 <span class="input-group-addon" id="basic-addon2"> سعر التوصيل   </span>
                                 <input class="form-control" type="text" name="delivery_price"
                                        value="{{ $setting->getBody('delivery_price') }}" placeholder=" سعر التوصيل "
