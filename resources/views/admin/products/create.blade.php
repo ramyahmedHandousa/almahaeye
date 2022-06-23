@@ -154,7 +154,7 @@
                     <div class="col-xs-6">
                         <div class="form-group">
                             <label for="product_type_id">أنواع النظارة</label>
-                            <select name="product_type_id" id="" class="form-control requiredFieldWithMaxLenght" required>
+                            <select name="product_type_id" id="" class="form-control product_type_id requiredFieldWithMaxLenght" required>
                                 <option value="" selected disabled=""> إختر  </option>
                                 @foreach($product_types as $value)
                                     <option value="{{ $value->id }}" @if (old('product_type_id') == $value->id) selected @endif>{{ $value->name }}</option>
@@ -472,23 +472,43 @@
         $(document).on('change', '.product_brand', function () {
 
             var brand_id = $(this).val(),
-                user_id    = "{{request('user_id' ) }}" ? "{{request('user_id' ) }}" : $('.user_id').val();
+                user_id    = "{{request('user_id' ) }}" ? "{{request('user_id' ) }}" : $('.user_id').val(),
+                product_type_id    = $('.product_type_id').val();
 
-                if(brand_id && user_id){
-
+            console.log({
+                 brand_id ,  user_id,  product_type_id
+            })
+                if(brand_id && user_id && product_type_id){
                     $.ajax({
                         type: "Get",
                         url: '{{route('products.priceBrandVendor')}}',
-                        data: {'brand_id': brand_id ,'user_id' : user_id},
+                        data: {'brand_id': brand_id ,'user_id' : user_id,'product_type_id' : product_type_id},
                         success: function (data) {
-
                             $("#product_price").val(data.price);
-
                         }
                     })
                 }
+        });
 
+        $(document).on('change', '.product_type_id', function () {
 
+            var brand_id = $('.product_brand').val(),
+                user_id    = "{{request('user_id' ) }}" ? "{{request('user_id' ) }}" : $('.user_id').val(),
+                product_type_id    = $('.product_type_id').val();
+
+            console.log({
+                 brand_id ,  user_id,  product_type_id
+            })
+                if(brand_id && user_id && product_type_id){
+                    $.ajax({
+                        type: "Get",
+                        url: '{{route('products.priceBrandVendor')}}',
+                        data: {'brand_id': brand_id ,'user_id' : user_id,'product_type_id' : product_type_id},
+                        success: function (data) {
+                            $("#product_price").val(data.price);
+                        }
+                    })
+                }
         });
 
         $(document).on('change', '.category', function () {
