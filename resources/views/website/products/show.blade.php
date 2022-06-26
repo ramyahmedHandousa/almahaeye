@@ -144,6 +144,12 @@
                                     <button class="value-button" id="increase" onclick="increaseValue()"
                                             value="Increase Value"><i class="fa fa-plus"></i></button>
                                 </div>
+
+                                <select name="frame_color_id" id="frame_color_id" class="form-control btn btn-gray frame_color_id">
+                                    @foreach($product->frame_colors as $color)
+                                        <option value="{{$color->id}}" class="color">{{$color->name}}</option>
+                                    @endforeach
+                                </select>
                                 <!-- product add to card button -->
                                 <a class="btn add-to-cart" data-id="{{$product->id}}" href="#">
                                     <div class="icon">

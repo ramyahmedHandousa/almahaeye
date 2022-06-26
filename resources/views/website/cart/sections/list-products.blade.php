@@ -18,14 +18,14 @@
                         <span>{{$product['price']}}</span>ر.س
                     @endif
                 </div>
-                {{--                        <div class="product-seller">البائع:<a href="#">إسم البائع</a></div>--}}
+                                        <div class="product-seller">اللون:<a href="#">{{$product['frame_color_name']}}</a></div>
             </div>
             <div class="product-count">
                 <div class="number">
-                    <button class="value-button decreaseValue decrease" data-id="{{$product['id']}}"   value="Decrease Value"><i
+                    <button class="value-button decreaseValue decrease"  data-frame-color-id="{{$product['frame_color_id'] ?? 0}}" data-id="{{$product['id']}}"   value="Decrease Value"><i
                             class="fa fa-minus"></i></button>
                     <input type="number" id="quantity" class="form-control cartQuantity " data-price="{{$product['discount'] ?: $product['price']}}"  readonly value="{{$product['quantity']}}" min="1" max="50">
-                    <button class="value-button increaseValue increase"  data-id="{{$product['id']}}"  value="Increase Value"><i
+                    <button class="value-button increaseValue increase" data-frame-color-id="{{$product['frame_color_id'] ?? 0}}" data-id="{{$product['id']}}"  value="Increase Value"><i
                             class="fa fa-plus"></i></button>
                 </div>
             </div>
