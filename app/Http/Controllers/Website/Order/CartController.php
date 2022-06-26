@@ -38,24 +38,30 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
-        $product = Product::find($request->product_id);
+        $product = Product::with(['frame_colors'])->find($request->product_id);
 
-        if ($product){
+        $productColor =  $product->frame_colors->firstWhere('id',$request->frame_color_id) ? : $product->frame_colors->first();
+
+        if ($product && $productColor){
+
+            $key = $productColor?->id;
 
             $cart = session()->get('cart');
 
             $quantity = $request->quantity ? : 1;
 
-            if(collect($cart)->contains('id',$product->id)){
+            $firstCart = collect($cart)->where('id',$product->id)
+                ->where('frame_color_id','=',$key)->first();
 
-                $firstCart = collect($cart)->firstWhere('id','=',$product->id);
+            if($firstCart){
 
-                $cart[$product->id] = $this->baseModelCart($product,$quantity + $firstCart['quantity']);
+                $newQuantity = $quantity + $firstCart['quantity'];
+
+                $cart[$product->id .'-'. $key] = $this->baseModelCart($product,$newQuantity,$productColor);
             }else{
 
-                $cart[$product->id] = $this->baseModelCart($product,$quantity);
+                $cart[$product->id .'-'. $key] = $this->baseModelCart($product,$quantity,$productColor);
             }
-
 
             session()->put('cart',$cart);
 
@@ -63,29 +69,38 @@ class CartController extends Controller
                 'data' => [
                     'total_cart' => count(session()->get('cart')),
                     'cart' => session()->get('cart')
-                ]]);
+                ]
+            ]);
         }
 
         return response()->json(['status' => 400,'data' => null],400);
     }
 
-    private function baseModelCart($product,$quantity): array
+    private function baseModelCart($product,$quantity,$productColor): array
     {
-        return [
-            'id'        => $product->id,
-            'user_id'   => $product->user_id,
-            'name'      => $product->name,
-            'price'     =>  $product->price_percentage  ?? $product->price,
-            'discount'  => $product->discount,
-            'quantity'  => $quantity,
-            'image'     => $product->getFirstMediaUrl('master_image')
+        return  [
+            'key'                   => $product->id .'-'. $productColor?->id ,
+            'frame_color_id'        =>  $productColor?->id ,
+            'frame_color_name'      =>  $productColor?->name ,
+            'id'                    => $product->id,
+            'user_id'               => $product->user_id,
+            'name'                  => $product->name,
+            'price'                 =>  $product->price_percentage  ?? $product->price,
+            'discount'              => $product->discount,
+            'quantity'              => $quantity,
+            'image'                 => $product->getFirstMediaUrl('master_image')
         ];
     }
+
     public function update(Request $request,Product $product)
     {
-        $cart = collect(session()->get('cart'))->keyBy('id');
+        $productColor =  $product->frame_colors->firstWhere('id',$request->frame_color_id) ? : $product->frame_colors->first();
 
-        $cart[$product->id] = $this->baseModelCart($product,$request->quantity);
+        $cart = collect(session()->get('cart'))->keyBy('key');
+
+        $key = $productColor?->id ;
+
+        $cart[$product->id .'-'. $key] = $this->baseModelCart($product,$request->quantity,$productColor);
 
         session()->put('cart',$cart);
 
@@ -93,8 +108,8 @@ class CartController extends Controller
             'data' => [
                 'total_cart' => count(session()->get('cart')),
                 'cart' => session()->get('cart')
-            ]]);
-
+            ]
+        ]);
     }
 
     public function destroy(Request $request)
