@@ -27,8 +27,14 @@
                             <img class="mr-5 mt-14" loading="lazy" alt="صورة المنتج"   src="{{$orderItem?->product?->getFirstMediaUrl('master_image')}}">
                         </div>
                         <div class="product-title">
-                            <h4 class="title"><a target="_blank" href="{{route('products',$orderItem->product_id)}}">{{$orderItem?->product?->name}}</a></h4>
+                            <h4 class="title">
+                                <a target="_blank"
+                                   href="{{route('products',$orderItem->product_id)}}">
+                                    {{$orderItem?->product?->name}} -  لون    ( {{$orderItem->color?->name }} )
+                                </a>
+                            </h4>
                             <div class="product-price"><span>{{$orderItem->price_discount?:$orderItem->price }}</span> ريال سعودى</div>
+
                         </div>
                         <div class="product-count">
                             الكمية : {{$orderItem->quantity}}
