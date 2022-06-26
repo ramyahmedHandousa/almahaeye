@@ -22,4 +22,9 @@ class OrderDetails extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function color()
+    {
+        return $this->belongsTo(Color::class,'frame_color_id');
+    }
 }

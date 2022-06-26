@@ -23,13 +23,13 @@ class Order extends Model
     public function vendor()
     {
         return $this->belongsTo(User::class,'vendor_id');
-    } 
-    
+    }
+
     public function address()
     {
         return $this->belongsTo(Address::class);
     }
-        
+
     public function shipping()
     {
         return $this->belongsTo(Shipping::class);

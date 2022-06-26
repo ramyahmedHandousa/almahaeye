@@ -25,12 +25,13 @@ class OrderController extends Controller
     {
         $user = auth()->user();
 
-        if ($user->type == 'client'){
+        if ($user->type != 'vendor'){
 
             $ordersQuery =  $user->orders()->latest();
         }else{
             $ordersQuery = $user->order_vendors();
         }
+
 
         $orders = $ordersQuery->withCount('orderItems')->get();
 
@@ -117,7 +118,7 @@ class OrderController extends Controller
         $calculatorCart  = $this->calculatorTotalCart($cart,$promoCode,$percentage);
 
         return auth()->user()->orders()->create([
-            'vendor_id'        => $vendorId,
+            'vendor_id'         => $vendorId,
             'address_id'        => $request->address_id,
             'shipping_id'       => $shipping?->id,
             'shipping_price'    => $shipping?->price,
@@ -160,6 +161,7 @@ class OrderController extends Controller
                'quantity'           => $product['quantity'],
                'price'              => $product['price'],
                'price_discount'     => $product['discount'],
+               'frame_color_id'     => $product['frame_color_id'],
            ];
         })->toArray();
 
