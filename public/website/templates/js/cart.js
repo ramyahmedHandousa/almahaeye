@@ -35,7 +35,8 @@ $(".add-to-cart").click(function(){
 
     $(".cart-basket a").removeAttr("onclick");
 
-    var quantity = $("#quantity").val();
+    var quantity = $("#quantity").val(),
+        frame_color_id = $(".frame_color_id").val();
 
     $.ajax({
         url: "/cart",
@@ -47,6 +48,7 @@ $(".add-to-cart").click(function(){
         data:{
             product_id:$(this).attr('data-id'),
             quantity:quantity,
+            frame_color_id:frame_color_id,
         },
         success:function(response){
 
@@ -78,8 +80,8 @@ $('.increaseValue').click(function () {
     value = isNaN(value) ? max : value;
     value < max ? value++ : value = max;
     input_value.val(value);
-    updateCartQuantity($(this).attr('data-id'),value)
-    updateTotalPrice()
+    updateCartQuantity($(this).attr('data-id'),value,$(this).attr('data-frame-color-id'));
+    updateTotalPrice();
 
 });
 // Increase/Decrease quantity
@@ -91,8 +93,8 @@ $('.decreaseValue').click(function () {
     value = isNaN(value) ? min : value;
     value > min ? value-- : value = min;
     input_value.val(value);
-    updateCartQuantity($(this).attr('data-id'),value)
-    updateTotalPrice()
+    updateCartQuantity($(this).attr('data-id'),value,$(this).attr('data-frame-color-id'));
+    updateTotalPrice();
 });
 
 
@@ -119,13 +121,15 @@ function updateTotalPrice(){
 
 }
 
-function updateCartQuantity(id,quantity){
+function updateCartQuantity(id,quantity,frame_color_id){
+    console.log(id,quantity,frame_color_id)
     $.ajax({
         url: "/cart/" + id,
         type:"POST",
         data:{
             product_id:id,
             quantity:quantity,
+            frame_color_id:frame_color_id,
             _method: "PUT",
         },
         success:function(response){
