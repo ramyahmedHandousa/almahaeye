@@ -99,6 +99,8 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
     Route::get('my-payment/callback', 'MyFatoorahController@callback');
     Route::get('my-payment/error', 'MyFatoorahController@error');
 
+
+    Route::get('test-some-update','SomeUpdateController');
 });
 
 
@@ -112,7 +114,6 @@ Route::get('test-phone',function (){
 
 });
 
-Route::view('test_vr','test_vr');
 
 Route::get('bola',function (\Illuminate\Http\Request $request){
 
