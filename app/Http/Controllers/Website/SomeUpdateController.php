@@ -31,10 +31,22 @@ class SomeUpdateController extends Controller
             ],
             [
                 'user_id'           => $user_id,
-                'product_type_id'   => 7,
+                'product_type_id'   => 5,
+                'price'             => '65',
+                'brand_name'        => 'VOTCHY' ,
+            ],
+            [
+                'user_id'           => $user_id,
+                'product_type_id'   => 5,
                 'price'             => '65',
                 'brand_name'        =>  'PURE OPTICS',
             ],
+            [
+                'user_id'           => $user_id,
+                'product_type_id'   => 7,
+                'price'             => '65',
+                'brand_name'        =>  'PURE OPTICS',
+            ]
         ];
 
         foreach ($data as $value){
