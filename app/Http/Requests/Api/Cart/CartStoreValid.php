@@ -24,7 +24,8 @@ class CartStoreValid extends MasterApiFormRequest
     public function rules()
     {
         return [
-            'product_id' => 'required|exists:products,id',
+            'product_id'        => 'required|exists:products,id',
+            'frame_color_id'    => 'required|exists:colors,id',
         ];
     }
 }

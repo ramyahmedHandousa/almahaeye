@@ -13,7 +13,16 @@ class CartResource extends JsonResource
         return [
             'id'        => $this->id,
             'quantity'  => $this->quantity,
+            'color'     => $this->myColor(),
             'product'   => new  ListProductResource($this->product)
+        ];
+    }
+
+    private function myColor(): array
+    {
+        return [
+            'id' => $this->color?->id,
+            'name' => $this->color?->name
         ];
     }
 }

@@ -13,7 +13,7 @@ class SomeUpdateController extends Controller
     public function __invoke()
     {
 
-        
+
 
     }
 

@@ -18,6 +18,7 @@ class CartCreateOrUpdateManyValid extends MasterApiFormRequest
         return [
             'products'          => 'required|array',
             'products.*.id'     => 'required|exists:products,id',
+            'products.*.frame_color_id'     => 'required|exists:colors,id',
         ];
     }
 }
