@@ -13,7 +13,7 @@ class SomeUpdateController extends Controller
     public function __invoke()
     {
 
-      return  $this->createNewBrandForVendor();
+        
 
     }
 
@@ -25,7 +25,7 @@ class SomeUpdateController extends Controller
         $data = [
             [
                 'user_id'           => $user_id,
-                'product_type_id'   => 5,
+                'product_type_id'   => 5,// طبية
                 'price'             => '65',
                 'brand_name'        => 'VOTCHY' ,
             ],
@@ -38,13 +38,13 @@ class SomeUpdateController extends Controller
             [
                 'user_id'           => $user_id,
                 'product_type_id'   => 5,
-                'price'             => '65',
+                'price'             => '75',
                 'brand_name'        =>  'PURE OPTICS',
             ],
             [
                 'user_id'           => $user_id,
                 'product_type_id'   => 7,
-                'price'             => '65',
+                'price'             => '75',
                 'brand_name'        =>  'PURE OPTICS',
             ]
         ];

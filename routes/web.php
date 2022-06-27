@@ -100,7 +100,8 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
     Route::get('my-payment/error', 'MyFatoorahController@error');
 
 
-    Route::get('test-some-update','SomeUpdateController');
+//    Route::get('test-some-update','SomeUpdateController');
+
 });
 
 
