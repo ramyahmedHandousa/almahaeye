@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('address_id')->nullable()->constrained('addresses')->cascadeOnDelete();
             $table->foreignId('shipping_id')->nullable()->constrained('shippings')->cascadeOnDelete();
+            $table->string('shipping_city_name')->nullable();
             $table->foreignId('promo_code_id')->nullable()->constrained('promo_codes')->cascadeOnDelete();
             $table->string('tax')->nullable();
             $table->string('shipping_price')->nullable();

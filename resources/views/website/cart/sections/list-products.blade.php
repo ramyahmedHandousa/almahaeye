@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="product-delete">
-                <a href="#" data-token="{{ csrf_token() }}" data-id="{{$product['id']}}" class="remove-from-cart"><i class="fas fa-trash"></i></a>
+                <a href="#" data-token="{{ csrf_token() }}" data-my-key="{{$product['key']}}" data-id="{{$product['id']}}" class="remove-from-cart"><i class="fas fa-trash"></i></a>
             </div>
         </div>
     @endforeach

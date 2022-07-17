@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Category;
 use App\Models\Setting;
+use App\Support\Aramex\Aramex;
+use App\Support\Aramex\Aramex as AramexClass;
 use App\Support\JsonResponder;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->singleton('responder', fn ($app) => new JsonResponder());
+
+//        $this->app->singleton(Aramex::class, fn () =>new AramexClass() );
+
 
         view()->composer('admin.settings.*', function ($view) {
 

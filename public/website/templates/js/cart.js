@@ -5,6 +5,7 @@ let carts =   document.querySelectorAll('.add-to-cart'),
     cartCoupon = null,
     cartAddressId = null,
     cartShippingId = null,
+    cartShippingCityName = null,
     cartPaymentChoose = null,
     pageStatus = 0;
 
@@ -122,7 +123,7 @@ function updateTotalPrice(){
 }
 
 function updateCartQuantity(id,quantity,frame_color_id){
-    console.log(id,quantity,frame_color_id)
+
     $.ajax({
         url: "/cart/" + id,
         type:"POST",
@@ -144,6 +145,7 @@ function updateCartQuantity(id,quantity,frame_color_id){
 $(".remove-from-cart").click(function(){
 
     var product_id = $(this).attr('data-id'),
+        key = $(this).attr('data-my-key'),
         item = $(this);
 
     $.ajax({
@@ -154,6 +156,7 @@ $(".remove-from-cart").click(function(){
         },
         data:{
             product_id:product_id,
+            key:key,
             _method: 'delete',
             _token :$(this).attr('data-token')
         },
@@ -214,7 +217,21 @@ $("#check-code").on('click',function () {
 
 });
 
+
+$(".cart-choose-shipping").on('click',function () {
+    let cities = $('.aramex-cities'),
+        citySelected = $( ".aramex-cities select option:selected" ).val();
+    parseInt(this.value) === 1 ? cities.show() : cities.hide();
+    cartShippingCityName = parseInt(this.value) === 1 ? citySelected : null;
+});
+
+$(".change-aramex-cities").on('change',function () {
+    cartShippingCityName = this.value;
+});
+
+
 $("#cartNextStep").click(function () {
+
     let cartListProducts = $(".cart-list-products"),
         cartListAddress = $(".cart-list-address"),
         cartListShipping = $(".cart-list-shipping"),
@@ -239,7 +256,6 @@ $("#cartNextStep").click(function () {
             toastr['error']('إختار عنوان من فضلك', 'عنوان الطلب');
         }
     }else if (pageStatus === 2 ){
-
         if ($(".cart-choose-shipping").is(":checked")){
             cartShippingId = $('.cart-choose-shipping:checked').val();
             cartListProducts.hide();
@@ -283,6 +299,7 @@ function makeOrderCart(cartAddressId,cartShippingId,cartCoupon,payment_method){
         data:{
             address_id:cartAddressId,
             shipping_id:cartShippingId,
+            shipping_city_name:cartShippingCityName,
             coupon:cartCoupon,
             payment_method: payment_method
         },

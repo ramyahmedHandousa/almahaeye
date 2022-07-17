@@ -117,7 +117,7 @@ class CartController extends Controller
         $cart = collect(session()->get('cart'))->values()->toArray();
 
         array_splice($cart,
-            array_search($request->product_id,
+            array_search($request->key,
                 array_column($cart,'id'))
             ,1);
 

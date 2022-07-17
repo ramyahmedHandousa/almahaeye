@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b8869b2fc4bccb202fc6e028318e8d946158e774',
+        'reference' => '8eb139c4f3643f3d59d21904bc9a2192084a4c6b',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -427,7 +427,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b8869b2fc4bccb202fc6e028318e8d946158e774',
+            'reference' => '8eb139c4f3643f3d59d21904bc9a2192084a4c6b',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -627,6 +627,15 @@
             'aliases' => array(),
             'reference' => '8b610eef8582ccdc05d8f2ab23305e2d37049461',
             'dev_requirement' => true,
+        ),
+        'octw/aramex' => array(
+            'pretty_version' => '1.2.1',
+            'version' => '1.2.1.0',
+            'type' => 'package',
+            'install_path' => __DIR__ . '/../octw/aramex',
+            'aliases' => array(),
+            'reference' => '32870964bd6d9e0282cddf9bf2dc3883041d2084',
+            'dev_requirement' => false,
         ),
         'opis/closure' => array(
             'pretty_version' => '3.6.2',

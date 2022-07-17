@@ -93,3 +93,6 @@ Route::group(['namespace' => 'Api'], function () {
 
 
 });
+
+
+Route::post('ramy-test','TestController');
