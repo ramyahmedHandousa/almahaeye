@@ -30,8 +30,8 @@
                             </div>
                             <div class="product-content">
                                 <h4 class="product-title"><a href="{{route('products',$offer->id)}}">{{$offer->name}}</a></h4>
-                                <span class="product-price"><span>{{($offer->price_percentage ?? $offer->pric)  - $offer->discount}}</span> ر.س</span>
-                                <span class="old-price"><span>{{$offer->price_percentage ?? $offer->pric}}</span> ر.س</span>
+                                <span class="product-price"><span>{{($offer->price_percentage ?? $offer->price)  - $offer->discount}}</span> ر.س</span>
+                                <span class="old-price"><span>{{$offer->price_percentage ?? $offer->price}}</span> ر.س</span>
                                 <h4 class="product-title"><a href="#">{{$offer->brand?->name}}</a></h4>
                                 <div class="stars">
                                     <i class="fas fa-star yellow"></i>
