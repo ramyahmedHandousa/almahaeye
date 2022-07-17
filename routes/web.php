@@ -124,3 +124,9 @@ Route::get('bola',function (\Illuminate\Http\Request $request){
     return  redirect()->route('pay-online',['ids' => json_encode($ids),'total' => 1000]);
 //    return  redirect()->route('pay-online');
 });
+
+
+Route::get('info-details',function (){
+
+    return phpinfo();
+});
