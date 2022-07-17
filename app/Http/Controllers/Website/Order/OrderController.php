@@ -206,18 +206,24 @@ class OrderController extends Controller
             ->setNumberOfPieces(1);
 
         $today = new Carbon();
-
-
+        $timeNow = Carbon::now()->between('09:00:00','16:00:00');
         $readyTime =   Carbon::createFromFormat('H:i:s', '12:00:00');
         $timeClose =   Carbon::createFromFormat('H:i:s', '16:00:00');
 
-        if (in_array($today->dayOfWeek,[5,6])){
-            $readyTime =  $readyTime->addDay()->timestamp;
-            $timeClose =  $timeClose->addDay()->timestamp;
+        if ($timeNow){
+            $readyTime = Carbon::now()->addHours(2)->timestamp;
+            $timeClose = Carbon::now()->addHours(2)->timestamp;
         }else{
-            $readyTime =  $readyTime->timestamp;
-            $timeClose =  $timeClose->timestamp;
+
+            if (in_array($today->dayOfWeek,[5,6])){
+                $readyTime =  $readyTime->addDay()->timestamp;
+                $timeClose =  $timeClose->addDay()->timestamp;
+            }else{
+                $readyTime =  $readyTime->timestamp;
+                $timeClose =  $timeClose->timestamp;
+            }
         }
+
 
         $pickup = (new Pickup())
             ->setPickupAddress($source)
@@ -236,6 +242,7 @@ class OrderController extends Controller
 
         $createPickup = Aramex::createPickup()->setLabelInfo($labelInfo)->setPickup($pickup)->run();
 
+        Log::info(print_r($createPickup,true));
         return  $createPickup->getPrecessedPickup()->getGUID();
     }
 
