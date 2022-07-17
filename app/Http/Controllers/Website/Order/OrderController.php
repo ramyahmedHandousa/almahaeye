@@ -248,7 +248,7 @@ class OrderController extends Controller
 
     private function makeShipping($guid,$order)
     {
-        $soapClient = new \SoapClient('shippingW.wsdl');
+        $soapClient = new \SoapClient('https://almahaeye.com/shippingW.wsdl');
         $params = array(
             'Shipments' => array(
                 'Shipment' => array(
