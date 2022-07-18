@@ -89,10 +89,10 @@ class OrderController extends Controller
 
                     OrderDetails::insert($this->transformProducts($cartProduct,$order));
 
-                    if ($request->payment_method = 'cash'){
-                        $guid = $this->getGUID($order);
-                        $this->makeShipping($guid,$order);
-                    }
+//                    if ($request->payment_method = 'cash'){
+//                        $guid = $this->getGUID($order);
+//                        $this->makeShipping($guid,$order);
+//                    }
                 }
 
                     if ($request->payment_method != 'online'){

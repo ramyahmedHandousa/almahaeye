@@ -5,7 +5,7 @@
             <div class="form-group">
                 <label class="form-check-label">
                     <input class="form-check-input cart-choose-payment" name="choose_payment" type="radio" value="cash">
-                    كاش
+                    عند الإستلام
                 </label>
             </div>
             <div class="form-group">
