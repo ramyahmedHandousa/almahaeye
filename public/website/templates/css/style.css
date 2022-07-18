@@ -6,6 +6,27 @@
   font-family: GE_Hili_Book;
   src: url(../fonts/GE_Hili_Book.otf)
 }
+@font-face {
+  font-family: "Glyphicons Halflings";
+  src: url("../fonts/glyphicons-halflings-regular.eot");
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
+}
+.glyphicon-star::before {
+  /*content: "\e006";*/
+  content:"\e006";
+  font-family:"Glyphicons Halflings";
+}
+.glyphicon-star-empty::before {
+  /*content: "\e006";*/
+  content:"\e006";
+  font-family:"Glyphicons Halflings";
+}
+.rating-container{
+    float:none !important;
+}
+.rating-container .caption{
+    display:block !important;
+}
 body,
 html {
   position: relative;
@@ -2431,8 +2452,8 @@ table .the-btn {
   border-color: transparent!important
 }
 .glyphicon {
-  top: 4px;
-  color: #000;
+  /*top: 4px;*/
+  /*color: #000;*/
   font-size: 15px
 }
 @media (min-width:1200px) {

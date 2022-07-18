@@ -2,6 +2,7 @@
 @section('styles')
 
     <link rel="stylesheet" href="{{ asset('website/templates/css/star-rating.min.css') }}">
+
 @endsection
 @section('content')
 
@@ -33,6 +34,7 @@
                                         <img loading="lazy"  src="{{$media->getUrl()}}">
                                     </button>
                                 @endforeach
+                                
                             </div>
                             <div class="carousel-inner">
                                 @foreach($product->media->where('collection_name','!=','glb') as $media)
@@ -53,6 +55,7 @@
                             </button>
                         </div>
                     </div>
+                    
                 </div>
                 <!-- product details -->
                 <div class="col-lg-6">
@@ -254,6 +257,7 @@
     <script src="{{ asset('website/templates/js/star-rating.min.js') }}"></script>
 
     <script>
+
         // if ($('.kv-rtl-theme-fas-star').length) {
             $('.kv-rtl-theme-fas-star').rating({
                 hoverOnClear: false,
@@ -296,6 +300,7 @@
         });
 
     </script>
+    
     <script>
 
         $('.products').slick({
