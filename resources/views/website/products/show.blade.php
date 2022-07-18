@@ -28,17 +28,17 @@
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
 
                             <div class="carousel-indicators">
-                                @foreach($product->media->where('collection_name','!=','glb') as $media)
-                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                            class="active" aria-current="true" aria-label="Slide 1">
+                                @foreach($product->media->where('collection_name','!=','glb') as $key =>  $media)
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$key}}"
+                                            class="{{ $key == 0  ? 'active' : '' }}"  >
                                         <img loading="lazy"  src="{{$media->getUrl()}}">
                                     </button>
                                 @endforeach
-                                
+
                             </div>
                             <div class="carousel-inner">
-                                @foreach($product->media->where('collection_name','!=','glb') as $media)
-                                    <div class="carousel-item active">
+                                @foreach($product->media->where('collection_name','!=','glb') as $key => $media)
+                                    <div class="carousel-item {{ $key == 0  ? 'active' : '' }}">
                                         <img loading="lazy"  src="{{$media->getUrl()}}">
                                     </div>
                                 @endforeach
@@ -55,7 +55,7 @@
                             </button>
                         </div>
                     </div>
-                    
+
                 </div>
                 <!-- product details -->
                 <div class="col-lg-6">
@@ -300,7 +300,7 @@
         });
 
     </script>
-    
+
     <script>
 
         $('.products').slick({
