@@ -230,7 +230,7 @@
                     </div>
 
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         <div class="form-group">
                             <label for="userName"> قطر العدسه*</label>
                             <input type="number" name="additional_data[lens_width]" value="{{ old('additional_data.lens_width') }}" class="form-control"
@@ -251,6 +251,14 @@
                                     {{ $errors->first('lens_width') }}
                                 </p>
                             @endif
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="sku">   رقم الموديل*</label>
+                            <input type="number" name="additional_data[sku]" value="{{ old('additional_data.sku') }}" class="form-control"
+                                    required placeholder="رقم الموديل.."
+                            />
                         </div>
                     </div>
 {{--                    <div class="col-sm-3">--}}

@@ -88,9 +88,12 @@ class ProductController extends Controller
     {
 
         if ($request->price){
-            $product->update(['price' => $request->price ]);
-        }
 
+            $product->update([
+                'additional_data->sku'=>  $request->additional_data['sku'] ??   $product->sku,
+                'price' => $request->price
+            ]);
+        }
 
         $this->upload_image($product,$request);
         $this->upload_request_image($product,$request,'gtlf');
@@ -162,6 +165,7 @@ class ProductController extends Controller
             'lens_width'        => $request->additional_data['lens_width']  ?? $product->lens_width,
             'nose_bridge'       => $request->additional_data['nose_bridge'] ??   $product->nose_bridge,
             'delivery_days'     => $request->additional_data['delivery_days'] ??   $product->delivery_days,
+            'sku'               => $request->additional_data['sku'] ??   $product->sku,
         ];
 
         $brand = Brand::find($request->brand_id);
