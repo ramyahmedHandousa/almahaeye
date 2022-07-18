@@ -28,13 +28,17 @@ class Product extends Model implements HasMedia
         'start_at','end_at'
     ];
 
+    function roundUpToAny($n,$x=5) {
+        return round(($n+$x/2)/$x)*$x;
+    }
+
     public function getPricePercentageAttribute($key)
     {
         if ($this->user?->percentage){
 
-            return  $this->price  + ($this->user?->percentage * $this->price / 100) ;
+            return $this->roundUpToAny( $this->price  + ($this->user?->percentage * $this->price / 100)) ;
         }else{
-            return $this->price;
+            return $this->roundUpToAny($this->price);
         }
 
     }
