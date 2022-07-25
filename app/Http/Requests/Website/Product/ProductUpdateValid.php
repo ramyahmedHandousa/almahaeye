@@ -49,7 +49,7 @@ class ProductUpdateValid extends FormRequest
             'additional_data.frame_height'      => 'required|string|max:100',
             'additional_data.temple_length'     => 'required|string|max:100',
             'additional_data.lens_width'        => 'required|string|max:100',
-            'additional_data.nose_bridge'       => 'required|string|max:100',
+            'additional_data.nose_bridge'       => 'nullable|string|max:100',
         ];
     }
 

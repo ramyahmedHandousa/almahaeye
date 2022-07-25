@@ -148,10 +148,10 @@
                         <input type="number" class="form-control" name="additional_data[lens_width]" placeholder="قطر العدسه"
                                value="{{$product->additional_data['lens_width']   ?? ' '}}" min="0" max="1000">
                     </div>
-                    <div class="col-lg-3 form-group">
-                        <input type="number" class="form-control" name="additional_data[nose_bridge]" placeholder="مقصوره العدسه"
-                               value="{{$product->additional_data['nose_bridge'] ?? ' ' }}" min="0" max="100">
-                    </div>
+{{--                    <div class="col-lg-3 form-group">--}}
+{{--                        <input type="number" class="form-control" name="additional_data[nose_bridge]" placeholder="مقصوره العدسه"--}}
+{{--                               value="{{$product->additional_data['nose_bridge'] ?? ' ' }}" min="0" max="100">--}}
+{{--                    </div>--}}
 
                     @foreach (config('translatable.locales') as $locale => $value)
                         <div class="col-lg-6 form-group">
