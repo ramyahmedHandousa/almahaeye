@@ -19,6 +19,7 @@ class ListProductResource extends JsonResource
             'discount_after'        => number_format($this->price - $this->discount,2),
             'discount_percentage'   => $this->discountProduct(),
             'image'                 => $this->getFirstMediaUrl('master_image'),
+            'frame_colors'          => ProductColorsResource::collection($this->frame_colors),
             'in_cart'               =>  $this->in_cart ?? false,
             'in_favourite'          =>  $this->in_favourite ?? false
         ];
