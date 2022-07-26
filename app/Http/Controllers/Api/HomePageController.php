@@ -16,11 +16,11 @@ class HomePageController extends MasterApiController
 
         $mainCategories = Category::whereIsSuspended(0)->whereNull('parent_id')->get(['id']);
 
-        $productsMostOrder = Product::take(5)->latest()->withAvg('rating','rate')->get();
+        $productsMostOrder = Product::take(5)->latest()->with('frame_colors')->withAvg('rating','rate')->get();
 
-        $offers = Product::where('discount','!=',0)->withAvg('rating','rate')->get();
+        $offers = Product::where('discount','!=',0)->with('frame_colors')->withAvg('rating','rate')->get();
 
-        $mostProductsSearch = Product::inRandomOrder()->limit(5)->withAvg('rating','rate')->get();
+        $mostProductsSearch = Product::inRandomOrder()->limit(5)->with('frame_colors')->withAvg('rating','rate')->get();
 
         $data = [
             'sliders'                   => $sliders,
