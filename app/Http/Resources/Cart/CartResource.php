@@ -22,7 +22,8 @@ class CartResource extends JsonResource
     {
         return [
             'id' => $this->color?->id,
-            'name' => $this->color?->name
+            'name' => $this->color?->name,
+            'hash_code' => $this->color?->hash_code,
         ];
     }
 }

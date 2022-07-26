@@ -14,6 +14,7 @@ class OrderItemsResource extends JsonResource
             'price'             => $this->price,
             'price_discount'    => $this->price_discount,
             'quantity'          => $this->quantity,
+            'hash_code'         => $this->color?->hash_code,
             'product_name'      => $this->product?->name,
             'product_image'     => $this->product?->getFirstMediaUrl('master_image'),
         ];
