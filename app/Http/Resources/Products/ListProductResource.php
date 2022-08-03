@@ -16,7 +16,7 @@ class ListProductResource extends JsonResource
             'price'                 => number_format( $this->price_percentage  ?? $this->price ,2),
             'avg_rate'              => (float) number_format($this->rating_avg_rate,2),
             'discount'              => $this->discount,
-            'discount_after'        => number_format($this->price - $this->discount,2),
+            'discount_after'        => number_format(($this->price_percentage  ?? $this->price) - $this->discount,2),
             'discount_percentage'   => $this->discountProduct(),
             'image'                 => $this->getFirstMediaUrl('master_image'),
             'frame_colors'          => ProductColorsResource::collection($this->frame_colors),
