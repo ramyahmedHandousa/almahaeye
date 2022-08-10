@@ -63,7 +63,7 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="sku">   رقم الموديل*</label>
-                            <input type="number" name="additional_data[sku]" value="{{ $product->additional_data['sku'] ?? 0 }}" class="form-control"
+                            <input type="text" name="additional_data[sku]" value="{{ $product->additional_data['sku'] ?? 0 }}" class="form-control"
                                    required placeholder="رقم الموديل.."
                             />
                         </div>
