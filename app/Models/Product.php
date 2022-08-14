@@ -29,7 +29,8 @@ class Product extends Model implements HasMedia
     ];
 
     function roundUpToAny($n,$x=5) {
-        return round(($n+$x/2)/$x)*$x;
+
+        return (ceil($n)%$x === 0) ? ceil($n) : round(($n+$x/2)/$x)*$x;
     }
 
     public function getPricePercentageAttribute($key)
@@ -38,7 +39,7 @@ class Product extends Model implements HasMedia
 
             return $this->roundUpToAny( $this->price  + ($this->user?->percentage * $this->price / 100)) ;
         }else{
-            return $this->roundUpToAny($this->price);
+            return $this->roundUpToAny($this->price); 
         }
 
     }
