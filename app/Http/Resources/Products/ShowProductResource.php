@@ -19,9 +19,9 @@ class ShowProductResource extends JsonResource
         return [
             'id'                    => $this->id,
             'name'                  => $this->name ? : $this->brand?->name,
-            'price'                 => $this->price,
+            'price'                 => number_format( $this->price_percentage  ?? $this->price ,2),
             'discount'              => $this->discount,
-            'discount_after'        => number_format($this->price - $this->discount,2),
+            'discount_after'        => number_format(($this->price_percentage  ?? $this->price) - $this->discount,2),
             'discount_percentage'   => $this->discountProduct(),
             'image'                 => $this->getFirstMediaUrl('master_image'),
             'in_cart'               =>  OrderDetails::whereUserIdAndProductId($user?->id,$this->id)->exists(),
