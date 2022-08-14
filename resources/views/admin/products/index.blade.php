@@ -57,6 +57,7 @@
                         <th>إسم المنتج</th>
                         <th>قسم المنتج</th>
                         <th>سعر المنتج</th>
+                        <th>السعر بعد النسبة</th>
                         <th>كمية المنتج</th>
                         <th>ماركة المنتج</th>
                         <th>@lang('trans.created_at')</th>
@@ -70,6 +71,7 @@
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->category?->name }}</td>
                             <td>{{ $row->price }}</td>
+                            <td>{{ number_format( $row->price_percentage  ?? $row->price ,2) }}</td>
                             <td>{{ $row->quantity }}</td>
                             <td>{{ $row->brand?->name }}</td>
 
