@@ -27,7 +27,7 @@ class ActiveController extends Controller
             'code4' => 'required',
         ]);
 
-        $code = $request->code4.$request->code3.$request->code2.$request->code1;
+        $code = $request->code1.$request->code2.$request->code3.$request->code4;
 
         if (auth()->check()){
 
