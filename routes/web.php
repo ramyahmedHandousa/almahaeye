@@ -109,24 +109,4 @@ Route::get('/search','Livewire\Products')->name('search');
 
 
 
-Route::get('test-phone',function (){
 
-     \App\Http\Helpers\Sms::test('+966591496036','code active ');
-
-});
-
-
-Route::get('bola',function (\Illuminate\Http\Request $request){
-
-    $ids = [1,2,3,4,5,6];
-
-
-    return  redirect()->route('pay-online',['ids' => json_encode($ids),'total' => 1000]);
-//    return  redirect()->route('pay-online');
-});
-
-
-Route::get('info-details',function (){
-
-    return phpinfo();
-});
