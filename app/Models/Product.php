@@ -39,7 +39,7 @@ class Product extends Model implements HasMedia
 
             return $this->roundUpToAny( $this->price  + ($this->user?->percentage * $this->price / 100)) ;
         }else{
-            return $this->roundUpToAny($this->price); 
+            return $this->roundUpToAny($this->price);
         }
 
     }
