@@ -13,7 +13,7 @@
             <div class="row">
                 <nav class="col-12" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">الرئيسية</a></li>
+                        <li class="breadcrumb-item"><a href="#"> {{trans('website.products.main')}}</a></li>
                         <li class="breadcrumb-item"><a href="#">{{$product?->category?->parent?->name}}</a></li>
                         <li class="breadcrumb-item"><a href="#">{{$product?->category?->name}}</a></li>
                         <li class="breadcrumb-item active">{{$product->name}}</li>
@@ -64,11 +64,11 @@
                     <!-- product price -->
                     <div class="product-price">
                         @if($product->discount)
-                            <span>{{$product->discount}}</span> ريال سعودى
-                            <span class="old-price"><span>{{$product->price_percentage ?? $product->price}}</span> ريال سعودى</span>
+                            <span>{{$product->discount}}</span>    {{trans('website.products.sr')}}
+                            <span class="old-price"><span>{{$product->price_percentage ?? $product->price}}</span> {{trans('website.products.sr')}}  </span>
                         @else
 
-                            <span>{{$product->price_percentage ?? $product->price}}</span> ريال سعودى
+                            <span>{{$product->price_percentage ?? $product->price}}</span> {{trans('website.products.sr')}}
                         @endif
                     </div>
                     <!-- product summary -->
@@ -81,32 +81,32 @@
                         <div class="col-lg-6">
                             <ul class="attributes">
                                 <li>
-                                    <span class="attribute-name">القسم</span>
+                                    <span class="attribute-name">{{trans('website.products.category')}} </span>
                                     <span class="attribute-value">{{$product?->category?->name}}</span>
                                 </li>
                                 <li>
-                                    <span class="attribute-name">نوع المنتج</span>
+                                    <span class="attribute-name">{{trans('website.products.type')}}   </span>
                                     <span class="attribute-value">{{$product?->product_type?->name}}</span>
                                 </li>
                                 <li>
-                                    <span class="attribute-name">الماركة</span>
+                                    <span class="attribute-name"> {{trans('website.products.brand')}}</span>
                                     <span class="attribute-value">{{$product?->brand?->name}}</span>
                                 </li>
                                 <li>
-                                    <span class="attribute-name">خامة الإطار</span>
+                                    <span class="attribute-name"> {{trans('website.products.frame_material')}}</span>
                                     <span class="attribute-value">{{$product?->frame_material?->name}}</span>
                                 </li>
                                 <li>
-                                    <span class="attribute-name">شكل الإطار</span>
+                                    <span class="attribute-name">{{trans('website.products.frame_shape')}}   </span>
                                     <span class="attribute-value">{{$product?->frame_shap?->name}}</span>
                                 </li>
                                 <li>
-                                    <span class="attribute-name">السن</span>
+                                    <span class="attribute-name"> {{trans('website.products.age')}}</span>
                                     <span class="attribute-value">{{$product?->age?->name}}</span>
                                 </li>
                                 @if(count($product->frame_colors) > 0)
                                     <li>
-                                        <span class="attribute-name">لون الإطار</span>
+                                        <span class="attribute-name">   {{trans('website.products.frame_color')}}</span>
                                         <span class="attribute-value">
                                             <span class="colors" style="display: inline-block">
                                                 @foreach($product->frame_colors as $color)
@@ -118,7 +118,7 @@
                                 @endif
                                 @if(count($product->lens_colors) > 0)
                                 <li>
-                                    <span class="attribute-name">لون العدسة</span>
+                                    <span class="attribute-name">{{trans('website.products.lens_color')}}   </span>
                                     <span class="attribute-value">
                                         <span class="colors" style="display: inline-block">
                                             @foreach($product->lens_colors as $color)
@@ -137,7 +137,7 @@
                                 <!-- product add to favorite button -->
                                 <a class="btn btn-gray add-product-to-favorite" data-id="{{$product->id}}" href="#">
                                     <div class="icon"><i class="fas fa-heart favorite-product-{{$product->id}}"></i></div>
-                                    <span>أضف لقائمة التمنى</span>
+                                    <span>     {{trans('website.products.add_to_favourite')}}</span>
                                 </a>
                                 <!-- product number -->
                                 <div class="number">
@@ -166,7 +166,7 @@
                                                   transform="translate(-0.21 -10.421)" fill="#220e0e" />
                                         </svg>
                                     </div>
-                                    <span>أضف إلى سلة الشراء</span>
+                                    <span>{{trans('website.products.add_to_cart')}} </span>
                                 </a>
 
 
@@ -181,12 +181,12 @@
                                                       transform="translate(0 -151.147)" fill="#fff"/>
                                             </svg>
                                         </div>
-                                        <span>التجربة الإفتراضى</span>
+                                        <span>   {{trans('website.products.virtual_experience')}}</span>
                                     </a>
                                 @endif
                                 <!-- product share -->
                                 <div class="share">
-                                    <span class="title">شارك المنتج</span>
+                                    <span class="title"> {{trans('website.products.share')}}</span>
                                     <span class="links">
                                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                                         <a href="#"><i class="fab fa-twitter"></i></a>

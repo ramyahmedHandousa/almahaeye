@@ -17,7 +17,7 @@
 
     <div class="container">
         <div class="sec-title" style="margin-top: 20px;">
-            <h2 class="title" id="title-profile">تعديل البيانات الشخصيه </h2>
+            <h2 class="title" id="title-profile"> {{trans('website.auth.edit_profile')}} </h2>
         </div>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -42,7 +42,7 @@
                                    id="file-input" class="inputfile"/>
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-xs the-btn the-btn-22" style="height:50px;width:150px; margin-top:30px;">تغيير الصوره
+                    <button type="submit" class="btn btn-xs the-btn the-btn-22" style="height:50px;width:150px; margin-top:30px;">  {{trans('website.auth.change_image')}}
                     </button>
                 </form>
             </div>
@@ -51,48 +51,48 @@
                     <form action="{{ route('auth.update.profile') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row form-group">
-                            <div class="col-lg-3">الاسم الأول</div>
+                            <div class="col-lg-3">{{trans('website.auth.first_name')}}  </div>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control" name="first_name" placeholder="الاسم الأول"
+                                <input type="text" class="form-control" name="first_name" placeholder="{{trans('website.auth.first_name')}}  "
                                        value="{{ auth()->user()->first_name }}" required >
                             </div>
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-lg-3">الاسم الأخير</div>
+                            <div class="col-lg-3">{{trans('website.auth.last_name')}}  </div>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control" name="last_name" placeholder="الاسم الأخير"
+                                <input type="text" class="form-control" name="last_name" placeholder="{{trans('website.auth.last_name')}}  "
                                        value="{{ auth()->user()->last_name }}" required >
                             </div>
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-lg-3">البريد الإلكترونى</div>
+                            <div class="col-lg-3">{{trans('website.auth.email')}}  </div>
                             <div class="col-lg-9">
-                                <input type="text" class="form-control form-control2" name="email" placeholder="البريد الالكترونى"
+                                <input type="text" class="form-control form-control2" name="email" placeholder="{{trans('website.auth.email')}}  "
                                        value="{{ auth()->user()->email }}" required >
                             </div>
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-lg-3">رقم الهاتف</div>
+                            <div class="col-lg-3">  {{trans('website.auth.phone')}}</div>
                             <div class="col-lg-9">
-                                <input type="number" id="phoneCode" placeholder="رقم الجوال" class="form-control form-control2" name="phone"
+                                <input type="number" id="phoneCode" placeholder="{{trans('website.auth.phone')}}  " class="form-control form-control2" name="phone"
                                        value="{{ auth()->user()->phone }}">
                             </div>
                         </div>
 
                         <div class="row form-group">
-                            <div class="col-lg-3">كلمة المرور</div>
+                            <div class="col-lg-3">{{trans('website.auth.password')}}  </div>
                             <div class="col-lg-9">
-                                <a class="form-control btn btn-sm" id="change-password">تغير كلمة المرور</a>
+                                <a class="form-control btn btn-sm" id="change-password">{{trans('website.auth.change_password')}}    </a>
                             </div>
                         </div>
 
                         <div class="col-12">
                             <div class="row submit-row">
                                 <div class="col-lg-3">
-                                    <button type="submit" class="btn">حفظ التغييرات</button>
+                                    <button type="submit" class="btn">{{trans('website.auth.save_changes')}}  </button>
                                 </div>
                             </div>
                         </div>
@@ -104,22 +104,22 @@
                     <form action="{{ route('auth.update.password')}}"  method="POST" >
                                 @csrf
                                 <div class="row form-group">
-                                    <div class="col-lg-3">كلمة المرور القديمة</div>
+                                    <div class="col-lg-3">{{trans('website.auth.old_password')}}    </div>
                                     <div class="col-lg-9">
                                         <input type="password" class="form-control"  name="oldpassword"
-                                               placeholder="كلمة المرور القديمة" required >
+                                               placeholder="{{trans('website.auth.old_password')}}    " required >
                                     </div>
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col-lg-3">كلمة المرور الجديدة</div>
+                                    <div class="col-lg-3">{{trans('website.auth.new_password')}}    </div>
                                     <div class="col-lg-9">
-                                        <input type="password" class="form-control"  name="password" placeholder="كلمة المرور الجديدة"  required >
+                                        <input type="password" class="form-control"  name="password" placeholder="{{trans('website.auth.new_password')}}"  required >
                                     </div>
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col-lg-3">إعادة كلمة المرور الجديدة</div>
+                                    <div class="col-lg-3">{{trans('website.auth.confirm_new_password')}}      </div>
                                     <div class="col-lg-9">
-                                        <input type="password" class="form-control"  name="password_confirmation" placeholder="إعادة كلمة المرور الجديدة"
+                                        <input type="password" class="form-control"  name="password_confirmation" placeholder="{{trans('website.auth.confirm_new_password')}}"
                                                required >
                                     </div>
                                 </div>
@@ -127,10 +127,10 @@
                                 <div class="col-12">
                                     <div class="row submit-row">
                                         <div class="col-lg-3 order2">
-                                            <a class="btn btn-gray" href="{{ route('my-profile')}}">الغاء</a>
+                                            <a class="btn btn-gray" href="{{ route('my-profile')}}">{{trans('website.global.cancel')}}</a>
                                         </div>
                                         <div class="col-lg-3">
-                                            <button type="submit" class="btn">حفظ التغييرات</button>
+                                            <button type="submit" class="btn">{{trans('website.auth.save_changes')}}  </button>
                                         </div>
                                     </div>
                                 </div>
@@ -151,7 +151,7 @@
         }
 
         $("#change-password").click(() => {
-            $("#title-profile").text("تعيين كلمة المرور")
+            $("#title-profile").text('{{trans('website.auth.new_password')}}')
             $("#information").hide();
             $("#new-password").show();
         })

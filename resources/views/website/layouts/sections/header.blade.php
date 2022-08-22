@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{url('/')}}">الرئيسية</a>
+                        <a class="nav-link active" href="{{url('/')}}"> {{trans('website.navbar.main')}}</a>
                     </li>
                     @foreach($mainCategories as $category)
                         <li class="nav-item">
@@ -21,11 +21,11 @@
                         </li>
                     @endforeach
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('/search'.'?discount=true')}}">العروض</a>
+                        <a class="nav-link" href="{{url('/search'.'?discount=true')}}">{{trans('website.navbar.offers')}}</a>
                     </li>
                 </ul>
                 <form class="search" action="{{url('/search')}}">
-                    <input class="form-control" name="q"  type="text" placeholder="ابحث باسم المنتج ">
+                    <input class="form-control" name="q"  type="text" placeholder="{{trans('website.navbar.search')}} ">
                 </form>
                 <ul class="navbar-nav">
                     <li class="nav-item wishlist active">
@@ -38,7 +38,7 @@
                            href="{{route('my-favorite-products.index')}}">
                             <span class="bubble">0</span>
                             <span class="icon"><i class="fas fa-heart"></i></span>
-                            التمنى
+                            {{trans('website.navbar.favourite')}}
                         </a>
                     </li>
                     <li class="nav-item basket cart-basket active">
@@ -60,7 +60,7 @@
                                               transform="translate(-0.21 -10.421)" fill="#a1a1a1" />
                                     </svg>
                                 </span>
-                            السلة
+                            {{trans('website.navbar.cart')}}
                         </a>
                     </li>
                 </ul>

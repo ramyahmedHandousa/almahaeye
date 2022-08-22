@@ -15,7 +15,7 @@
 @section('content')
 
     <div class="container" style="margin-top:5%;margin-bottom: 5%">
-        <h2 class="title">برجاء إدخال الهاتف </h2>
+        <h2 class="title">{{trans('website.auth.pls_phone')}}     </h2>
         <form class="row validation-code" action="{{route('auth-send-forget-password')}}" method="POST">
             {{csrf_field()}}
 
@@ -27,10 +27,10 @@
             <div class="col-12">
                 <div class="row submit-row">
                     <div class="col-lg-3 order2">
-                        <a class="btn btn-gray" href="{{ url('/')}}">رجوع</a>
+                        <a class="btn btn-gray" href="{{ url('/')}}">{{trans('website.global.back')}}</a>
                     </div>
                     <div class="col-lg-3">
-                        <button type="submit" class="btn the-btn-222 the-btn-2 btn-block">تاكيد</button>
+                        <button type="submit" class="btn the-btn-222 the-btn-2 btn-block">{{trans('website.global.confirm')}}</button>
                     </div>
                 </div>
             </div>

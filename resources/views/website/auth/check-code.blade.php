@@ -15,7 +15,7 @@
 @section('content')
 
     <div class="container" style="margin-top:10px;">
-        <h2 class="title">تأكيد رقم الجوال</h2>
+        <h2 class="title">{{trans('website.auth.confirm_phone')}} </h2>
 
         <form class="row validation-code" action="{{route('auth.activation.account')}}" method="POST">
             @csrf
@@ -47,18 +47,18 @@
 
             <div class="form-group" style="margin-bottom: 40px">
             </div>
-            <div class="sub-title">ارسال كود التفعيل خلال <span id="time">3</span> دقائق!
+            <div class="sub-title">{{trans('website.auth.resend_code_text')}} <span id="time">3</span> {{trans('website.auth.minutes')}}
                 <span class="edit" id="active">
-                    <a href="{{route('auth.resend.code')}}">إعادة ارسال كود التفعيل</a></span>
+                    <a href="{{route('auth.resend.code')}}"> {{trans('website.auth.resend_code')}}  </a></span>
             </div>
             <div class="col-12">
                 <div class="row submit-row">
                     <div class="col-lg-3 order2">
-                        <a class="btn btn-gray" href="{{ url('/')}}">رجوع</a>
+                        <a class="btn btn-gray" href="{{ url('/')}}">{{trans('website.global.back')}}</a>
                     </div>
                     <div class="col-lg-3">
                         {{-- <button type="submit" class="btn">تأكيد</button> --}}
-                        <button type="submit" class="btn the-btn-222 the-btn-2 btn-block">تاكيد</button>
+                        <button type="submit" class="btn the-btn-222 the-btn-2 btn-block">{{trans('website.global.confirm')}}</button>
                     </div>
                 </div>
             </div>

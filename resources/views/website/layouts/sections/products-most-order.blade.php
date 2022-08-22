@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="sec-title">
-                <h3 class="title">منتجات اكثر طلب</h3>
+                <h3 class="title">  {{trans('website.home.most_product_order')}}   </h3>
 {{--                <a class="more" href="#">--}}
 {{--                    مشاهدة الكل--}}
 {{--                    <i class="fas fa-angle-double-left"></i>--}}

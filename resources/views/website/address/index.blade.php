@@ -10,7 +10,7 @@
     <!-- start breadcrumbs -->
     <div class="container">
         <div class="sec-title" style="margin-top: 10px;">
-            <h2 class="title">بياناتي الشخصية</h2>
+            <h2 class="title">      {{trans('website.profile.information')}}</h2>
         </div>
         <!-- profile card -->
         <div class="profile-bg">
@@ -26,7 +26,7 @@
                 </div>
             </div>
 
-            <a href="@if(auth()->user()){{route('my-profile')}} @else# @endif" class="btn">تحرير الملف الشخصى</a>
+            <a href="@if(auth()->user()){{route('my-profile')}} @else# @endif" class="btn">{{trans('website.profile.edit_information')}}</a>
         </div>
         <!-- tabs -->
 
@@ -38,8 +38,9 @@
                         <a href="{{ route('my-favorite-products.index') }}">
                             <img src="{{ asset('website/azkataam/img/t1-a.png') }}"
                                  class="img-a mr-5">
-                            <img src="{{ asset('website/azkataam/img/t1-b.png') }}" class="img-b mr-5">قائمة
-                        المفضلة </a>
+                            <img src="{{ asset('website/azkataam/img/t1-b.png') }}" class="img-b mr-5">
+                            {{trans('website.profile.menu_favourite')}}
+                        </a>
                     </li>
                     {{--
                     <li class="{{ request()->route()->getName() == 'orders.history'? "active" :"" }}">
@@ -54,7 +55,7 @@
                             <img loading="lazy" src="{{ asset('website/azkataam/img/t3-a.png') }}"
                                  class="img-a mr-5">
                             <img loading="lazy" src="{{ asset('website/azkataam/img/t3-b.png') }}" class="img-b mr-5">
-                            قائمة عناوينى</a>
+                            {{trans('website.address.my')}}</a>
 
                     </li>
 {{--                    <li class="{{ request()->route()->getName() == 'profile.order.tracking'? "active" :"" }}">--}}
@@ -68,8 +69,8 @@
 
                 <div class="tab-content">
                     <div class="sec-title">
-                        <h4 class="title">قائمة عناوينى</h4>
-                        <a class="btn" href="{{ route('addresses.create') }}">عنوان جديد</a>
+                        <h4 class="title">{{trans('website.address.menu_my')}}  </h4>
+                        <a class="btn" href="{{ route('addresses.create') }}">{{trans('website.address.new')}}  </a>
                     </div>
                     <!-- addresses -->
                     @if(auth()->user() && count(auth()->user()?->address) > 0)
@@ -79,14 +80,16 @@
                             <!-- address -->
                                 <div class="col-lg-3" id="address-{{$address->id}}">
                                     <div class="address">
-                                        <h5 class="title">العنوان رقم {{$index +1}}</h5>
+                                        <h5 class="title">
+                                            {{trans('website.auth.address_no')}}
+                                            {{$index +1}}</h5>
                                         <h5 class="text">{{$address['address']}}</h5>
                                             <div class="btn-rows">
-                                                <a href="{{route('addresses.edit', $address['id']) }}">تعديل</a>
+                                                <a href="{{route('addresses.edit', $address['id']) }}"> {{trans('website.profile.edit')}}</a>
                                                 <a href="javascript:;" data-url="{{ route('addresses.delete') }}"
                                                    id="elementRow{{ $address->id }}" data-id="{{ $address->id }}"
                                                    class="removeElement ">
-                                                    حذف
+                                                      {{trans('website.profile.delete')}}
                                                 </a>
                                             </div>
                                     </div>
@@ -99,8 +102,8 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12 text-center" style="height: 60vh; padding: 100px 0;">
-                                        <h3>لا يوجد عناوين.</h3>
-                                        <span>لتصفح الموقع<a href="{{ route('home-page') }}"> اضغط هنا </a></span>
+                                        <h3>{{trans('website.auth.not_address')}}  </h3>
+                                        <span> {{trans('website.profile.search_web')}}<a href="{{ route('home-page') }}"> {{trans('website.profile.click_here')}}</a></span>
                                     </div>
                                 </div>
                             </div>

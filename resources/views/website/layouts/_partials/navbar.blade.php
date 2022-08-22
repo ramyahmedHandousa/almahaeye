@@ -24,23 +24,23 @@
                             <span class="icon">
                                 <img loading="lazy"   src="{{asset('website/templates/images/saudi-arabia.png')}}" alt="">
                             </span>
-                        العربية
+                        {{  app()->getLocale() != "ar" ? trans('website.ar') : trans('website.en') }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('lang.switch', 'ar') }}">
                                     <span class="icon">
                                         <img loading="lazy"   src="{{asset('website/templates/images/saudi-arabia.png')}}" alt="">
                                     </span>
-                                العربية
+                                {{trans('website.ar')}}
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="{{ route('lang.switch', 'en') }}">
                                     <span class="icon">
                                         <img loading="lazy"   src="{{asset('website/templates/images/united-states-of-america.png')}}" alt="">
                                     </span>
-                                الإنجليزية
+                                {{trans('website.en')}}
                             </a>
                         </li>
                     </ul>

@@ -3,7 +3,7 @@
     <section>
         <div class="container">
             <div class="sec-title">
-                <h3 class="title">المنتجات</h3>
+                <h3 class="title">{{trans('website.products.title')}}</h3>
                 <form class="filter">
                     <button class=" btn btn-sm form-control">
                         <i class="fa fa-minus"></i>
@@ -15,7 +15,7 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                            الأقسام
+                                            {{trans('website.products.category')}}
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             @foreach($categories as $category)
@@ -28,7 +28,7 @@
                                     <div class="dropdown">
                                         <button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
-                                            العلامة التجارية
+                                            {{trans('website.products.brand')}}
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                             @foreach($brands as $brand)

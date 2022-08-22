@@ -15,9 +15,9 @@
 
         <div class="row">
             <div class="sec-title">
-                <h3 class="title">أحدث المنتجات في القسم {{$category->name}}</h3>
+                <h3 class="title"> {{trans('website.home.new_product_category')}}{{$category->name}}</h3>
                 <a class="more" href="{{route('categories',$category->id)}}">
-                    مشاهدة الكل
+                        {{trans('website.home.show_all')}}
                     <i class="fas fa-angle-double-left"></i>
                 </a>
             </div>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="product-content">
                         <h4 class="product-title"><a href="{{route('products',$product->id)}}">{{$product->name}}</a></h4>
-                        <div class="product-price"><span>{{$product->price_percentage ?? $product->price}}</span> ر.س</div>
+                        <div class="product-price"><span>{{$product->price_percentage ?? $product->price}}</span>  {{trans('website.home.rs')}}</div>
                         <h4 class="product-title">{{$product->brand?->name}}</h4>
 
                         <div class="stars">

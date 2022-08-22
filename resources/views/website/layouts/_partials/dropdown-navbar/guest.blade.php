@@ -5,24 +5,24 @@
                             <span class="icon">
                                 <i class="fas fa-user"></i>
                             </span>
-        تسجيل الدخول
+        {{trans('website.auth.login')}}
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
         <div class="login-dropdown">
-            <h4 class="title">سجل دخولك</h4>
-            <div class="sub-title">مرحبا بك مجددا</div>
+            <h4 class="title">{{trans('website.auth.login_text')}}</h4>
+{{--            <div class="sub-title">مرحبا بك مجددا</div>--}}
             <form method="post" id="loginForm" action="{{route('login')}}">
                 @csrf
                 <div class="input-group form-group">
                     <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                    <input name="email" type="email" required class="form-control" placeholder="البريد الالكترونى">
+                    <input name="email" type="email" required class="form-control" placeholder=" {{trans('website.auth.email')}}">
                 </div>
                 <div class="input-group form-group">
                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                    <input name="password" type="text" required class="form-control" placeholder="كلمة المرور">
+                    <input name="password" type="text" required class="form-control" placeholder=" {{trans('website.auth.password')}}">
                 </div>
                 <div class="form-group">
-                    <button class="btn" id="button-login" type="submit">سجل دخول</button>
+                    <button class="btn" id="button-login" type="submit"> {{trans('website.auth.login')}}</button>
 
                 </div>
             </form>
@@ -33,18 +33,16 @@
 {{--                            تذكرنى--}}
 {{--                        </label>--}}
 {{--                    </div>--}}
-                    <div class="resetpass"><a href="{{route('auth-forget-password')}}">نسيت كلمة المرور ؟</a></div>
+                    <div class="resetpass"><a href="{{route('auth-forget-password')}}"> {{trans('website.auth.forget_password')}}</a></div>
                 </div>
                 <div class="form-group">
-                    <p>يمكنك إنشاء حساب بخطوات سهلة ,فقط إضغط
-                        على تسجيل جديد وقم بملا الحقول المطلوبة, ثم
-                        إستمتع بالمميزات التي نقدمها لك</p>
+                    <p>{{trans('website.auth.text_static')}}</p>
                 </div>
                 <div class="form-group">
-                    <a class="btn" href="{{route('sign-user')}}">تسجيل جديد</a>
+                    <a class="btn" href="{{route('sign-user')}}"> {{trans('website.auth.register_user')}}</a>
                 </div>
                 <div class="form-group">
-                    <a class="btn" href="{{route('sign-up-vendor')}}">تسجيل تاجر جديد</a>
+                    <a class="btn" href="{{route('sign-up-vendor')}}"> {{trans('website.auth.register_vendor')}}</a>
                 </div>
 
         </div>

@@ -5,23 +5,23 @@
         <div class="box">
             <ul class="orders-list">
                 <li>
-                    <span>رقم الطلب</span>
+                    <span>  {{trans('website.orders.number')}}</span>
                     <span><a target="_blank" href="{{route('orders.show',$order->id)}}">{{$order->id}}</a></span>
                 </li>
                 <li>
-                    <span>تاريخ الطلب</span>
+                    <span>{{trans('website.orders.created_at')}}  </span>
                     <span>{{$order->created_at?->format('Y-m-d')}}</span>
                 </li>
                 <li>
-                    <span>وقت الطلب</span>
+                    <span>{{trans('website.orders.time')}}</span>
                     <span>{{$order->created_at?->diffForHumans()}}</span>
                 </li>
                 <li>
-                    <span>عدد المنتج</span>
+                    <span>{{trans('website.orders.product_count')}}  </span>
                     <span>{{$order->order_items_count}}</span>
                 </li>
                 <li>
-                    <span>تقييم </span>
+                    <span>{{trans('website.orders.rate')}} </span>
                     <span>
                       <div class="stars">
                         <span class="total">4.35 </span>

@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('change/lang/{lang}',function ($locale){
+    session()->put('locale', $locale);
+    app()->setLocale($locale);
 
-Route::group(['namespace' => 'Controllers\Website'], function () {
+    return redirect()->back();
+
+})->name('lang.switch');
+
+Route::group(['namespace' => 'Controllers\Website','middleware' => ['lang']], function () {
 
     Route::get('/', 'indexController')->name('home-page');
 
@@ -105,7 +112,7 @@ Route::group(['namespace' => 'Controllers\Website'], function () {
 });
 
 
-Route::get('/search','Livewire\Products')->name('search');
+Route::get('/search','Livewire\Products')->name('search')->middleware('lang');
 
 
 

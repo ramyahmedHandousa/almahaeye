@@ -10,7 +10,7 @@
     <!-- start breadcrumbs -->
     <div class="container">
         <div class="sec-title" style="margin-top: 10px;">
-            <h2 class="title">بياناتي الشخصية</h2>
+            <h2 class="title">{{trans('website.profile.information')}}  </h2>
         </div>
         <!-- profile card -->
         <div class="profile-bg">
@@ -25,7 +25,7 @@
                     <p>{{ auth()->user()?->email }}</p>
                 </div>
             </div>
-            <a href="{{route('my-profile')}}" class="btn">تحرير الملف الشخصى</a>
+            <a href="{{route('my-profile')}}" class="btn">{{trans('website.profile.edit_information')}}    </a>
         </div>
         <!-- tabs -->
 
@@ -37,9 +37,8 @@
                         <a href="{{ route('my-favorite-products.index') }}">
                             <img src="{{ asset('website/azkataam/img/t1-a.png') }}"
                                  class="img-a mr-5">
-                            <img src="{{ asset('website/azkataam/img/t1-b.png') }}" class="img-b mr-5">قائمة
-                            المفضلة
-
+                            <img src="{{ asset('website/azkataam/img/t1-b.png') }}" class="img-b mr-5">
+                            {{trans('website.profile.menu_favourite')}}
                         </a>
                     </li>
                     <li class="{{ request()->route()->getName() == 'addresses.index'? "active" :"" }}">
@@ -47,8 +46,8 @@
                             <img loading="lazy" src="{{ asset('website/azkataam/img/t3-a.png') }}"
                                  class="img-a mr-5">
                             <img loading="lazy" src="{{ asset('website/azkataam/img/t3-b.png') }}" class="img-b mr-5">
-                            قائمة عناوينى</a>
-
+                            {{trans('website.profile.menu_address')}}
+                        </a>
                     </li>
                 </ul>
 

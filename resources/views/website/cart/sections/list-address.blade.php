@@ -1,4 +1,4 @@
-<div class="title cart-list-address" style="display: none">اختيار عنوان</div>
+<div class="title cart-list-address" style="display: none">  {{trans('website.address.choose_address')}}   </div>
 
 <div class="col-lg-8 cart-list-address"  style="display: none">
     <div class="box">
@@ -21,7 +21,7 @@
                 </table>
             </div>
 
-            <a href="{{route('addresses.create')}}" target="_blank"><h5 class="sub-title">أضف عنوان جديد</h5></a>
+            <a href="{{route('addresses.create')}}" target="_blank"><h5 class="sub-title">{{trans('website.address.add_address')}}  </h5></a>
 
         </div>
     </div>

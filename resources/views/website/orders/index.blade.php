@@ -6,7 +6,7 @@
     <section class="">
         <div class="container">
             <div class="sec-title">
-                <h2 class="title">الطلبات</h2>
+                <h2 class="title">{{trans('website.orders.title')}} </h2>
             </div>
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -22,19 +22,19 @@
             <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="pills-tab-1" data-bs-toggle="pill" data-bs-target="#pills-1"
-                            type="button">طلبات جديدة</button>
+                            type="button">{{trans('website.orders.new_orders')}}  </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-tab-2" data-bs-toggle="pill" data-bs-target="#pills-2" type="button"
-                            role="tab">طلبات تم الموافقة عليها</button>
+                            role="tab">{{trans('website.orders.accepted_orders')}}      </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-tab-3" data-bs-toggle="pill" data-bs-target="#pills-3" type="button"
-                            role="tab">طلبات منتهية</button>
+                            role="tab">{{trans('website.orders.finish_orders')}}  </button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pills-tab-4" data-bs-toggle="pill" data-bs-target="#pills-4" type="button"
-                            role="tab">طلبات ملغية</button>
+                            role="tab">{{trans('website.orders.refuse_orders')}}</button>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -43,7 +43,7 @@
                     @if(count($pendingOrders) > 0 )
                         @include('website.orders.sections.new-orders')
                     @else
-                        <h1>لا يوجد جديدة</h1>
+                        <h1>{{trans('website.orders.not_found')}}  </h1>
                     @endif
                 </div>
                 <!-- tab 2 -->
@@ -51,7 +51,7 @@
                     @if(count($acceptedOrders) > 0)
                         @include('website.orders.sections.accepted-orders')
                     @else
-                        <h1>لا يوجد طلبات تم الموافقة عليها</h1>
+                        <h1> {{trans('website.orders.not_found')}}  </h1>
                     @endif
                 </div>
                 <!-- tab 3 -->
@@ -59,7 +59,7 @@
                     @if(count($finishOrders) > 0)
                         @include('website.orders.sections.finish-orders')
                     @else
-                        <h1>لا يوجد طلبات   منتهية حتي الان</h1>
+                        <h1>{{trans('website.orders.not_found')}}</h1>
                     @endif
                 </div>
                 <!-- tab 4 -->
@@ -68,7 +68,7 @@
                     @if(count($refuseOrders) > 0)
                         @include('website.orders.sections.refuse-orders')
                     @else
-                        <h1>لا يوجد طلبات تم رفضها </h1>
+                        <h1>{{trans('website.orders.not_found')}}</h1>
                     @endif
                 </div>
             </div>

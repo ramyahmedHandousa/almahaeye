@@ -12,14 +12,14 @@
                 </svg>
             </div>
             <div class="col-lg-5">
-                <h5 class="title">شارك في بريد عين المها الأن</h5>
-                <h5 class="sub-title">حتى يصلك كل جديد فى عروضنا اليومية و الشهرية و الموسمية</h5>
+                <h5 class="title">   {{trans('website.subscription.static_text')}}</h5>
+                <h5 class="sub-title">  {{trans('website.subscription.static_text_2')}}</h5>
             </div>
             <div class="col-lg-4">
                 <form>
                     <div class="subscription">
-                        <input type="email" class="form-control" placeholder="اكتب بريدك الالكترونى" required>
-                        <button class="btn" type="submit"> اشتراك </button>
+                        <input type="email" class="form-control" placeholder="{{trans('website.subscription.email')}}" required>
+                        <button class="btn" type="submit"> {{trans('website.subscription.title')}} </button>
                     </div>
                 </form>
             </div>

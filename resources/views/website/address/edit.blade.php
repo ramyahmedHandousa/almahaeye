@@ -21,7 +21,7 @@
 
     <div class="container">
         <div class="sec-title">
-            <h2 class="title">إنشاء عنوان جديد</h2>
+            <h2 class="title">{{trans('website.address.new')}} </h2>
         </div>
         <div class="row">
 
@@ -41,15 +41,15 @@
                     {{ method_field('PUT') }}
 
                     <div class="col-12 form-group">
-                        <input type="text" value='{{$address->notes}}' class="form-control" name="notes" placeholder="أضف ملاحظة">
+                        <input type="text" value='{{$address->notes}}' class="form-control" name="notes" placeholder="{{trans('website.global.add_note')}}  ">
                     </div>
 
                     <div class="col-12" >
                         <div class="mb-15" >
-                            <h5>اختر موقعك علي الخريطه</h5>
+                            <h5>{{trans('website.auth.address_search_map')}} </h5>
                             <input   id="pac-input" name="address_search" required
                                      class="controls mapSearchLocation" value="{{$address->address}}"
-                                     type="text"    placeholder="بحث"  >
+                                     type="text"    placeholder="{{trans('website.auth.search')}}"  >
                             <input type="hidden" name="latitude"  value="{{$address->latitude}}" id="lat"/>
                             <input type="hidden" name="longitude" value="{{$address->longitude}}" id="lng"/>
                             <input type="hidden" name="address"   value="{{$address->address}}" id="address"/>
@@ -63,10 +63,10 @@
                     <div class="col-12" style="margin-top: 10px; margin-bottom: 5px;">
                         <div class="row submit-row">
                             <div class="col-lg-3 order2">
-                                <a class="btn btn-gray" href="{{route('addresses.index')}}">الغاء</a>
+                                <a class="btn btn-gray" href="{{route('addresses.index')}}">{{trans('website.global.cancel')}}</a>
                             </div>
                             <div class="col-lg-3">
-                                <button type="submit" class="btn">حفظ</button>
+                                <button type="submit" class="btn">{{trans('website.global.save')}}</button>
                             </div>
                         </div>
                     </div>

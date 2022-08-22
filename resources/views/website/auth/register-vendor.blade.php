@@ -21,7 +21,7 @@
     <section>
         <div class="container">
             <div class="sec-title">
-                <h2 class="title">تسجيل تاجر جديد</h2>
+                <h2 class="title"> {{trans('website.auth.register_vendor')}}    </h2>
             </div>
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -37,41 +37,41 @@
                 @csrf
 
                 <div class="col-lg-4 form-group">
-                    <input type="text"  name="trade_name" value="{{old('trade_name')}}" class="form-control" placeholder="الإسم التجاري" required>
+                    <input type="text"  name="trade_name" value="{{old('trade_name')}}" class="form-control" placeholder="{{trans('website.auth.commercial_no')}}    " required>
                     @error('trade_name') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-lg-4 form-group">
-                    <input type="text"  name="first_name" value="{{old('first_name')}}" class="form-control" placeholder="اسم الاول" required>
+                    <input type="text"  name="first_name" value="{{old('first_name')}}" class="form-control" placeholder=" {{trans('website.auth.first_name')}} " required>
                     @error('first_name') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-lg-4 form-group">
-                    <input type="text"  name="last_name" value="{{old('last_name')}}" class="form-control" placeholder="اسم الأخير" required>
+                    <input type="text"  name="last_name" value="{{old('last_name')}}" class="form-control" placeholder="   {{trans('website.auth.last_name')}} " required>
                     @error('last_name') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-lg-4 form-group">
-                    <input type="text"  name="email" value="{{old('email')}}" class="form-control" placeholder="البريد الإلكترونى" required>
+                    <input type="text"  name="email" value="{{old('email')}}" class="form-control" placeholder=" {{trans('website.auth.email')}} " required>
                     @error('email') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-lg-4 form-group">
-                    <input type="text"  name="phone" value="{{old('phone')}}" class="form-control" placeholder="رقم الهاتف" required>
+                    <input type="text"  name="phone" value="{{old('phone')}}" class="form-control" placeholder="   {{trans('website.auth.phone')}} " required>
                     @error('phone') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-lg-4 form-group">
-                    <input type="password" name="password" class="form-control" placeholder="كلمة المرور" required>
+                    <input type="password" name="password" class="form-control" placeholder="   {{trans('website.auth.password')}} " required>
                     @error('password') <span class="error">{{ $message }}</span> @enderror
                 </div>
                 <div class="col-lg-4 form-group">
-                    <input type="password" name="confirm_password" class="form-control" placeholder="تأكيد كلمة المرور" required>
+                    <input type="password" name="confirm_password" class="form-control" placeholder="     {{trans('website.auth.confirm_password')}} " required>
                     @error('confirm_password') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-lg-4 form-group">
                     <select class="form-select" id="country"   required>
-                        <option value=''>اختار الدولة</option>
+                        <option value=''>{{trans('website.auth.country')}}    </option>
                         @foreach($countries as $country)
                             <option value={{ $country->id }}>{{ $country->name }}</option>
                         @endforeach
@@ -80,13 +80,13 @@
 
                 <div class="col-lg-4 form-group">
                     <select class="form-select"  id="region"  required>
-                        <option value=''>اختار المنطقة</option>
+                        <option value=''>{{trans('website.auth.region')}}    </option>
                     </select>
                 </div>
 
                 <div class="col-lg-4 form-group">
                     <select class="form-select" id="city" name="country_id"  required>
-                        <option value=''>اختار المدينة</option>
+                        <option value=''>   {{trans('website.auth.city')}} </option>
                     </select>
                 </div>
 
@@ -100,13 +100,13 @@
 
 
                 <div class="col-lg-8 form-group">
-                    <input type="text"  name="city_address" value="{{old('city_address')}}" class="form-control" placeholder="عنوان الحي الخاص بك  " required>
+                    <input type="text"  name="city_address" value="{{old('city_address')}}" class="form-control" placeholder=" {{trans('website.auth.city_address')}} " required>
                     @error('city_address') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-lg-4 form-group">
                     <select class="form-select" name="bank_id" required>
-                        <option value=''>اختار البنك</option>
+                        <option value=''>{{trans('website.auth.bank')}}    </option>
                         @foreach($banks as $bank)
                             <option value={{ $bank->id }}>{{ $bank->name }}</option>
                         @endforeach
@@ -114,12 +114,12 @@
                 </div>
 
                 <div class="col-lg-4 form-group">
-                    <input type="text"  name="iban" value="{{old('iban')}}" class="form-control" placeholder=" رقم الأيبان" required>
+                    <input type="text"  name="iban" value="{{old('iban')}}" class="form-control" placeholder="{{trans('website.auth.iban')}}" required>
                     @error('iban') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
                 <div class="col-lg-4 form-group">
-                    <input type="text"  name="commercial_registration" value="{{old('commercial_registration')}}" class="form-control" placeholder="رقم السجل التجاري" required>
+                    <input type="text"  name="commercial_registration" value="{{old('commercial_registration')}}" class="form-control" placeholder="{{trans('website.auth.commercial_registration_no')}} " required>
                     @error('commercial_registration') <span class="error">{{ $message }}</span> @enderror
                 </div>
 
@@ -129,7 +129,7 @@
 
                     <div class="col-lg-4 form-group">
                         <div class="row">
-                            <label class="col-lg-8"  >صورة السجل التجارى</label>
+                            <label class="col-lg-8"  >     {{trans('website.auth.commercial_registration_image')}} </label>
                             @error('image_commercial') <span class="error">{{ $message }}</span> @enderror
                             <div class="col-lg-4">
                                 <div class="upload-file form-group">
@@ -138,8 +138,7 @@
                                             <img class="prev" id="image_commercial" loading="lazy"
                                                  src="{{ asset('website/templates/images/upload-to-cloud.png') }}">
                                         </div>
-                                        <input type="file" name="image_commercial" onChange="img_record(this);" class="inputfile"
-                                                 />
+                                        <input type="file" name="image_commercial" onChange="img_record(this);" class="inputfile" />
                                     </label>
                                 </div>
                             </div>
@@ -169,7 +168,7 @@
 
                     <div class="col-lg-4 form-group">
                         <div class="row">
-                            <label for="image_service_provider" class="col-lg-8">صورة مقدم الخدمة</label>
+                            <label for="image_service_provider" class="col-lg-8">{{trans('website.auth.service_provider_image')}}</label>
                             @error('image_service_provider') <span class="error">{{ $message }}</span> @enderror
                             <div class="col-lg-4">
                                 <div class="upload-file form-group">
@@ -192,10 +191,10 @@
 
                 <div class="col-12" >
                     <div class="mb-15" >
-                        <h5>اختر موقعك علي الخريطه</h5>
+                        <h5>{{trans('website.auth.address_search_map')}}  </h5>
                         <input   id="pac-input" name="address_search" required
                                  class="controls mapSearchLocation" value="{{old('address_search')}}"
-                                 type="text"    placeholder="بحث"  >
+                                 type="text"    placeholder="{{trans('website.auth.search')}}  "  >
                         <input type="hidden" name="latitude"  value="{{old('latitude')}}" id="lat"/>
                         <input type="hidden" name="longitude" value="{{old('longitude')}}" id="lng"/>
                         <input type="hidden" name="address"   value="{{old('address')}}" id="address"/>
@@ -209,18 +208,18 @@
                 <div class="col-12 form-group">
                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox" value="" required>
-                        أوافق على جميع الشروط والاحكام و سياسة الخصوصية
+                          {{trans('website.auth.confirm_accepted')}}
                     </label>
                 </div>
 
                 <div class="col-12">
                     <div class="row submit-row">
                         <div class="col-lg-3 order2">
-                            <a class="btn btn-gray" href="{{url('/')}}">إلغاء</a>
+                            <a class="btn btn-gray" href="{{url('/')}}"> {{trans('website.global.back')}}</a>
                         </div>
 
                         <div class="col-lg-3">
-                            <button type="submit" class="btn">التالى</button>
+                            <button type="submit" class="btn"> {{trans('website.auth.next')}}</button>
                         </div>
                     </div>
                 </div>

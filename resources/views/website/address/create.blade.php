@@ -21,7 +21,7 @@
 
     <div class="container">
         <div class="sec-title">
-            <h2 class="title">إنشاء عنوان جديد</h2>
+            <h2 class="title">{{trans('website.address.new')}}     </h2>
         </div>
         <div class="row">
 
@@ -45,7 +45,7 @@
 
                     <div class="col-12" >
                         <div class="mb-15" >
-                            <h5>اختر موقعك علي الخريطه</h5>
+                            <h5>{{trans('website.auth.address_search_map')}}       </h5>
                             <input   id="pac-input" name="address_search" required
                                      class="controls mapSearchLocation" value="{{old('address_search')}}"
                                      type="text"    placeholder="بحث"  >
@@ -62,10 +62,10 @@
                     <div class="col-12" style="margin-top: 10px; margin-bottom: 5px;">
                         <div class="row submit-row">
                             <div class="col-lg-3 order2">
-                                <a class="btn btn-gray" href="{{route('addresses.index')}}">الغاء</a>
+                                <a class="btn btn-gray" href="{{route('addresses.index')}}">{{trans('website.global.cancel')}}</a>
                             </div>
                             <div class="col-lg-3">
-                                <button type="submit" class="btn">حفظ</button>
+                                <button type="submit" class="btn">{{trans('website.global.save')}}</button>
                             </div>
                         </div>
                     </div>

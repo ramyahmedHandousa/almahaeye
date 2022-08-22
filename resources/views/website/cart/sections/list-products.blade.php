@@ -1,5 +1,5 @@
 {{--<div id="cart-list-products">--}}
-<div class="title cart-list-products"> عربية التسوق ({{count($products)}})</div>
+<div class="title cart-list-products"> {{trans('website.cart.name')}}    ({{count($products)}})</div>
 <div class="col-lg-8 cart-list-products">
     <!-- cart product -->
     @foreach($products as $product)
@@ -12,13 +12,13 @@
                 <div class="product-price">
                     @if($product['discount'])
 
-                        <span style="line-height: normal; text-decoration: line-through">{{$product['price']}}</span>ر.س
-                        <span>{{$product['discount']}}</span>ر.س
+                        <span style="line-height: normal; text-decoration: line-through">{{$product['price']}}</span>  {{trans('website.cart.sr')}}
+                        <span>{{$product['discount']}}</span> {{trans('website.cart.sr')}}
                     @else
-                        <span>{{$product['price']}}</span>ر.س
+                        <span>{{$product['price']}}</span> {{trans('website.cart.sr')}}
                     @endif
                 </div>
-                                        <div class="product-seller">اللون:<a href="#">{{$product['frame_color_name']}}</a></div>
+                                        <div class="product-seller">{{trans('website.cart.color')}}  :<a href="#">{{$product['frame_color_name']}}</a></div>
             </div>
             <div class="product-count">
                 <div class="number">

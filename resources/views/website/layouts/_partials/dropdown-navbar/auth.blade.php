@@ -9,11 +9,11 @@
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
         <li>
             <a class="dropdown-item" href="{{ route('my-profile')}}">
-                حسابى
+                {{trans('website.auth.profile')}}
             </a>
         </li>
             <a class="dropdown-item" href="{{ route('orders.index')}}">
-                طلباتي
+                {{trans('website.auth.orders')}}
             </a>
         <li>
 
@@ -42,7 +42,7 @@
                 @if (auth()->user()->type == 'vendor')
                     <li>
                             <a class="dropdown-item" href="{{ route('vendor-products.index')}}">
-                                منتجاتى
+                                {{trans('website.auth.products')}}
                             </a>
                     </li>
                 @endif
@@ -50,27 +50,27 @@
             @if (auth()->user()->type == 'client')
                 <li>
                     <a class="dropdown-item" href="{{ route('addresses.index')}}">
-                        عناوينى
+                        {{trans('website.auth.address')}}
                     </a>
                 </li>
             @endif
             @if(auth()->user()?->is_active == 0)
                 <li style="background-color: #e0c057">
                     <a class="dropdown-item" href="{{route('check-user-code')}}">
-                    تفعيل الحساب
+                       {{trans('website.auth.active_account')}}
                     </a>
                 </li>
             @endif
             @if(auth()->user()?->marketing_agree != 1)
                 <li  style="background-color:@if(auth()->user()?->marketing_agree == 0 && auth()->user()?->marketing_agree_info != null)  #e0c057 @else #e78989 @endif">
                     <a class="dropdown-item" href="{{route('complete-marking-agree')}}">
-                   إتفاقية التسويق
+                        {{trans('website.auth.marking_agree')}}
                     </a>
                 </li>
             @endif
             <li>
                 <a class="dropdown-item" href="{{route('contact-us')}}">
-                    تواصل معنا
+                    {{trans('website.auth.contact_us')}}
                 </a>
             </li>
 
@@ -82,17 +82,17 @@
 
             <li>
                 <a class="dropdown-item" href="{{route('global-setting','terms')}}">
-                    الشروط والأحكام
+                    {{trans('website.auth.terms')}}
                 </a>
             </li>
             <li>
                 <a class="dropdown-item" href="{{route('global-setting','privacy')}}">
-                    سياسة الاسترجاع
+                    {{trans('website.auth.privacy')}}
                 </a>
             </li>
             <li>
                 <a class="dropdown-item" onclick="window.localStorage.clear()" href="{{ route('log-out') }}">
-                    تسجيل الخروج
+                    {{trans('website.auth.log_out')}}
                 </a>
             </li>
     </ul>
