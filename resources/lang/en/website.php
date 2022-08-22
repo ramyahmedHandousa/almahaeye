@@ -5,6 +5,7 @@ return [
     'title'     => 'Ain Al Maha',
     'ar'        => 'arabic',
     'en'        => 'english',
+    'choose_lang'        => 'choose language',
     'global'    => [
         'back'      => 'back',
         'save'      => 'save',
@@ -188,6 +189,24 @@ return [
         'email' => 'enter your email',
         'static_text' => 'Subscribe to Ain Al Maha mail now',
         'static_text_2' => 'to receive all new in our daily, monthly and seasonal offers',
+    ],
+    'setting' => [
+        'contact_us' => [
+            'how_can_help'  => 'How can we help you ?',
+            'contact_text'  => 'We will contact you after we receive your message or complaint in less than 24 hours',
+            'full_time'     => 'Enter your full name',
+            'mobile'        => 'Enter the mobile number',
+            'email'         => 'Enter your email',
+            'message'       => 'Your message or complaint',
+            'contact'       => 'contact information',
+            'e_mail'        => 'E-mail',
+            'hotline'       => 'Hot line',
+            'fax'           => 'fax number',
+            'address'       => 'the address',
+            'whatsapp'      => 'Whatsapp',
+            'send'          => 'send'
+        ]
+
     ],
     'footer' => [
         'menu' => 'menu',

@@ -6,8 +6,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="title">كيف يمكننا مساعدتك ؟</div>
-                    <div class="sub-title">سيتم التواصل معك بعد ان تصلنا رسالتك او شكوتك في اقل من 24 ساعة</div>
+                    <div class="title">{{trans('website.setting.contact_us.how_can_help')}}</div>
+                    <div class="sub-title"> {{trans('website.setting.contact_us.contact_text')}}</div>
                     <div class="contact-form">
                         <form method="post" action="{{route('send.contact.us')}}" id="submit-contact-us">
                             @csrf
@@ -21,49 +21,49 @@
                                 </div>
                             @endif
                             <div class="form-group">
-                                <label>ادخل اسمك بالكامل :</label>
-                                <input type="text" name="name" class="form-control form-control2" placeholder="الاسم"  >
+                                <label>      :{{trans('website.setting.contact_us.full_time')}}</label>
+                                <input type="text" name="name" class="form-control form-control2" placeholder="{{trans('website.setting.contact_us.full_time')}}"  >
                             </div>
                             <div class="form-group">
-                                <label>ادخل رقم الجوال :</label>
-                                <input type="text" name="phone" class="form-control form-control2" placeholder="الرقم" required>
+                                <label>{{trans('website.setting.contact_us.mobile')}}      :</label>
+                                <input type="text" name="phone" class="form-control form-control2" placeholder="{{trans('website.setting.contact_us.mobile')}}" required>
                             </div>
                             <div class="form-group">
-                                <label>ادخل الإيميل الخاص بك   :</label>
-                                <input type="email" name="email" class="form-control form-control2" placeholder="الإيميل" required>
+                                <label>          :{{trans('website.setting.contact_us.email')}}</label>
+                                <input type="email" name="email" class="form-control form-control2" placeholder="{{trans('website.setting.contact_us.email')}}" required>
                             </div>
                             <div class="form-group">
-                                <label>رسالتك او شكوتك :</label>
-                                <textarea class="form-control form-control2" name="message" rows="5" placeholder="اكتب هنا " required></textarea>
+                                <label>   :{{trans('website.setting.contact_us.message')}}</label>
+                                <textarea class="form-control form-control2" name="message" rows="5" placeholder="  {{trans('website.setting.contact_us.message')}} " required></textarea>
                             </div>
                             <div class="form-group">
-                                <button type="submit" id="button-contact-us"  class="btn the-btn-2 btn-block btn-larg">ارسال</button>
+                                <button type="submit" id="button-contact-us"  class="btn the-btn-2 btn-block btn-larg">{{trans('website.setting.contact_us.send')}} </button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="title">بيانات التواصل</div>
-                    <div class="sub-title">سيتم التواصل معك بعد ان تصلنا رسالتك او شكوتك في اقل من 24 ساعة</div>
+                    <div class="title">  {{trans('website.setting.contact_us.contact')}}</div>
+                    <div class="sub-title"> {{trans('website.setting.contact_us.contact_text')}}</div>
                     <ul class="list-group">
                         <li>
-                            <span>البريد الإلكتروني</span>
+                            <span>{{trans('website.setting.contact_us.e_mail')}}   </span>
                             <span>almahaeye@gamil.com</span>
                         </li>
                         <li>
-                            <span>خط ساخن</span>
+                            <span> {{trans('website.setting.contact_us.hotline')}}</span>
                             <span>+98888377261</span>
                         </li>
                         <li>
-                            <span>رقم فاكس</span>
+                            <span>{{trans('website.setting.contact_us.fax')}}   </span>
                             <span>+98888377261</span>
                         </li>
                         <li>
-                            <span>العنوان</span>
+                            <span> {{trans('website.setting.contact_us.address')}}</span>
                             <span>السعودية - دمام - شارع فلان ابن فلان</span>
                         </li>
                         <li>
-                            <span>الوتس آب</span>
+                            <span> {{trans('website.setting.contact_us.whatsapp')}}</span>
                             <span>+98888377261</span>
                         </li>
                     </ul>

@@ -24,7 +24,7 @@
                             <span class="icon">
                                 <img loading="lazy"   src="{{asset('website/templates/images/saudi-arabia.png')}}" alt="">
                             </span>
-                        {{  app()->getLocale() != "ar" ? trans('website.ar') : trans('website.en') }}
+                        {{ trans('website.choose_lang') }}
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li>
