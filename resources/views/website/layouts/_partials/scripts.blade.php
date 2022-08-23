@@ -1,3 +1,6 @@
+<script>
+    var translations = {!! \Cache::get('translations') !!};
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
@@ -67,7 +70,7 @@
             contentType: false,
             processData: false,
             success: function (response) {
- 
+
                 showMessage('success', response.title, response.message)
                 setTimeout(() => location.reload(),500)
             },

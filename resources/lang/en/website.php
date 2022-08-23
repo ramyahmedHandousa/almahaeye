@@ -117,6 +117,13 @@ return [
     ],
     'cart' => [
         'name' => 'shopping cart',
+        'title' => 'cart',
+        'success' => 'done',
+        'add_success' => 'Adding is in progress!',
+        'add_to' => 'Add to cart',
+        'search_code' => 'Searching for code!',
+        'use_code' => 'use the code',
+        'error_code' => "This code is incorrect!",
         'color' => 'color',
         'sr' => 'sr',
         'coupon' => 'discount coupon',
@@ -173,6 +180,9 @@ return [
         'tax' => 'added tax',
         'total_with_tax' => 'inclusive of VAT',
         'total' => 'total',
+        'success' => 'Your request was successful',
+        'error_complete_information' => 'Please make sure to complete all the data please',
+        'error' => 'Unfortunately, an error occurred during the request...',
 
     ],
     'address' => [
@@ -220,5 +230,21 @@ return [
         'privacy' => 'use policy' ,
         'terms' => 'Terms and Conditions',
         'developer' => 'about the developer',
+    ],
+     'valid' => [
+        'cart' => [
+            'address' => [
+                'title' => 'order title',
+                'choose_valid' => 'choose a title please'
+            ],
+            'shipping' => [
+                'title' => 'shipping order',
+                'choose_valid' => 'choose the shipping company please'
+            ],
+            'payment' => [
+                'title' => 'payment order',
+                'choose_valid' => 'choose your payment method please'
+            ]
+        ]
     ]
 ];
