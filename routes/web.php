@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('change/lang/{lang}',function ($locale){
-    session()->put('locale', $locale);
-    app()->setLocale($locale);
-
-    return redirect()->back();
-
-})->name('lang.switch');
+Route::get('change/lang/{lang}','Controllers\Website\ChangeLangController')->name('lang.switch');
 
 Route::group(['namespace' => 'Controllers\Website','middleware' => ['lang']], function () {
 
