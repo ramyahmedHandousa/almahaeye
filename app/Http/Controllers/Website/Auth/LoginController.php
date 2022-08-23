@@ -12,8 +12,7 @@ class LoginController extends Controller
 
     public function __invoke(LoginValid $request)
     {
-
-        return response()->json(['message' => 'تم تسجيل الدخول بنجاح']);
+        return response()->json(['title' => trans('website.global.success'),'message' => trans('website.auth.login_success')]);
     }
 
 

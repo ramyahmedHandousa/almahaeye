@@ -67,13 +67,13 @@
             contentType: false,
             processData: false,
             success: function (response) {
-
-                showMessage('success','@lang('institutioncp.success')', response.message)
+ 
+                showMessage('success', response.title, response.message)
                 setTimeout(() => location.reload(),500)
             },
             error: function (error) {
                 setTimeout(() =>
-                        showMessage('error','@lang('institutioncp.error')', error.responseJSON.errors[0])
+                        showMessage('error','@lang('website.global.error')', error.responseJSON.errors[0])
                     ,500)
 
                 $("#button-login").html(' سجل دخول')
