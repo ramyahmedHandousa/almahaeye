@@ -44,7 +44,7 @@ $(".add-to-cart").click(function(){
         type:"POST",
         beforeSend:function () {
             $('.add-to-cart').css({"color":"#220e0e","background-color": "#9cd96d", "transition": "all .3s ease-in-out"});
-            $('.add-to-cart span').text("جاري الإضافة!");
+            $('.add-to-cart span').text(trans('website.cart.add_success'));
         },
         data:{
             product_id:$(this).attr('data-id'),
@@ -56,16 +56,16 @@ $(".add-to-cart").click(function(){
             var data = response.data;
 
             localStorage.setItem('itemsNumbers',data['total_cart']);
-            $('.add-to-cart span').text("تم!");
+            $('.add-to-cart span').text(trans('website.cart.success'));
             document.querySelector('.cart-basket span').textContent = data['total_cart'];
             $(".cart-basket span ").css({"font-size":"40px"});
         },
-        error: function(error) {
+        error: function() {
             $('.add-to-cart span').text("something wrong!");
 
         },complete:function () {
             $('.add-to-cart').css({"background-color":"#ffd609", "transition": "all .3s ease-in-out"});
-            $('.add-to-cart span').text("أضف إلى سلة الشراء");
+            $('.add-to-cart span').text(trans('website.cart.add_to'));
             setTimeout(function () {
                 $(".cart-basket span ").css({"font-size":"20px"});
             },500);
@@ -111,14 +111,14 @@ function updateTotalPrice(){
     });
 
     if (cartPercentage !== 0){
-        sub_total = (sub_total - ((sub_total * cartPercentage) / 100))
+        sub_total = (sub_total - ((sub_total * cartPercentage) / 100));
     }
 
     if (tax !== 0){
-        sub_total = (sub_total + ((sub_total * tax) / 100))
+        sub_total = (sub_total + ((sub_total * tax) / 100));
     }
 
-    $(".total-price-cart").text(sub_total.toFixed(2))
+    $(".total-price-cart").text(sub_total.toFixed(2));
 
 }
 
@@ -165,18 +165,18 @@ $(".remove-from-cart").click(function(){
             localStorage.setItem('itemsNumbers',data['total_cart']);
             document.querySelector('.cart-basket span').textContent = data['total_cart'];
             $(".cart-basket span ").css({"font-size":"40px"});
-            $("#cart-info-"+product_id).remove()
+            $("#cart-info-"+product_id).remove();
 
             if (data['total_cart'] === 0){
                 window.location.href = '/';
             }
         },
-        error: function(error) {
+        error: function( ) {
             $('.add-to-cart span').text("something wrong!");
 
         },complete:function () {
             $(".cart-basket span ").css({"font-size":"20px"});
-            updateTotalPrice()
+            updateTotalPrice();
         }
     });
 });
@@ -189,7 +189,7 @@ $("#check-code").on('click',function () {
             url: "/check-code",
             type:"Get",
             beforeSend:function () {
-                $('#check-code').text("جاري البحث عن الكود!");
+                $('#check-code').text(trans('website.cart.search_code'));
             },
             data:{ code:code },
             success:function(response){
@@ -203,14 +203,14 @@ $("#check-code").on('click',function () {
                 $('.discount-by-coupon').text(data['discount']);
                 $('.total-price-cart').text(data['total_price']);
             },
-            error: function(error) {
-                $('#check-code').text("هذا الكود غير صحيح !");
+            error: function( ) {
+                $('#check-code').text(trans('website.cart.error_code'));
 
             },complete:function () {
                 setTimeout(function () {
                     $("#coupon-code").val('');
-                    $('#check-code').text("استخدم الكود");
-                },800)
+                    $('#check-code').text(trans('website.cart.use_code'));
+                },800);
             }
         });
     }
@@ -229,6 +229,14 @@ $(".change-aramex-cities").on('change',function () {
     cartShippingCityName = this.value;
 });
 
+function trans(key, replace = {}) {
+    var translation = key.split('.').reduce((t, i) => t[i] || null, window.translations);
+
+    for (var placeholder in replace) {
+        translation = translation.replace(`:${placeholder}`, replace[placeholder]);
+    }
+    return translation;
+}
 
 $("#cartNextStep").click(function () {
 
@@ -253,7 +261,7 @@ $("#cartNextStep").click(function () {
             cartListShipping.show();
             pageStatus = 2;
         }else {
-            toastr['error']('إختار عنوان من فضلك', 'عنوان الطلب');
+            toastr['error'](trans('website.valid.cart.address.choose_valid'), trans('website.valid.cart.address.title'));
         }
     }else if (pageStatus === 2 ){
         if ($(".cart-choose-shipping").is(":checked")){
@@ -264,7 +272,7 @@ $("#cartNextStep").click(function () {
             cartPayment.show();
             pageStatus = 3;
         }else {
-            toastr['error']('إختار شركة الشحن من فضلك', 'شحن الطلب');
+            toastr['error'](trans('website.valid.cart.shipping.choose_valid'), trans('website.valid.cart.shipping.title'));
         }
     }else {
 
@@ -280,7 +288,7 @@ $("#cartNextStep").click(function () {
             }
 
         }else {
-            toastr['error']('إختار  طريقة الدفع من فضلك', 'دفع الطلب');
+            toastr['error'](trans('website.valid.cart.payment.choose_valid'), trans('website.valid.cart.payment.title'));
         }
 
 
@@ -308,18 +316,18 @@ function makeOrderCart(cartAddressId,cartShippingId,cartCoupon,payment_method){
            if (response.status === 200){
 
                if(response.data.empty){
-                   toastr['success']('تم طلبك بنجاح ', 'الطلبات');
+                   toastr['success'](trans('website.orders.success') , trans('website.orders.title'));
                    localStorage.setItem('itemsNumbers',0  );
                }
 
                window.location.href = response.data.url;
            }else {
-               toastr['error']('للأسف حدث خطأ ما اثناء الطلب...', 'الطلبات');
+               toastr['error'](trans('website.orders.error'), trans('website.orders.title'));
            }
         },
-        error: function(error) {
+        error: function( ) {
 
-            toastr['error']('برجاء التأكد من إستكمال جميع البيانات من فضلك', 'الطلبات');
+            toastr['error'](trans('website.orders.error_complete_information'), trans('website.orders.title'));
 
             $("#cartNextStep").show();
         },complete:function () {
