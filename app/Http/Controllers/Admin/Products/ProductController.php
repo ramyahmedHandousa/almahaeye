@@ -31,9 +31,10 @@ class ProductController extends Controller
                     ->join('media', 'media.model_id', '=', 'products.id')
                     ->where('media.model_type','=','App\Models\Product')
                     ->where('media.collection_name','=','glb')
-                    ->orderByDesc('media.created_at');
+                    ->orderByDesc('media.updated_at');
             });
- 
+
+
         return view('admin.products.index',[
             'products' => $productQuest->with(['user','brand','category'])->latest()->get(),
             'pageName' => $request->type == 'new' ? ' المنتجات الجديدة' : 'المنتجات'

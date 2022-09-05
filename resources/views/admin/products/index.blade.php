@@ -51,9 +51,10 @@
                     {{--@lang('trans.managers_system')--}}
                 </h4>
 
-                <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap">
+                <table id="datatable-responsive-cus" class="table table-striped table-bordered dt-responsive nowrap">
                     <thead>
                     <tr>
+                        <th>رقم المنتج</th>
                         <th>إسم المنتج</th>
                         <th>قسم المنتج</th>
                         <th>سعر المنتج</th>
@@ -69,6 +70,7 @@
 
                     @foreach($products as $row)
                         <tr>
+                            <td>{{ $row->id }}</td>
                             <td>{{ $row->name }}</td>
                             <td>{{ $row->category?->name }}</td>
                             <td>{{ $row->price }}</td>
@@ -240,8 +242,10 @@
 
 
         $(document).ready(function () {
-            $('#datatable-responsive').DataTable( {
-                "order": [[ 4, "desc" ]]
+            $('#datatable-responsive-cus').DataTable( {
+                "order": [
+                    // [ 0, "desc" ]
+                ]
             } );
 
         });
