@@ -25,8 +25,15 @@ class ProductController extends Controller
     {
         $productQuest = Product::query()
             ->when($request->type =='new',fn($pro) => $pro->where('is_new','=',0))
-            ->when($request->type !='new',fn($pro) => $pro->where('is_new','!=',0));
-
+            ->when($request->type !='new',fn($pro) => $pro->where('is_new','!=',0))
+            ->when($request->has('glb'),function ($pro){
+                $pro->select('products.*')
+                    ->join('media', 'media.model_id', '=', 'products.id')
+                    ->where('media.model_type','=','App\Models\Product')
+                    ->where('media.collection_name','=','glb')
+                    ->orderByDesc('media.created_at');
+            });
+ 
         return view('admin.products.index',[
             'products' => $productQuest->with(['user','brand','category'])->latest()->get(),
             'pageName' => $request->type == 'new' ? ' المنتجات الجديدة' : 'المنتجات'

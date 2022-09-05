@@ -60,7 +60,7 @@
                         <th>السعر بعد النسبة</th>
                         <th>كمية المنتج</th>
                         <th>ماركة المنتج</th>
-                        <th>لديه GLB</th>
+{{--                        <th>لديه GLB</th>--}}
                         <th>@lang('trans.created_at')</th>
                         <th>@lang('trans.options')</th>
                     </tr>
@@ -76,7 +76,7 @@
                             <td>{{ $row->quantity }}</td>
                             <td>{{ $row->brand?->name }}</td>
 
-                            <td>{{ $row->getMedia('glb')->first() ? 'نعم' : 'لا' }}</td>
+{{--                            <td>{{ $row->getMedia('glb')->first() ? 'نعم' : 'لا' }}</td>--}}
                             <td>{{ $row->created_at != ''? @$row->created_at->format('Y/m/d'): "--" }}</td>
                             <td>
                                 @if(!$row->is_new)
